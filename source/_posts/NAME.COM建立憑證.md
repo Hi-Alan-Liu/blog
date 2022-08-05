@@ -1,5 +1,5 @@
 title: NAME.COM建立憑證
-author: John Doe
+author: Alan Liu
 tags:
   - SSL
   - CSR

@@ -1,5 +1,5 @@
 title: logrotate 基本配置
-author: John Doe
+author: Alan Liu
 tags:
   - logrotate
   - Linux

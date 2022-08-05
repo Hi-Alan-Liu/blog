@@ -1,5 +1,5 @@
 title: AWS Certificate Manager 匯入憑證
-author: John Doe
+author: Alan Liu
 tags:
   - SSL
   - AWS Certificate Manager

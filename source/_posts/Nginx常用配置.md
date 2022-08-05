@@ -1,5 +1,5 @@
 title: Nginx 常用配置
-author: John Doe
+author: Alan Liu
 tags:
   - nginx
 categories:

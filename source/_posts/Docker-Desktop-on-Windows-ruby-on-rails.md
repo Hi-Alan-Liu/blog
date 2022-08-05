@@ -1,5 +1,5 @@
 title: Docker Desktop on Windows (ruby on rails)
-author: John Doe
+author: Alan Liu
 tags:
   - Docker
   - Ruby on Rails
