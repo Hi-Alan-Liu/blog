@@ -58,6 +58,6 @@ URL Rewrite
 
 `模式`  ^(.*)
 
-`重寫 URL`  http://localhost:3000/{R:1}
+`重寫 URL`  /{R:1}
 
 設置完畢即完成
