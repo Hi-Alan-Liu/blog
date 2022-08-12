@@ -104,5 +104,5 @@ theme: fluid
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/hi-alan-liu/blog.git
+  repo: git@github.com:Hi-Alan-Liu/blog.git
   branch: gh-pages
