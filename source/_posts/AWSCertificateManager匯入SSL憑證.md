@@ -16,7 +16,7 @@ date: 2022-06-14 15:42:00
 
 ![AWS Certificate Manager頁面](1655192633804.jpg)
 
-將前一篇 [NAME.COM SSL 憑證](https://pa013971.github.io/blog/2022/06/13/NAME.COM%E5%BB%BA%E7%AB%8B%E6%86%91%E8%AD%89/) 得到的憑證填入表格中
+將前一篇 [NAME.COM SSL 憑證](https://hi-alan-liu.github.io/blog/2022/06/13/NAME.COM%E5%BB%BA%E7%AB%8B%E6%86%91%E8%AD%89/) 得到的憑證填入表格中
 
 ![憑證詳細資訊](1655197062093.jpg)
 
