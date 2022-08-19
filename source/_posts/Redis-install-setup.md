@@ -1,5 +1,5 @@
 title: Redis 基本安裝 及 外部連線設定
-author: John Doe
+author: Alan Liu
 tags:
   - redis
   - config
