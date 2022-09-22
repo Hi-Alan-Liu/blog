@@ -1,11 +1,11 @@
 title: Redis 基本安裝 及 外部連線設定
 author: Alan Liu
 tags:
-  - redis
+  - Redis
   - config
   - bind
 categories:
-  - redis
+  - Redis
 date: 2022-08-05 14:05:00
 ---
 # Redis 基本安裝 及 外部連線設定
