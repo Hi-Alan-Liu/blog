@@ -214,3 +214,9 @@ $ docker-compose up
 等指令跑完
 
 就完成了 docker image 及 docker run
+
+---
+
+今天的教學就到此 ~
+
+### Thank you! :smile:
