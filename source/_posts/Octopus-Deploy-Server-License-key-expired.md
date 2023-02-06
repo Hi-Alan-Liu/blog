@@ -5,7 +5,7 @@ tags:
   - License
   - Master Key
 categories:
-  - DevOps
+  - Other
 date: 2022-10-12 15:14:00
 ---
 # Octopus Deploy Server License 過期解決辦法

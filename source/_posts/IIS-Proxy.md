@@ -4,8 +4,7 @@ tags:
   - IIS
   - URL Rewrite
 categories:
-  - DevOps
-  - ''
+  - IIS
 date: 2022-05-04 20:02:00
 ---
 # IIS 實現反向代理

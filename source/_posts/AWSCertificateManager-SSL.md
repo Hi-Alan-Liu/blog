@@ -4,8 +4,7 @@ tags:
   - SSL
   - AWS Certificate Manager
 categories:
-  - DevOps
-  - ''
+  - SSL CERTIFICATES
 date: 2022-06-14 15:42:00
 ---
 # 更新憑證#2 AWS Certificate Manager 匯入憑證

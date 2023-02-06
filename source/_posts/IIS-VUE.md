@@ -2,11 +2,11 @@ title: IIS 架設 VUE 站台
 author: Alan Liu
 tags:
   - IIS
+  - URL Rewrite
   - Vue Router
   - web.config
-  - URL Rewrite
 categories:
-  - DevOps
+  - IIS
 date: 2022-05-05 15:34:00
 ---
 # IIS 架設 vue 站台

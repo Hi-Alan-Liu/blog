@@ -3,7 +3,7 @@ author: Alan Liu
 tags:
   - nginx
 categories:
-  - DevOps
+  - Nginx
 date: 2022-05-06 15:21:00
 ---
 # Nginx 常用配置

@@ -5,7 +5,7 @@ tags:
   - IIS
   - Certificate
 categories:
-  - DevOps
+  - SSL CERTIFICATES
 date: 2023-01-30 16:06:00
 ---
 # 更新憑證#3 IIS Server Certificate 憑證更新
