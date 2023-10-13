@@ -9,13 +9,13 @@ description: 'Hi , 這是 Alan 隨手紀錄的程式手札'
 keywords:
 author: Alan Liu
 language: zh-TW
-timezone: ''
+timezone: 'Asia/Taipei'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: 'https://hi-alan-liu.github.io/'
 root: /blog/
-permalink: :year/:month/:day/:title/
+permalink: :title/
 permalink_defaults:
 pretty_urls:
   trailing_index: true # Set to false to remove trailing 'index.html' from permalinks
