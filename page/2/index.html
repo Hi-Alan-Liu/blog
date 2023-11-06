@@ -1,0 +1,991 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+  <meta name="author" content="Alan Liu">
+  <meta name="keywords" content="">
+  <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+<meta property="og:type" content="website">
+<meta property="og:title" content="劉穎｜Alan Liu">
+<meta property="og:url" content="https://hi-alan-liu.github.io/page/2/index.html">
+<meta property="og:site_name" content="劉穎｜Alan Liu">
+<meta property="og:description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="Alan Liu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>劉穎｜Alan Liu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hi-alan-liu.github.io","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"G-RMEY7HCZWR","gtag":"G-RMEY7HCZWR","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Alan Liu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.gif') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hi , 這是 Alan 的程式手札">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/ffmpeg-filter-complex/" target="_self">
+          FFmpeg 轉檔及合併音訊
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/ffmpeg-filter-complex/" target="_self">
+          
+          
+            
+          
+          FFmpeg 轉檔及合併音訊開始安裝 FFmpeg (Linux)[FFmpeg 官方網址] (https://www.ffmpeg.org/)
+更新 packages
+1$ sudo apt update
+
+安裝 ffmpeg
+1$ sudo apt-get install ffmpeg
+
+檢查 ffmpeg 是否成功，成為則會回應 ffmpeg 當前版本
+1$ ffmpeg -version
+
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-02-06 08:00" pubdate>
+              2023-02-06
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Tool/">Tool</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/FFmpeg/">FFmpeg</a>
+            
+              <a href="/blog/tags/filter/">filter</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/IIS-Server-Certificate/" target="_self">
+          IIS Server Certificate 憑證更新
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/IIS-Server-Certificate/" target="_self">
+          
+          
+            
+          
+          更新憑證#3 IIS Server Certificate 憑證更新準備指令產生憑證，可參考 NAME.COM SSL 憑證
+
+準備完畢後在進行下一步
+
+開始第一步、產生 IIS 所需的 PFX 檔1sudo openssl pkcs12 -in myserver.cer -inkey myserver.key -export -out myserver.pfx
+
+
+myserver.cer : 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-01-30 16:06" pubdate>
+              2023-01-30
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/SSL-CERTIFICATES/">SSL CERTIFICATES</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/SSL/">SSL</a>
+            
+              <a href="/blog/tags/IIS/">IIS</a>
+            
+              <a href="/blog/tags/Certificate/">Certificate</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Docker-Container-exec/" target="_self">
+          Docker 進入容器並進行操作
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Docker-Container-exec/" target="_self">
+          
+          
+            
+          
+          Docker 進入容器並進行操作前言Docker container(容器) 運行時，某些時候需要進入容器進行操作，因此紀錄操作方法及過程。
+開始一、使用指令進入容器在使用指令前 先使用 ps 查看執行中的容器
+1docker ps
+
+
+使用 exec 進入容器
+1docker exec -ti "CONTAINER ID" bash
+
+CONTAINER ID: 為容器的 ID
+-i : 保持打
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-28 17:34" pubdate>
+              2022-10-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Docker/">Docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Docker/">Docker</a>
+            
+              <a href="/blog/tags/Container/">Container</a>
+            
+              <a href="/blog/tags/docker-exec/">docker exec</a>
+            
+              <a href="/blog/tags/vim/">vim</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Docker-hub-Images-push/" target="_self">
+          Docker 生成 Images 並更新至 Docker Hub
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Docker-hub-Images-push/" target="_self">
+          
+          
+            
+          
+          Docker 生成 Images 並更新至 Docker Hub準備
+撰寫 Dockerfile
+如果還沒有準備好 dockerfile 可依照前篇
+
+註冊 DockerHub
+官方網站 https://hub.docker.com/
+
+
+開始第一步、Build Docker Images使用 docker 指令 build images
+1$ docker build -t docker_pro
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-18 18:13" pubdate>
+              2022-10-18
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Docker/">Docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Docker/">Docker</a>
+            
+              <a href="/blog/tags/Docker-hub/">Docker hub</a>
+            
+              <a href="/blog/tags/Docker-Images/">Docker Images</a>
+            
+              <a href="/blog/tags/Repository/">Repository</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Octopus-Deploy-Server-License-key-expired/" target="_self">
+          Octopus Deploy Server License 過期解決辦法
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Octopus-Deploy-Server-License-key-expired/" target="_self">
+          
+          
+            
+          
+          Octopus Deploy Server License 過期解決辦法前言由於公司使用的佈署工具過期，造成無法正常佈署專案。因此需 Renew License 並設定至程式軟體中。
+
+而過期的 license key 已與 master key 做綁定因此需先移除並重新綁定。
+開始一、重新申請 License申請網址: https://octopus.com/upgrade
+填入當初申請的 em
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-12 15:14" pubdate>
+              2022-10-12
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Other/">Other</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Octopus-Deploy/">Octopus Deploy</a>
+            
+              <a href="/blog/tags/License/">License</a>
+            
+              <a href="/blog/tags/Master-Key/">Master Key</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Windows-Schedule/" target="_self">
+          Windows 排程器執行 Powershell
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Windows-Schedule/" target="_self">
+          
+          
+            
+          
+          Windows 排程器執行 Powershell開始一、建立 PowerShell Scripts建立給排程器執行的 Scripts
+1start chrome https://www.google.com/
+
+存儲時副檔名 .ps1
+
+儲存後樣式
+
+其他 Scripts 範例
+123$url = "https://test.api-server.com/api/v1/create_user"$b
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-11 14:37" pubdate>
+              2022-10-11
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Tool/">Tool</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Windows/">Windows</a>
+            
+              <a href="/blog/tags/Powershell/">Powershell</a>
+            
+              <a href="/blog/tags/%E5%B7%A5%E4%BD%9C%E6%8E%92%E7%A8%8B%E5%99%A8/">工作排程器</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/vscode-plugin/" target="_self">
+          VS Code 好用插件分享
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/vscode-plugin/" target="_self">
+          
+          
+            
+          
+          VS Code 好用插件分享前言Visual Studio Code (簡稱 VSCode) 是一款由微軟開發且跨平台的原始碼編輯器。VSCode 體積小、可跨平台、還可以根據需求加入自己喜好的插件。而好的插件能大大提升自己 Coding 的速度，美美樣式及酷酷的圖標還能療癒身心(?)
+純造型類Bracket Pair Colorizer 2
+這個插件可美化 Bracket (括弧) 將括弧改為不
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-09-22 11:59" pubdate>
+              2022-09-22
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Tool/">Tool</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/VS-Code/">VS Code</a>
+            
+              <a href="/blog/tags/Plugin/">Plugin</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Arduino-lineagew/" target="_self">
+          Arduino 自製天堂神器
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Arduino-lineagew/" target="_self">
+          
+          
+            
+          
+          arduino 自製天堂神器展示
+準備Arduino Leonardo 1個
+必須要使用 Leonardo 才能使用虛擬鍵盤 Keyboard 指令
+*UNO 不支援虛擬鍵盤 Keyboard
+LD3320 1個
+
+杜邦線 多條
+開始第一步、連接元件依照圖示使用杜邦線將孔未連接
+
+LD3320 連接方式3.3V  –  VCC
+GND  –  GND
+*MISO  –  MISO
+*MOSI  –
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-16 18:15" pubdate>
+              2022-08-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Arduino/">Arduino</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Arduino/">Arduino</a>
+            
+              <a href="/blog/tags/Leonardo/">Leonardo</a>
+            
+              <a href="/blog/tags/LD3320/">LD3320</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Redis-install-setup/" target="_self">
+          Redis 基本安裝 及 外部連線設定
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Redis-install-setup/" target="_self">
+          
+          
+            
+          
+          Redis 基本安裝 及 外部連線設定準備安裝 RedisLinux 版本安裝方式：https://redis.io/docs/getting-started/installation/install-redis-on-linux/
+macOS 版本安裝方式：https://redis.io/docs/getting-started/installation/install-redis-on-ma
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-05 14:05" pubdate>
+              2022-08-05
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Redis/">Redis</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Redis/">Redis</a>
+            
+              <a href="/blog/tags/config/">config</a>
+            
+              <a href="/blog/tags/bind/">bind</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Docker-Desktop-on-Windows-ruby-on-rails/" target="_self">
+          Docker Desktop on Windows (ruby on rails)
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Docker-Desktop-on-Windows-ruby-on-rails/" target="_self">
+          
+          
+            
+          
+          Docker Desktop on Windows (ruby on rails)前言因工作環境需求必須在 Windows service 2019 佈署 ruby on rails 
+但 capistrano 無法支援佈署至 windows 因此選擇使用 docker desktop 解決問題
+準備註冊 Docker hub註冊網址：https://hub.docker.com/
+下載　Dock
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-08-01 14:06" pubdate>
+              2022-08-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Docker/">Docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Docker/">Docker</a>
+            
+              <a href="/blog/tags/Ruby-on-Rails/">Ruby on Rails</a>
+            
+              <a href="/blog/tags/Windows/">Windows</a>
+            
+              <a href="/blog/tags/Dockerfile/">Dockerfile</a>
+            
+              <a href="/blog/tags/docker-compose/">docker-compose</a>
+            
+              <a href="/blog/tags/image/">image</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/blog/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/blog/">1</a><span class="page-number current">2</span><a class="page-number" href="/blog/page/3/#board">3</a><a class="extend next" rel="next" href="/blog/page/3/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            總訪問量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總訪客數 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-RMEY7HCZWR', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMEY7HCZWR"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RMEY7HCZWR');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

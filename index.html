@@ -1,0 +1,1019 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+  <meta name="author" content="Alan Liu">
+  <meta name="keywords" content="">
+  <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+<meta property="og:type" content="website">
+<meta property="og:title" content="劉穎｜Alan Liu">
+<meta property="og:url" content="https://hi-alan-liu.github.io/index.html">
+<meta property="og:site_name" content="劉穎｜Alan Liu">
+<meta property="og:description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:author" content="Alan Liu">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>劉穎｜Alan Liu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hi-alan-liu.github.io","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"G-RMEY7HCZWR","gtag":"G-RMEY7HCZWR","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 6.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 100vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Alan Liu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.gif') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Hi , 這是 Alan 的程式手札">
+              
+            </span>
+
+            
+          </div>
+
+          
+            <div class="scroll-down-bar">
+              <i class="iconfont icon-arrowdown"></i>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      <div class="container nopadding-x-md">
+        <div class="py-5" id="board"
+          style=margin-top:0>
+          
+          <div class="container">
+            <div class="row">
+              <div class="col-12 col-md-10 m-auto">
+                
+
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Python-Encoding-UTF-8/" target="_self">
+          執行 Python 中文亂碼問題
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Python-Encoding-UTF-8/" target="_self">
+          
+          
+            
+          
+          執行 Python 中文亂碼問題前言Python 執行指令時偵測到中文，導致執行指令中斷無法正常運作。
+
+開始其實解法很簡單，只需要在檔案最上方加上 encoding:utf-8
+1# encoding:utf-8
+
+
+這樣就可以正常運行囉 !
+今天的分享就到此結束
+Thank you! 😄
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-11-01 18:01" pubdate>
+              2023-11-01
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Python/">Python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Python/">Python</a>
+            
+              <a href="/blog/tags/Encoding/">Encoding</a>
+            
+              <a href="/blog/tags/UTF-8/">UTF-8</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Windows-Defender-Inbound-Rules/" target="_self">
+          Windows 防火牆新增輸入規則
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Windows-Defender-Inbound-Rules/" target="_self">
+          
+          
+            
+          
+          Windows 防火牆新增輸入規則前言因在 Windows 上佈署伺服器，但一般除了預設Port 80，443 其餘是不開放的。
+所以將自行設定防火牆輸入規則
+開始設定輸入規則進入 Windows Defender 防火牆
+選擇進階設定
+
+選擇輸入規則並選擇新增規則
+
+選擇連接埠
+
+埠 (ㄅㄨˋ (又音) ㄈㄨˋ)
+
+
+選擇規則 TCP 或 UDP，我這邊是供 Web 使用所以選擇 TCP
+填入特
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-10-13 16:00" pubdate>
+              2023-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Windows/">Windows</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Windows/">Windows</a>
+            
+              <a href="/blog/tags/Defender/">Defender</a>
+            
+              <a href="/blog/tags/Inbound/">Inbound</a>
+            
+              <a href="/blog/tags/Rules/">Rules</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Docker-Containers-Restart/" target="_self">
+          Docker 設定容器自動重啟
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Docker-Containers-Restart/" target="_self">
+          
+          
+            
+          
+          Docker 設定容器自動重啟前言因 Windows 系統定期會重新啟動，所以需設置 Docker container (容器) 能夠自動啟動。
+避免 server 無運作等問題。
+開始第一步、確認 Container ID在使用指令前 先使用 Docker PS 查看執行中的容器ID
+1docker ps
+
+
+第二步、設定 Container 重啟策略使用指令設定 Container (容器) 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-10-13 12:00" pubdate>
+              2023-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Docker/">Docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Docker/">Docker</a>
+            
+              <a href="/blog/tags/Container/">Container</a>
+            
+              <a href="/blog/tags/Restart/">Restart</a>
+            
+              <a href="/blog/tags/Policy/">Policy</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/ruby-mailer/" target="_self">
+          Ruby 信件功能及本地瀏覽
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/ruby-mailer/" target="_self">
+          
+          
+            
+          
+          Ruby 信件功能及本地瀏覽開始第一步、建立 mailer使用指令建立 mailer 
+1$ bin/rails g mailer Order
+
+指令建立的內容為
+12345678   create  app/mailers/order_mailer.rb   invoke  erb   create    app/views/order_maileridentical    app/views/
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-28 18:00" pubdate>
+              2023-09-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Ruby-on-Rails/">Ruby on Rails</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/ruby/">ruby</a>
+            
+              <a href="/blog/tags/mailer/">mailer</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/snowy-mooncake/" target="_self">
+          手作 - 中秋冰皮月餅
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/snowy-mooncake/" target="_self">
+          
+          
+            
+          
+          手作 - 中秋冰皮月餅準備🔻冰皮：（可以做14顆/每顆25g，第一次做可以先減半試做）
+椰漿 130g （不是椰奶）
+煉乳 35g
+糖粉 25g
+在來米粉 40g
+糯米粉 40g
+低筋麵粉 20g
+牛奶 50g
+融化的無鹽奶油 25g
+🔻現料：（蔓越莓餡料最為推薦）
+準備完畢後在進行下一步
+
+開始第一步、將材料混合先將 ( 椰漿 -&gt; 煉乳 ) 混合
+再將 ( 糖粉 -&gt; 在來米粉
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-09-28 12:00" pubdate>
+              2023-09-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/%E9%A3%9F%E8%AD%9C/">食譜</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/%E6%89%8B%E4%BD%9C/">手作</a>
+            
+              <a href="/blog/tags/%E4%B8%AD%E7%A7%8B%E6%9C%88%E9%A4%85/">中秋月餅</a>
+            
+              <a href="/blog/tags/%E5%86%B0%E7%9A%AE%E6%9C%88%E9%A4%85/">冰皮月餅</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Azure-Vue-Static-Web/" target="_self">
+          解決 Azure - Vue 靜態網站 404 問題
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Azure-Vue-Static-Web/" target="_self">
+          
+          
+            
+          
+          解決 Azure - Vue 靜態網站 404 問題準備[Azure 官方網址] (https://portal.azure.com/)
+安裝完畢後在進行下一步
+
+開始問題佈署於 Azure - 靜態 Web 應用程式 的 Vue 專案
+再切換頁面時會出現 404 : not found 的問題
+
+解決方式再 Vue 專案內建立 staticwebapp.config.json 檔案
+static
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-05-16 17:34" pubdate>
+              2023-05-16
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Vue-js/">Vue.js</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Vue-js/">Vue.js</a>
+            
+              <a href="/blog/tags/Azure/">Azure</a>
+            
+              <a href="/blog/tags/router/">router</a>
+            
+              <a href="/blog/tags/saticwebapp/">saticwebapp</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/IIS-Autoindex/" target="_self">
+          IIS 實現 Autoindex 下載站點
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/IIS-Autoindex/" target="_self">
+          
+          
+            
+          
+          IIS 實現 Autoindex 下載站點準備IIS
+安裝完畢後在進行下一步
+
+開始第一步、建立虛擬目錄點擊想新增下載點的站台新增虛擬目錄
+
+填入路徑別名與下載點資料夾位置
+
+第二步、啟動瀏覽目錄點擊剛剛設定的虛擬目錄
+並點擊瀏覽目錄
+
+點擊啟用並設置想顯示於目錄中的資訊
+
+第三步、完成進入網站並填入設定的路徑
+
+今天的分享就到此結束
+Thank you! 😄
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-28 17:50" pubdate>
+              2023-04-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/IIS/">IIS</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/IIS/">IIS</a>
+            
+              <a href="/blog/tags/autoindex/">autoindex</a>
+            
+              <a href="/blog/tags/mp4/">mp4</a>
+            
+              <a href="/blog/tags/Autoindex/">Autoindex</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Python-Beautiful-Soup/" target="_self">
+          Python 使用 BeautifulSoup 解析頁面資料
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Python-Beautiful-Soup/" target="_self">
+          
+          
+            
+          
+          Python 使用 BeautifulSoup 解析頁面資料準備1.pip 安裝套件 BeautifulSoup 
+1pip install BeautifulSoup4
+
+準備完畢後在進行下一步
+
+開始第一步、取得需解析的資料引用 BeautifulSoup
+並將須解析的資料填入
+12345678# start.pyfrom bs4 import BeautifulSoup# 需要解析的資料ht
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-04-19 16:50" pubdate>
+              2023-04-19
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Python/">Python</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Python/">Python</a>
+            
+              <a href="/blog/tags/BeautifulSoup/">BeautifulSoup</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/dotnet-miniexcel/" target="_self">
+          .NET  MiniExcel 匯入資料
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/dotnet-miniexcel/" target="_self">
+          
+          
+            
+          
+          .NET MiniExcel 匯入資料準備1.NuGet 套件安裝 MiniExcel
+
+準備完畢後在進行下一步
+
+開始第一步、創建 ViewModel創建與 Excel 相同欄位名稱的 ViewModel
+
+
+
+ExcelColumnName 需要與 Excel 欄位名稱相同
+
+第二步、讀取 Excel 並塞入資料Query 查詢 Excel 返回強型別 IEnumerable 資料
+12345
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-17 16:50" pubdate>
+              2023-03-17
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/NET/"> .NET</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/MiniExcel/">MiniExcel</a>
+            
+              <a href="/blog/tags/Excel/">Excel</a>
+            
+              <a href="/blog/tags/dotnet/">dotnet</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
+        <a href="/blog/Script-deploy/" target="_self">
+          Package Script 新增自動佈署指令
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Script-deploy/" target="_self">
+          
+          
+            
+          
+          Package Script 新增自動佈署指令準備1.設定 SSH 金鑰 ( Public Key Authentication)
+準備完畢後在進行下一步
+
+開始第一步、製作 Shell Script專案內與 package.json 同層新增一個 deploy.sh 檔案
+
+deploy.sh 內容如下
+12345# deploy.shset -escp -r dist/ *UserName@*
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-03-13 15:38" pubdate>
+              2023-03-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Tool/">Tool</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Package/">Package</a>
+            
+              <a href="/blog/tags/npm/">npm</a>
+            
+              <a href="/blog/tags/script/">script</a>
+            
+              <a href="/blog/tags/scp/">scp</a>
+            
+              <a href="/blog/tags/deploy/">deploy</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <span class="page-number current">1</span><a class="page-number" href="/blog/page/2/#board">2</a><a class="page-number" href="/blog/page/3/#board">3</a><a class="extend next" rel="next" href="/blog/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+    </span>
+  </nav>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            總訪問量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總訪客數 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-RMEY7HCZWR', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMEY7HCZWR"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RMEY7HCZWR');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>執行 Python 中文亂碼問題</title>
+    <link href="/blog/Python-Encoding-UTF-8/"/>
+    <url>/blog/Python-Encoding-UTF-8/</url>
+    
+    <content type="html"><![CDATA[<h1 id="執行-Python-中文亂碼問題"><a href="#執行-Python-中文亂碼問題" class="headerlink" title="執行 Python 中文亂碼問題"></a>執行 Python 中文亂碼問題</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Python 執行指令時偵測到中文，導致執行指令中斷無法正常運作。</p><p><img src="/blog/Python-Encoding-UTF-8/1698832227142.jpg" alt="指令中斷範例"></p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><p>其實解法很簡單，只需要在檔案最上方加上 encoding:utf-8</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># encoding:utf-8</span><br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Python-Encoding-UTF-8/1698832334040.jpg" alt="encoding範例"></p><p>這樣就可以正常運行囉 !</p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>Encoding</tag>
+      
+      <tag>UTF-8</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows 防火牆新增輸入規則</title>
+    <link href="/blog/Windows-Defender-Inbound-Rules/"/>
+    <url>/blog/Windows-Defender-Inbound-Rules/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Windows-防火牆新增輸入規則"><a href="#Windows-防火牆新增輸入規則" class="headerlink" title="Windows 防火牆新增輸入規則"></a>Windows 防火牆新增輸入規則</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因在 Windows 上佈署伺服器，但一般除了預設Port 80，443 其餘是不開放的。</p><p>所以將自行設定防火牆輸入規則</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="設定輸入規則"><a href="#設定輸入規則" class="headerlink" title="設定輸入規則"></a>設定輸入規則</h3><p>進入 Windows Defender 防火牆</p><p>選擇進階設定</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185540809.jpg" alt="選擇進階設定"></p><p>選擇輸入規則並選擇新增規則</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185668087.jpg" alt="選擇輸入規則並選擇新增規則"></p><p>選擇連接埠</p><ul><li>埠 (ㄅㄨˋ (又音) ㄈㄨˋ)</li></ul><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185708248.jpg" alt="選擇規則類型"></p><p>選擇規則 TCP 或 UDP，我這邊是供 Web 使用所以選擇 TCP</p><p>填入特定的連接住埠(Port)</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185744497.jpg" alt="選擇通訊協定及連接埠"></p><p>選擇連線條件，我這邊選擇所有連線</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185786141.jpg" alt="選擇動作"></p><p>設定名稱及其描述</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185815034.jpg" alt="名稱"></p><p>點選完成即可完成設置</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697185850506.jpg" alt="完成範例"></p><h3 id="補充、設定白名單"><a href="#補充、設定白名單" class="headerlink" title="補充、設定白名單"></a>補充、設定白名單</h3><p>如果想要設定連線白名單</p><p>可以在設定動作時，選擇僅允許安全連線</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697186061986.jpg" alt="設定動作"></p><p>之後授權的使用者加入在此處即可完成</p><p><img src="/blog/Windows-Defender-Inbound-Rules/1697186048247.jpg" alt="設定使用者"></p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Windows</tag>
+      
+      <tag>Defender</tag>
+      
+      <tag>Inbound</tag>
+      
+      <tag>Rules</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Docker 設定容器自動重啟</title>
+    <link href="/blog/Docker-Containers-Restart/"/>
+    <url>/blog/Docker-Containers-Restart/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-設定容器自動重啟"><a href="#Docker-設定容器自動重啟" class="headerlink" title="Docker 設定容器自動重啟"></a>Docker 設定容器自動重啟</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因 Windows 系統定期會重新啟動，所以需設置 Docker container (容器) 能夠自動啟動。</p><p>避免 server 無運作等問題。</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、確認-Container-ID"><a href="#第一步、確認-Container-ID" class="headerlink" title="第一步、確認 Container ID"></a>第一步、確認 Container ID</h3><p>在使用指令前 先使用 Docker PS 查看執行中的容器ID</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">docker ps<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Containers-Restart/1697168878486.jpg" alt="docker ps 範例"></p><h3 id="第二步、設定-Container-重啟策略"><a href="#第二步、設定-Container-重啟策略" class="headerlink" title="第二步、設定 Container 重啟策略"></a>第二步、設定 Container 重啟策略</h3><p>使用指令設定 Container (容器) 重啟策略</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">docker run --restart={Policy} {Container ID}<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Containers-Restart/1697169178517.jpg" alt="docker 重啟策略範例"></p><ul><li><p>Policy : 重啟策略</p></li><li><p>Container ID : 容器的 ID</p></li></ul><h4 id="Policy-列表描述"><a href="#Policy-列表描述" class="headerlink" title="Policy 列表描述"></a>Policy 列表描述</h4><ul><li><p>no : 默認，不自動重啟容器。</p></li><li><p>on-failure[:max-retries] : 如果容器因錯誤退出，則重新啟動容器，這表現為非零退出代碼。或者，使用該:max-retries選項限制 Docker 守護程序嘗試重新啟動容器的次數。</p></li><li><p>always : 無論退出狀態如何，始終重新啟動容器。</p></li><li><p>unless-stopped : 無論退出狀態如何，始終重啟容器，包括在守護進程啟動時，除非容器在 Docker 守護進程停止之前進入停止狀態。</p></li></ul><h3 id="第三步、檢查-Container-設置"><a href="#第三步、檢查-Container-設置" class="headerlink" title="第三步、檢查 Container 設置"></a>第三步、檢查 Container 設置</h3><p>使用指令查詢 Container 是否設置成功</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">docker inspect -f "{{ .HostConfig.RestartPolicy }}" {Container ID}<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Containers-Restart/1697169640784.jpg" alt="檢查 Container 設置範例"></p><p>當有回覆 {always 0} 則代表有設置成功!</p><p>如果想要查詢全部的 Container 的重啟策略可以使用以下指令</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">docker inspect --format "{{.HostConfig.RestartPolicy.Name}}, {{.Name}}, {{.Id}}" $(docker ps -qf status=running)<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Containers-Restart/1697169841734.jpg" alt="查看所有重啟策略範例"></p><p>這樣就可以查詢所有的重啟策略</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://quietbo.com/2022/07/27/docker-restart/">Docker restart</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+      <tag>Container</tag>
+      
+      <tag>Restart</tag>
+      
+      <tag>Policy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Ruby 信件功能及本地瀏覽</title>
+    <link href="/blog/ruby-mailer/"/>
+    <url>/blog/ruby-mailer/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Ruby-信件功能及本地瀏覽"><a href="#Ruby-信件功能及本地瀏覽" class="headerlink" title="Ruby 信件功能及本地瀏覽"></a>Ruby 信件功能及本地瀏覽</h1><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、建立-mailer"><a href="#第一步、建立-mailer" class="headerlink" title="第一步、建立 mailer"></a>第一步、建立 mailer</h3><p>使用指令建立 mailer </p><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-variable">$ </span>bin/rails g mailer Order<br></code></pre></td></tr></tbody></table></figure><p>指令建立的內容為</p><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs ruby">   create  app/mailers/order_mailer.rb<br>   invoke  erb<br>   create    app/views/order_mailer<br>identical    app/views/layouts/mailer.text.erb<br>identical    app/views/layouts/mailer.html.erb<br>   invoke  test_unit<br>   create    test/mailers/order_mailer_test.rb<br>   create    test/mailers/previews/order_mailer_preview.rb<br></code></pre></td></tr></tbody></table></figure><h3 id="第二步、設定預設信件寄件者"><a href="#第二步、設定預設信件寄件者" class="headerlink" title="第二步、設定預設信件寄件者"></a>第二步、設定預設信件寄件者</h3><p>從 <code>application_mailer.rb</code> 裡 <code>from@example.com</code> 設定預設的寄件者</p><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-comment"># app/mailers/application_mailer.rb</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">ApplicationMailer</span> &lt; <span class="hljs-title class_ inherited__">ActionMailer::Base</span><br>  default <span class="hljs-symbol">from:</span> <span class="hljs-string">'from@example.com'</span><br>  layout <span class="hljs-string">'mailer'</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></tbody></table></figure><h3 id="第三步、新增-Mailer-Action"><a href="#第三步、新增-Mailer-Action" class="headerlink" title="第三步、新增 Mailer Action"></a>第三步、新增 Mailer Action</h3><p>可以在此設定 I18n 已方便未來做信件多語言</p><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-comment"># app/mailers/order_mailer.rb</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderMailer</span> &lt; <span class="hljs-title class_ inherited__">ApplicationMailer</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">notify</span>(<span class="hljs-params">user</span>)<br>    I18n.locale = user.lang<br>    <span class="hljs-variable">@user</span> = user<br>    I18n.with_locale <span class="hljs-keyword">do</span><br>      mail(<br>        <span class="hljs-symbol">:to</span> =&gt; <span class="hljs-string">"&lt;<span class="hljs-subst">#{<span class="hljs-variable">@user</span>.email}</span>&gt;"</span>, <br>        <span class="hljs-symbol">:subject</span> =&gt; I18n.t(<span class="hljs-string">'order_mailer.notify.subject'</span>)<br>      )<br>    <span class="hljs-keyword">end</span><br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></tbody></table></figure><p>我目前設定已使用者的語言為主</p><h3 id="第四步、建立信件內容"><a href="#第四步、建立信件內容" class="headerlink" title="第四步、建立信件內容"></a>第四步、建立信件內容</h3><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-comment"># app/views/order_mailer/notify.html.erb</span><br><br>&lt;%= <span class="hljs-variable">@user</span>.name %&gt;，你好：<br><br>感謝您的購買。<br></code></pre></td></tr></tbody></table></figure><p>簡單的 html 範例</p><h3 id="第五步、設置信件-Test"><a href="#第五步、設置信件-Test" class="headerlink" title="第五步、設置信件 Test"></a>第五步、設置信件 Test</h3><figure class="highlight ruby"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs ruby"><span class="hljs-keyword">class</span> <span class="hljs-title class_">OrderMailerPreview</span> &lt; <span class="hljs-title class_ inherited__">ActionMailer::Preview</span><br>  <span class="hljs-keyword">def</span> <span class="hljs-title function_">notify</span><br>    OrderMailer.notify(<br>    user = User.first<br>    )<br>  <span class="hljs-keyword">end</span><br><span class="hljs-keyword">end</span><br></code></pre></td></tr></tbody></table></figure><p>設置完畢後即可使用此連結瀏覽信件</p><p><code>http://localhost:3000/rails/mailers</code></p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Ruby on Rails</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>ruby</tag>
+      
+      <tag>mailer</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>手作 - 中秋冰皮月餅</title>
+    <link href="/blog/snowy-mooncake/"/>
+    <url>/blog/snowy-mooncake/</url>
+    
+    <content type="html"><![CDATA[<h1 id="手作-中秋冰皮月餅"><a href="#手作-中秋冰皮月餅" class="headerlink" title="手作 - 中秋冰皮月餅"></a>手作 - 中秋冰皮月餅</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>🔻冰皮：（可以做14顆/每顆25g，第一次做可以先減半試做）</p><p>椰漿 130g （不是椰奶）</p><p>煉乳 35g</p><p>糖粉 25g</p><p>在來米粉 40g</p><p>糯米粉 40g</p><p>低筋麵粉 20g</p><p>牛奶 50g</p><p>融化的無鹽奶油 25g</p><p>🔻現料：（蔓越莓餡料最為推薦）</p><p><em>準備完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、將材料混合"><a href="#第一步、將材料混合" class="headerlink" title="第一步、將材料混合"></a>第一步、將材料混合</h3><p>先將 ( 椰漿 -&gt; 煉乳 ) 混合</p><p>再將 ( 糖粉 -&gt; 在來米粉 -&gt; 糯米粉 -&gt; 低筋麵粉 ) 過篩後混合</p><p>最後將 無鹽奶油微波後 與 牛奶混合</p><p>將所有材料混合後攪拌均勻倒入鍋具中</p><h3 id="第二步、將混合後的麵糰加熱"><a href="#第二步、將混合後的麵糰加熱" class="headerlink" title="第二步、將混合後的麵糰加熱"></a>第二步、將混合後的麵糰加熱</h3><p>使用中小火將麵糰炒至金黃色 ( 白色為未煮熟 )</p><p>煮熟放涼後將麵糰用保鮮膜包起來並稍微塑型放置冰箱兩小時</p><h3 id="第三部、使用模具將餅皮與餡料壓成型"><a href="#第三部、使用模具將餅皮與餡料壓成型" class="headerlink" title="第三部、使用模具將餅皮與餡料壓成型"></a>第三部、使用模具將餅皮與餡料壓成型</h3><p>將餅皮與餡料包成橢圓形放置模具中壓成型</p><p>稍微壓三下就完成囉</p><p><img src="/blog/snowy-mooncake/129049.jpg" alt="完成圖"></p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>食譜</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>手作</tag>
+      
+      <tag>中秋月餅</tag>
+      
+      <tag>冰皮月餅</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>解決 Azure - Vue 靜態網站 404 問題</title>
+    <link href="/blog/Azure-Vue-Static-Web/"/>
+    <url>/blog/Azure-Vue-Static-Web/</url>
+    
+    <content type="html"><![CDATA[<h1 id="解決-Azure-Vue-靜態網站-404-問題"><a href="#解決-Azure-Vue-靜態網站-404-問題" class="headerlink" title="解決 Azure - Vue 靜態網站 404 問題"></a>解決 Azure - Vue 靜態網站 404 問題</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>[Azure 官方網址] (<a href="https://portal.azure.com/">https://portal.azure.com/</a>)</p><p><em>安裝完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>佈署於 <code>Azure - 靜態 Web 應用程式</code> 的 Vue 專案</p><p>再切換頁面時會出現 <code>404 : not found</code> 的問題</p><p><img src="/blog/Azure-Vue-Static-Web/1684226521857.jpg" alt="404 : not found"></p><h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>再 Vue 專案內建立 <code>staticwebapp.config.json</code> 檔案</p><p><code>staticwebapp.config.json</code> 是 Azure 靜態 Web 應用程式 的配置文件，用於定義路由和其他設定，以確保 Vue.js 應用程式在 Azure Static Web Apps 上正確運作。</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs CMD"># staticwebapp.config.json<br><br>{<br>  "navigationFallback": {<br>      "rewrite": "index.html"<br>  },<br>  "mimeTypes": {<br>      ".json": "text/json"<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Azure-Vue-Static-Web/1684227841490.jpg" alt="staticwebapp.config.json 檔案位置"></p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>Vue.js 是一個單頁應用程式框架，使用 Vue Router 來處理客戶端的路由。</p><p>在 Azure Static Web Apps 上部署 Vue.js 應用程式時，伺服器需要知道如何處理這些路由。</p><p>以確保所有路由都指向 index.html 檔案，讓 Vue Router 負責處理路由。</p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://learn.microsoft.com/en-us/azure/static-web-apps/configuration#fallback-routes">azure-fallback-routes</a></li><li><a href="https://medium.com/bb-tutorials-and-thoughts/azure-how-to-configure-fallback-routes-for-vue-static-web-apps-97b36026a33b">Azure — How To Configure fallback routes for Vue Static Web Apps</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Vue.js</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue.js</tag>
+      
+      <tag>Azure</tag>
+      
+      <tag>router</tag>
+      
+      <tag>saticwebapp</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IIS 實現 Autoindex 下載站點</title>
+    <link href="/blog/IIS-Autoindex/"/>
+    <url>/blog/IIS-Autoindex/</url>
+    
+    <content type="html"><![CDATA[<h1 id="IIS-實現-Autoindex-下載站點"><a href="#IIS-實現-Autoindex-下載站點" class="headerlink" title="IIS 實現 Autoindex 下載站點"></a>IIS 實現 Autoindex 下載站點</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>IIS</p><p><em>安裝完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、建立虛擬目錄"><a href="#第一步、建立虛擬目錄" class="headerlink" title="第一步、建立虛擬目錄"></a>第一步、建立虛擬目錄</h3><p>點擊想新增下載點的站台新增虛擬目錄</p><p><img src="/blog/IIS-Autoindex/1682676944394.jpg" alt="新增虛擬目錄"></p><p>填入路徑別名與下載點資料夾位置</p><p><img src="/blog/IIS-Autoindex/1682676981528.jpg" alt="設定別名與實體路徑"></p><h3 id="第二步、啟動瀏覽目錄"><a href="#第二步、啟動瀏覽目錄" class="headerlink" title="第二步、啟動瀏覽目錄"></a>第二步、啟動瀏覽目錄</h3><p>點擊剛剛設定的虛擬目錄</p><p>並點擊瀏覽目錄</p><p><img src="/blog/IIS-Autoindex/1682677051490.jpg" alt="點擊瀏覽目錄"></p><p>點擊啟用並設置想顯示於目錄中的資訊</p><p><img src="/blog/IIS-Autoindex/1682677092120.jpg" alt="設定瀏覽目錄"></p><h3 id="第三步、完成"><a href="#第三步、完成" class="headerlink" title="第三步、完成"></a>第三步、完成</h3><p>進入網站並填入設定的路徑</p><p><img src="/blog/IIS-Autoindex/1682678304743.jpg" alt="完成後樣子"></p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>IIS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IIS</tag>
+      
+      <tag>autoindex</tag>
+      
+      <tag>mp4</tag>
+      
+      <tag>Autoindex</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Python 使用 BeautifulSoup 解析頁面資料</title>
+    <link href="/blog/Python-Beautiful-Soup/"/>
+    <url>/blog/Python-Beautiful-Soup/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Python-使用-BeautifulSoup-解析頁面資料"><a href="#Python-使用-BeautifulSoup-解析頁面資料" class="headerlink" title="Python 使用 BeautifulSoup 解析頁面資料"></a>Python 使用 BeautifulSoup 解析頁面資料</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>1.pip 安裝套件 BeautifulSoup </p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">pip install BeautifulSoup4<br></code></pre></td></tr></tbody></table></figure><p><em>準備完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、取得需解析的資料"><a href="#第一步、取得需解析的資料" class="headerlink" title="第一步、取得需解析的資料"></a>第一步、取得需解析的資料</h3><p>引用 BeautifulSoup</p><p>並將須解析的資料填入</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># start.py</span><br><br><span class="hljs-keyword">from</span> bs4 <span class="hljs-keyword">import</span> BeautifulSoup<br><br><span class="hljs-comment"># 需要解析的資料</span><br>html = <span class="hljs-string">'&lt;div class="store ...... 以下省略'</span><br><br>soup = BeautifulSoup(html, <span class="hljs-string">'html.parser'</span>)<br></code></pre></td></tr></tbody></table></figure><p>資料範例如下 :</p><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"store"</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"store-info"</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"store-name"</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex-shrink-0"</span>&gt;</span>店名<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"font-bold"</span>&gt;</span><br>            金玉堂<br>         <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"address"</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex-shrink-0"</span>&gt;</span>地址<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">address</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"not-italic"</span>&gt;</span>高雄市路竹區國昌路16號<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://maps.google.com.tw/maps?q=高雄市路竹區國昌路16號"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary"</span>&gt;</span>地圖<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">address</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>   <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"store-info"</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"store-name"</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex-shrink-0"</span>&gt;</span>店名<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"font-bold"</span>&gt;</span><br>            統一超商<br>         <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"address"</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"flex-shrink-0"</span>&gt;</span>地址<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br>         <span class="hljs-tag">&lt;<span class="hljs-name">address</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"not-italic"</span>&gt;</span>高雄市路竹區大社路162號<span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://maps.google.com.tw/maps?q=高雄市路竹區大社路162號"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"text-secondary"</span>&gt;</span>地圖<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">address</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>   <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure><h3 id="第二步、依資料內容進行解析"><a href="#第二步、依資料內容進行解析" class="headerlink" title="第二步、依資料內容進行解析"></a>第二步、依資料內容進行解析</h3><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># start.py</span><br><br><span class="hljs-comment"># 列表</span><br>contact_list = []<br><br><span class="hljs-comment"># 將每個店整理成各筆資料</span><br>store_infos = soup.find_all(<span class="hljs-string">'div'</span>, class_=<span class="hljs-string">'store-info'</span>)<br><br><span class="hljs-keyword">for</span> store_info <span class="hljs-keyword">in</span> store_infos:<br>    <span class="hljs-comment"># 解析店名</span><br>    store_name = store_info.find(<span class="hljs-string">'span'</span>, class_=<span class="hljs-string">'font-bold'</span>).text<br><br>    <span class="hljs-comment"># 解析地址</span><br>    address = store_info.find(<span class="hljs-string">'address'</span>).text<br><br>    <span class="hljs-comment"># 解析地圖連結</span><br>    map_link = store_info.find(<span class="hljs-string">'a'</span>)[<span class="hljs-string">'href'</span>]<br><br>    <span class="hljs-comment"># 建立字典</span><br>    contact_info = {<br>        <span class="hljs-string">'name'</span>: store_name,<br>        <span class="hljs-string">'address'</span>: address,<br>        <span class="hljs-string">'link'</span>: map_link<br>    }<br><br>    <span class="hljs-comment"># 把字典放進列表</span><br>    contact_list.append(contact_info)<br><br><span class="hljs-comment"># 印出資料</span><br><span class="hljs-built_in">print</span>(contact_list)<br></code></pre></td></tr></tbody></table></figure><p>撰寫完畢後執行即可取得解析後的資料</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">python <span class="hljs-built_in">start</span>.py<br></code></pre></td></tr></tbody></table></figure><h3 id="補充、將資料輸出成-Excel"><a href="#補充、將資料輸出成-Excel" class="headerlink" title="補充、將資料輸出成 Excel"></a>補充、將資料輸出成 Excel</h3><p>安裝套件</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">pip install pandas<br>pip install openpyxl  <br></code></pre></td></tr></tbody></table></figure><p>引用套件並輸出檔案</p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># start.py</span><br><br><span class="hljs-keyword">import</span> pandas <span class="hljs-keyword">as</span> pd<br><span class="hljs-keyword">import</span> json<br><br>***<br>中間省略<br>***<br><br><span class="hljs-comment"># 建立 DataFrame</span><br>df = pd.DataFrame(contact_list)<br><br><span class="hljs-comment"># 將 DataFrame 寫入 Excel 檔案</span><br><span class="hljs-keyword">with</span> pd.ExcelWriter(<span class="hljs-string">'contact_list.xlsx'</span>) <span class="hljs-keyword">as</span> writer:<br>    df.to_excel(writer, index=<span class="hljs-literal">False</span>, sheet_name=<span class="hljs-string">'Sheet1'</span>)<br></code></pre></td></tr></tbody></table></figure><p>執行後就可以輕鬆解析並取得Excel囉!</p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Python</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Python</tag>
+      
+      <tag>BeautifulSoup</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>.NET  MiniExcel 匯入資料</title>
+    <link href="/blog/dotnet-miniexcel/"/>
+    <url>/blog/dotnet-miniexcel/</url>
+    
+    <content type="html"><![CDATA[<h1 id="NET-MiniExcel-匯入資料"><a href="#NET-MiniExcel-匯入資料" class="headerlink" title=".NET MiniExcel 匯入資料"></a>.NET MiniExcel 匯入資料</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>1.NuGet 套件安裝 MiniExcel</p><p><img src="/blog/dotnet-miniexcel/1679037848159.jpg" alt="安裝 MiniExcel"></p><p><em>準備完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、創建-ViewModel"><a href="#第一步、創建-ViewModel" class="headerlink" title="第一步、創建 ViewModel"></a>第一步、創建 ViewModel</h3><p>創建與 Excel 相同欄位名稱的 ViewModel</p><p><img src="/blog/dotnet-miniexcel/1679038144989.jpg" alt="Excel 範例"></p><p><img src="/blog/dotnet-miniexcel/1679037963610.jpg" alt="創建 ViewModel"></p><ul><li>ExcelColumnName 需要與 Excel 欄位名稱相同</li></ul><h3 id="第二步、讀取-Excel-並塞入資料"><a href="#第二步、讀取-Excel-並塞入資料" class="headerlink" title="第二步、讀取 Excel 並塞入資料"></a>第二步、讀取 Excel 並塞入資料</h3><p>Query 查詢 Excel 返回強型別 IEnumerable 資料</p><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> rows = MiniExcel.Query&lt;ViewModel&gt;(path);<br><br><span class="hljs-comment">// or</span><br><br><span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> stream = File.OpenRead(path))<br>    <span class="hljs-keyword">var</span> rows = stream.Query&lt;ViewModel&gt;();<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/dotnet-miniexcel/1679038627943.jpg" alt="獲得 Excel 資料"></p><p>這樣就可以獲得 Excel 內的資料</p><h3 id="補充、將欄位相同的資料整理好"><a href="#補充、將欄位相同的資料整理好" class="headerlink" title="補充、將欄位相同的資料整理好"></a>補充、將欄位相同的資料整理好</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> empoyeeList = rows.GroupBy(x =&gt; x.EmployeeId).Select(x =&gt; <span class="hljs-keyword">new</span><br>{<br>  EmployeeId = x.Key,<br>  Questions = x.Select(a =&gt; <span class="hljs-keyword">new</span> { a.QuestionCode, a.Answer, a.ResponseAt })<br>}).ToList();<br></code></pre></td></tr></tbody></table></figure><p>如此就能將相同 EmployeeId 的資料合併再一起。</p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://github.com/mini-software/MiniExcel">MiniExcel</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category> .NET</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>MiniExcel</tag>
+      
+      <tag>Excel</tag>
+      
+      <tag>dotnet</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Package Script 新增自動佈署指令</title>
+    <link href="/blog/Script-deploy/"/>
+    <url>/blog/Script-deploy/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Package-Script-新增自動佈署指令"><a href="#Package-Script-新增自動佈署指令" class="headerlink" title="Package Script 新增自動佈署指令"></a>Package Script 新增自動佈署指令</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>1.設定 SSH 金鑰 ( Public Key Authentication)</p><p><em>準備完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、製作-Shell-Script"><a href="#第一步、製作-Shell-Script" class="headerlink" title="第一步、製作 Shell Script"></a>第一步、製作 Shell Script</h3><p>專案內與 package.json 同層新增一個 deploy.sh 檔案</p><p><img src="/blog/Script-deploy/1678691653853.jpg" alt="新增 deploy.sh"></p><p>deploy.sh 內容如下</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs ShellScript"># deploy.sh<br><br>set -e<br><br>scp -r dist/ *UserName@*ServerName:/home/*UserName/*ProjectName<br></code></pre></td></tr></tbody></table></figure><ul><li><p>scp : 可以在不同的主機之間複製檔案</p></li><li><p>-e : 代表後面會執行跳脫字元像是 \n，-n 則會略過。</p></li><li><p>-r : 指定資料夾</p></li><li><p>*UserName : 為伺服器使用者名稱</p></li><li><p>*ServerName : 為伺服器Domain或IP</p></li><li><p>*ProjectName : 為專案名稱</p></li></ul><p>這個指令是為了將 dist 整個資料夾上傳至指定 server 的位置上</p><h3 id="第二步、Package-新增指令"><a href="#第二步、Package-新增指令" class="headerlink" title="第二步、Package 新增指令"></a>第二步、Package 新增指令</h3><p>在 package.json 裡面的 scripts 新增 deploy 指令</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs package.json"># package.json<br><br>{<br>  "name": "ProjectName",<br>  "version": "0.0.0",<br>  "private": true,<br>  "scripts": {<br>    "dev": "vite --host",<br>    "build": "vite build",<br>    "deploy": "npm run build &amp;&amp; sh deploy.sh prod"<br>  },...(以下省略)<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Script-deploy/1678692308368.jpg" alt="新增 scripts"></p><h3 id="第三步、執行指令"><a href="#第三步、執行指令" class="headerlink" title="第三步、執行指令"></a>第三步、執行指令</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">npm run deploy<br></code></pre></td></tr></tbody></table></figure><p>這個指令會執行 Build 產生 dist 資料夾後<br>幫我們執行 sh 指令將 dist 資料夾丟至指定 server</p><p>這樣下次更新專案就方便多囉 !</p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Package</tag>
+      
+      <tag>npm</tag>
+      
+      <tag>script</tag>
+      
+      <tag>scp</tag>
+      
+      <tag>deploy</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>FFmpeg 轉檔及合併音訊</title>
+    <link href="/blog/ffmpeg-filter-complex/"/>
+    <url>/blog/ffmpeg-filter-complex/</url>
+    
+    <content type="html"><![CDATA[<h1 id="FFmpeg-轉檔及合併音訊"><a href="#FFmpeg-轉檔及合併音訊" class="headerlink" title="FFmpeg 轉檔及合併音訊"></a>FFmpeg 轉檔及合併音訊</h1><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="安裝-FFmpeg-Linux"><a href="#安裝-FFmpeg-Linux" class="headerlink" title="安裝 FFmpeg (Linux)"></a>安裝 FFmpeg (Linux)</h3><p>[FFmpeg 官方網址] (<a href="https://www.ffmpeg.org/">https://www.ffmpeg.org/</a>)</p><p>更新 packages</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ sudo apt update<br></code></pre></td></tr></tbody></table></figure><p>安裝 ffmpeg</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ sudo apt-get install ffmpeg<br></code></pre></td></tr></tbody></table></figure><p>檢查 ffmpeg 是否成功，成為則會回應 ffmpeg 當前版本</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ ffmpeg -version<br></code></pre></td></tr></tbody></table></figure><p><em>安裝完畢後在進行下一步</em></p><h3 id="轉檔"><a href="#轉檔" class="headerlink" title="轉檔"></a>轉檔</h3><p>將音訊檔 m4a 轉為 mp3</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.m4a output.mp3<br></code></pre></td></tr></tbody></table></figure><p><code>-i demo_1.m4a</code>：為需轉檔的檔案 *需輸入檔案位置，如與指令同層則不需完整位置</p><p><code>output.mp3</code>：為輸出的檔案名</p><h3 id="合併音訊"><a href="#合併音訊" class="headerlink" title="合併音訊"></a>合併音訊</h3><p>將 2 個音訊拼湊</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.mp3 -i demo_2.mp3 -filter_complex "[<span class="hljs-number">0</span>:a][<span class="hljs-number">1</span>:a]concat=n=<span class="hljs-number">2</span>" demo_final.mp3<br></code></pre></td></tr></tbody></table></figure><p>產生出來的檔案會先撥放 <code>demo_1.mp3</code> 接著撥放 <code>demo_2.mp3</code> </p><p>如果需拼湊 2 個以上的音訊 只需要將 <code>concat=n=2</code> 中的 2 改為拼湊數量即可</p><p>拼湊 3 個音訊 Demo</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.mp3 -i demo_2.mp3 -i demo_3.mp3 -filter_complex "[<span class="hljs-number">0</span>:a][<span class="hljs-number">1</span>:a]concat=n=<span class="hljs-number">3</span>" demo_final.mp3<br></code></pre></td></tr></tbody></table></figure><h3 id="重疊音訊"><a href="#重疊音訊" class="headerlink" title="重疊音訊"></a>重疊音訊</h3><p>將 2 個音訊合併</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.mp3 -i demo_2.mp3 -filter_complex "[<span class="hljs-number">0</span>:a] [<span class="hljs-number">1</span>:a] amerge=inputs=<span class="hljs-number">2</span>[aout]" -map "[aout]" -ac <span class="hljs-number">2</span> demo_final.mp3<br></code></pre></td></tr></tbody></table></figure><p>這個效果會將兩個音訊重疊同時播放</p><hr><p>這次的分享主要是以音訊為主</p><p>在後再來分享影音的部分</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>FFmpeg</tag>
+      
+      <tag>filter</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IIS Server Certificate 憑證更新</title>
+    <link href="/blog/IIS-Server-Certificate/"/>
+    <url>/blog/IIS-Server-Certificate/</url>
+    
+    <content type="html"><![CDATA[<h1 id="更新憑證-3-IIS-Server-Certificate-憑證更新"><a href="#更新憑證-3-IIS-Server-Certificate-憑證更新" class="headerlink" title="更新憑證#3 IIS Server Certificate 憑證更新"></a>更新憑證#3 IIS Server Certificate 憑證更新</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>指令產生憑證，可參考 <a href="https://hi-alan-liu.github.io/blog/2022/06/13/NAME.COM-certificate/">NAME.COM SSL 憑證</a></p><p><img src="/blog/IIS-Server-Certificate/1675069465828.jpg" alt="準備憑證檔案"></p><p><em>準備完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、產生-IIS-所需的-PFX-檔"><a href="#第一步、產生-IIS-所需的-PFX-檔" class="headerlink" title="第一步、產生 IIS 所需的 PFX 檔"></a>第一步、產生 IIS 所需的 PFX 檔</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo openssl pkcs12 -in myserver.cer -inkey myserver.key -export -out myserver.pfx<br></code></pre></td></tr></tbody></table></figure><ul><li><p>myserver.cer : 為憑證公司產生的檔案</p></li><li><p>myserver.key : 為 openssl 產生的檔案</p></li><li><p>myserver.pfx : 此指令產生出來的檔案，供 IIS 使用</p></li></ul><p><img src="/blog/IIS-Server-Certificate/1675069171929.jpg" alt="產生 PFX"></p><h3 id="第二步、設定-Server-Certificate"><a href="#第二步、設定-Server-Certificate" class="headerlink" title="第二步、設定 Server Certificate"></a>第二步、設定 Server Certificate</h3><p>點選 Server Certificate </p><p><img src="/blog/IIS-Server-Certificate/1675059927328.jpg" alt="設定 Certificate"></p><p>匯入上一步產生出來的 PFX </p><p><img src="/blog/IIS-Server-Certificate/1675071077072.jpg" alt="匯入 PFX"></p><h3 id="第三步、設定-Bindings"><a href="#第三步、設定-Bindings" class="headerlink" title="第三步、設定 Bindings"></a>第三步、設定 Bindings</h3><p>選擇站台並點選 Bindings</p><p><img src="/blog/IIS-Server-Certificate/1675071194833.jpg" alt="設定 Bindings"></p><p>設定 Port 並選擇設定好的 SSL Certificate</p><p><img src="/blog/IIS-Server-Certificate/1675071249831.jpg" alt="設定 SSL certificate"></p><p>設定完畢之後重新啟動站台</p><p>最後確認憑證是否成功</p><p><img src="/blog/IIS-Server-Certificate/1675071249835.jpg" alt="檢查憑證"></p><p>這樣就大功告成囉 !</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>SSL CERTIFICATES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SSL</tag>
+      
+      <tag>IIS</tag>
+      
+      <tag>Certificate</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Docker 進入容器並進行操作</title>
+    <link href="/blog/Docker-Container-exec/"/>
+    <url>/blog/Docker-Container-exec/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-進入容器並進行操作"><a href="#Docker-進入容器並進行操作" class="headerlink" title="Docker 進入容器並進行操作"></a>Docker 進入容器並進行操作</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>Docker container(容器) 運行時，某些時候需要進入容器進行操作，因此紀錄操作方法及過程。</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、使用指令進入容器"><a href="#一、使用指令進入容器" class="headerlink" title="一、使用指令進入容器"></a>一、使用指令進入容器</h3><p>在使用指令前 先使用 ps 查看執行中的容器</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">docker ps<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Container-exec/1666947455476.jpg" alt="docker ps 範例"></p><p>使用 exec 進入容器</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">docker exec -ti "CONTAINER ID" bash<br></code></pre></td></tr></tbody></table></figure><p><code>CONTAINER ID</code>: 為容器的 ID</p><p><code>-i</code> : 保持打開 STDIN </p><p><code>-t</code> : 分配一個終端</p><p><img src="/blog/Docker-Container-exec/1666947596442.jpg" alt="docker exec 範例"></p><p>這樣就成功進入容器囉!</p><h3 id="二、對容器終端進行操作"><a href="#二、對容器終端進行操作" class="headerlink" title="二、對容器終端進行操作"></a>二、對容器終端進行操作</h3><p>進入容器後發現輸入 <code>vim</code> 無法進行操作</p><p>也無法使用 <code>apt-get</code> 進行安裝</p><p><img src="/blog/Docker-Container-exec/1666949008877.jpg" alt="無法正常使用指令"></p><p><code>ls</code>: 列出當前目錄所有檔案</p><p><code>cd</code>: 進入資料夾</p><p><code>vim</code>: 編輯檔案</p><hr><p>這是由於 <code>apt-get</code> 未更新造成，所以我們應先執行以下指令</p><figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">apt-get update<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Container-exec/1666949218307.jpg" alt="更新並安裝範例"></p><p>執行並同意安裝 <code>vim</code> 之後</p><p>就可以開始編輯容器的檔案囉 !</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec</a></li><li><a href="https://ithelp.ithome.com.tw/articles/10191727">Day12：介紹執行 Docker Container 常用到的指令(二)</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+      <tag>Container</tag>
+      
+      <tag>docker exec</tag>
+      
+      <tag>vim</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Docker 生成 Images 並更新至 Docker Hub</title>
+    <link href="/blog/Docker-hub-Images-push/"/>
+    <url>/blog/Docker-hub-Images-push/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-生成-Images-並更新至-Docker-Hub"><a href="#Docker-生成-Images-並更新至-Docker-Hub" class="headerlink" title="Docker 生成 Images 並更新至 Docker Hub"></a>Docker 生成 Images 並更新至 Docker Hub</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><ol><li><p>撰寫 Dockerfile</p><p>如果還沒有準備好 dockerfile 可依照前篇</p></li><li><p>註冊 DockerHub</p><p>官方網站 <a href="https://hub.docker.com/">https://hub.docker.com/</a></p></li></ol><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、Build-Docker-Images"><a href="#第一步、Build-Docker-Images" class="headerlink" title="第一步、Build Docker Images"></a>第一步、Build Docker Images</h3><p>使用 docker 指令 build images</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker build -t docker_project:version . --no-cache<br></code></pre></td></tr></tbody></table></figure><p><code>docker_project</code> 為 REPOSITORY</p><p><code>version</code> 為 TAG ； 可使用 TAG 來分專案版本</p><p>*如果不填 <code>version</code> 系統則會自動填入 latest</p><p><code>--no-cache</code> 為 避免 Dockerfile 被 cache 住，造成 build 到未修改過的 Dockerfile</p><h3 id="第二步、檢查-Docker-Images"><a href="#第二步、檢查-Docker-Images" class="headerlink" title="第二步、檢查 Docker Images"></a>第二步、檢查 Docker Images</h3><p>使用 docker 指令列出現有 Images</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker images<br></code></pre></td></tr></tbody></table></figure><p>檢查 Images 是否生成完成 並檢查 REPOSITORY/TAG 是否有誤</p><p><img src="/blog/Docker-hub-Images-push/1666087484902.jpg" alt="Docker Images"></p><p>檢查沒問題即可下一步</p><h3 id="第三步、更新-Docker-Repository"><a href="#第三步、更新-Docker-Repository" class="headerlink" title="第三步、更新 Docker Repository"></a>第三步、更新 Docker Repository</h3><p>因要把 Docker Images Push 到 Docker Hub 上，需要把 Docker Images Repository 與 Docker Hub 一致</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker tag docker_project:version dockerhub_username/docker_project:version<br></code></pre></td></tr></tbody></table></figure><p><code>docker_project</code> 為原 image 名稱</p><p><code>dockerhub_username/docker_project:version</code> 為 DockerHub 使用者名稱 / Image 名稱 : 版本</p><p>執行後可以輸入 Docker Images 查看</p><p><img src="/blog/Docker-hub-Images-push/1666087484902.jpg" alt="Docker Images"></p><h3 id="第四步、Push-至-docker-hub"><a href="#第四步、Push-至-docker-hub" class="headerlink" title="第四步、Push 至 docker hub"></a>第四步、Push 至 docker hub</h3><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker push dockerhub_username/docker_project:version<br></code></pre></td></tr></tbody></table></figure><p>執行後只需要等待他跑完就可以到 Docker Hub 檢查囉 !</p><p><img src="/blog/Docker-hub-Images-push/1666088236900.jpg" alt="Docker Hub"></p><hr><p>今天的教學就到此 ~</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+      <tag>Docker hub</tag>
+      
+      <tag>Docker Images</tag>
+      
+      <tag>Repository</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Octopus Deploy Server License 過期解決辦法</title>
+    <link href="/blog/Octopus-Deploy-Server-License-key-expired/"/>
+    <url>/blog/Octopus-Deploy-Server-License-key-expired/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Octopus-Deploy-Server-License-過期解決辦法"><a href="#Octopus-Deploy-Server-License-過期解決辦法" class="headerlink" title="Octopus Deploy Server License 過期解決辦法"></a>Octopus Deploy Server License 過期解決辦法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由於公司使用的佈署工具過期，造成無法正常佈署專案。<br>因此需 Renew License 並設定至程式軟體中。</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543125338.png" alt="Octopus Log"></p><p>而過期的 license key 已與 master key 做綁定<br>因此需先移除並重新綁定。</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、重新申請-License"><a href="#一、重新申請-License" class="headerlink" title="一、重新申請 License"></a>一、重新申請 License</h3><p>申請網址: <a href="https://octopus.com/upgrade">https://octopus.com/upgrade</a></p><p>填入當初申請的 email 及 license 或 serial number</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665545746087.jpg" alt="Manage your licenses"></p><p>登入並進入後點擊 Renew license 即可取得新的 license key</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665545918617.jpg" alt="Renew License"></p><p>取得 license key 先存起來後續會使用到</p><h3 id="二、儲存-Master-Key"><a href="#二、儲存-Master-Key" class="headerlink" title="二、儲存 Master Key"></a>二、儲存 Master Key</h3><p>處理好 License 後，接著回到 Octopus Manager</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543125341.jpg" alt="Octopus Manager"></p><p>(※重要) 將 master key 顯示並儲存起來</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543185709.jpg" alt="Save Master Key"></p><h3 id="三、刪除-Octopus-instance"><a href="#三、刪除-Octopus-instance" class="headerlink" title="三、刪除 Octopus instance"></a>三、刪除 Octopus instance</h3><p>因原本的 license key 已與 master key 綁定<br>因此需刪除現在的 instance 重新跑綁定流程</p><p>這個過程不會動到 DB 因此不用擔心</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543218541.jpg" alt="Octopus Manager"></p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543218543.jpg" alt="Octopus Delete"></p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543298211.jpg" alt="Octopus Delete"></p><p>刪除後，重新跑設定流程</p><h3 id="四、Octopus-Setup-Wizard"><a href="#四、Octopus-Setup-Wizard" class="headerlink" title="四、Octopus Setup Wizard"></a>四、Octopus Setup Wizard</h3><p>重新設定 Octopus</p><p>將第一步驟申請的 License 貼上</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543472322.jpg" alt="Set License key"></p><p>設定基礎目錄</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543481232.jpg" alt="Set Home"></p><p>設定使用者</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543490733.jpg" alt="Set Home"></p><p>設定 Database</p><p>*建議延用上次的 Database 以免丟失設定檔</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543504034.jpg" alt="Set Database"></p><p>如果延用上次的 Database 則需要填入第二步驟儲存的 Master Key</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543540226.jpg" alt="Set Master Key"></p><p>設定 Web Portal</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543569752.jpg" alt="Set Web Portal"></p><p>設定 Authenticaation</p><p>因延用上次的 Database ；所以我選擇不建立 administator</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543590243.jpg" alt="Set Authenticaation"></p><p>安裝 Octopus </p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543601011.jpg" alt="Installation Octopus"></p><p>設定到這裡基本上大功告成囉 ~</p><h3 id="補、設定-Bindings"><a href="#補、設定-Bindings" class="headerlink" title="補、設定 Bindings"></a>補、設定 Bindings</h3><p>設定對外連線的網址</p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543692362.jpg" alt="Change Bindings"></p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543749573.jpg" alt="Add Binding"></p><p><img src="/blog/Octopus-Deploy-Server-License-key-expired/1665543861099.jpg" alt="Web Portal Bindings"></p><p>今天的教學就到此 ~</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Other</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Octopus Deploy</tag>
+      
+      <tag>License</tag>
+      
+      <tag>Master Key</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Windows 排程器執行 Powershell</title>
+    <link href="/blog/Windows-Schedule/"/>
+    <url>/blog/Windows-Schedule/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Windows-排程器執行-Powershell"><a href="#Windows-排程器執行-Powershell" class="headerlink" title="Windows 排程器執行 Powershell"></a>Windows 排程器執行 Powershell</h1><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-PowerShell-Scripts"><a href="#一、建立-PowerShell-Scripts" class="headerlink" title="一、建立 PowerShell Scripts"></a>一、建立 PowerShell Scripts</h3><p>建立給排程器執行的 Scripts</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">start chrome https://www.google.com/<br></code></pre></td></tr></tbody></table></figure><p>存儲時副檔名 <code>.ps1</code></p><p><img src="/blog/Windows-Schedule/1665473777407.jpg" alt="儲存範例"></p><p>儲存後樣式</p><p><img src="/blog/Windows-Schedule/1665473777168.jpg" alt="成品"></p><p>其他 Scripts 範例</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs PowerShell-Scripts">$url = "https://test.api-server.com/api/v1/create_user"<br>$body = @{ name = 'alan liu' }<br>Invoke-WebRequest -Method 'POST' -Uri $url -Body $body -ContentType "application/json"<br></code></pre></td></tr></tbody></table></figure><h3 id="二、設定排程器"><a href="#二、設定排程器" class="headerlink" title="二、設定排程器"></a>二、設定排程器</h3><p>按下 Win+R，輸入 taskschd.msc 執行工作排程器</p><p><img src="/blog/Windows-Schedule/1665480567365.jpg" alt="輸入 taskschd.msc"></p><p>建立排程資料夾方便辨識</p><p><img src="/blog/Windows-Schedule/1665473777356.jpg" alt="建立資料夾"></p><p>建立基本工作</p><p><img src="/blog/Windows-Schedule/1665473777976.jpg" alt="建立基本工作"></p><p>輸入名稱及描述</p><p><img src="/blog/Windows-Schedule/1665482589027.jpg" alt="建立基本工作"></p><p>選擇排程週期；可依需求設定多久觸發一次</p><p><img src="/blog/Windows-Schedule/1665482608020.jpg" alt="觸發程序週期"></p><p>每天為例；設定觸發時間及間隔</p><p><img src="/blog/Windows-Schedule/1665482627683.jpg" alt="觸發程序"></p><p>設定觸發動作選擇 <code>啟動程式</code></p><p><img src="/blog/Windows-Schedule/1665482637503.jpg" alt="動作"></p><p>程式或指令碼: powershell<br>新增引數: -ExecutionPolicy Bypass -File “檔案位置”</p><p><img src="/blog/Windows-Schedule/1665482960714.jpg" alt="啟動程式"></p><p>最後檢查是否設定皆正確</p><p><img src="/blog/Windows-Schedule/1665482977830.jpg" alt="完成"></p><p>基本上設定到這裡就完成囉 !</p><p>如果想要立即測試排程</p><p>可點擊右鍵執行</p><p><img src="/blog/Windows-Schedule/1665483018760_0.jpg" alt="執行"></p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://ghostyguo.pixnet.net/blog/post/359754775-%E8%A8%AD%E5%AE%9Awindows%E6%8E%92%E7%A8%8B%E5%99%A8%E5%9F%B7%E8%A1%8Cpowershell-script">設定windows排程器執行powershell-script</a></li><li><a href="https://ithelp.ithome.com.tw/articles/10276390">工作排程器–Windows的忠實程序秘書</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Windows</tag>
+      
+      <tag>Powershell</tag>
+      
+      <tag>工作排程器</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>VS Code 好用插件分享</title>
+    <link href="/blog/vscode-plugin/"/>
+    <url>/blog/vscode-plugin/</url>
+    
+    <content type="html"><![CDATA[<h1 id="VS-Code-好用插件分享"><a href="#VS-Code-好用插件分享" class="headerlink" title="VS Code 好用插件分享"></a>VS Code 好用插件分享</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>Visual Studio Code (簡稱 VSCode) 是一款由微軟開發且跨平台的原始碼編輯器。VSCode 體積小、可跨平台、還可以根據需求加入自己喜好的插件。<br>而好的插件能大大提升自己 Coding 的速度，美美樣式及酷酷的圖標還能療癒身心(?)</p><h3 id="純造型類"><a href="#純造型類" class="headerlink" title="純造型類"></a>純造型類</h3><h4 id="Bracket-Pair-Colorizer-2"><a href="#Bracket-Pair-Colorizer-2" class="headerlink" title="Bracket Pair Colorizer 2"></a><del>Bracket Pair Colorizer 2</del></h4><p><img src="/blog/vscode-plugin/BracketPairColorizer2_02.png" alt="BracketPairColorizer2"></p><p><code>這個插件可美化 Bracket (括弧) 將括弧改為不同顏色讓使用者更容易辨識</code></p><p><a href="https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2">下載網址</a></p><p>此套件在 2022 年成為 VS Code 原生功能</p><h4 id="indent-rainbow"><a href="#indent-rainbow" class="headerlink" title="indent-rainbow"></a>indent-rainbow</h4><p><img src="/blog/vscode-plugin/indent-rainbow.png" alt="indent-rainbow"></p><p><code>這個插件利用顏色輕鬆區別縮版。</code></p><p><a href="https://marketplace.visualstudio.com/items?itemName=oderwat.indent-rainbow">下載網址</a></p><h4 id="Material-Icon-Theme"><a href="#Material-Icon-Theme" class="headerlink" title="Material Icon Theme"></a>Material Icon Theme</h4><p><img src="/blog/vscode-plugin/MaterialIconTheme.png" alt="MaterialIconTheme"></p><p><code>更換檔案的 ICON</code></p><p><a href="https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme">下載網址</a></p><h3 id="工具類"><a href="#工具類" class="headerlink" title="工具類"></a>工具類</h3><h4 id="IntelliSense-for-CSS-class-names-in-HTML"><a href="#IntelliSense-for-CSS-class-names-in-HTML" class="headerlink" title="IntelliSense for CSS class names in HTML"></a>IntelliSense for CSS class names in HTML</h4><p><img src="/blog/vscode-plugin/IntelliSenseforCSSclassnamesinHTML.png" alt="IntelliSense for CSS class names in HTML"></p><p><code>使用這個工具能讓撰寫CSS時更快速更便利</code></p><p><a href="https://marketplace.visualstudio.com/items?itemName=Zignd.html-css-class-completion">下載網址</a></p><h4 id="Vue-Language-Features-Volar"><a href="#Vue-Language-Features-Volar" class="headerlink" title="Vue Language Features (Volar)"></a>Vue Language Features (Volar)</h4><p><img src="/blog/vscode-plugin/VueLanguageFeatures.png" alt="Vue Language Features (Volar)"></p><p><code>針對 Vue 3 所配合的實用小工具</code></p><p><a href="https://marketplace.visualstudio.com/items?itemName=Vue.volar">下載網址</a></p><h4 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h4><p><img src="/blog/vscode-plugin/docker.png" alt="Docker"></p><p><code>懶人救星! 一鍵化運行 Docker 各項指令</code></p><p><a href="https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-docker">下載網址</a></p><h5 id="持續更新中-期待找到更好用的工具"><a href="#持續更新中-期待找到更好用的工具" class="headerlink" title="持續更新中 ! 期待找到更好用的工具 !"></a>持續更新中 ! 期待找到更好用的工具 !</h5><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Tool</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VS Code</tag>
+      
+      <tag>Plugin</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Arduino 自製天堂神器</title>
+    <link href="/blog/Arduino-lineagew/"/>
+    <url>/blog/Arduino-lineagew/</url>
+    
+    <content type="html"><![CDATA[<h1 id="arduino-自製天堂神器"><a href="#arduino-自製天堂神器" class="headerlink" title="arduino 自製天堂神器"></a>arduino 自製天堂神器</h1><h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><p><video src="d03dcb66e495.mp4" type="video/mp4" controls="controls" preload="auto" width="100%" height="100%"></video></p><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>Arduino Leonardo 1個</p><p><img src="/blog/Arduino-lineagew/1660930089422.jpg" alt="Arduino Leonardo"><br><code>必須要使用 Leonardo 才能使用虛擬鍵盤 Keyboard 指令</code></p><p><code>*UNO 不支援虛擬鍵盤 Keyboard</code></p><p>LD3320 1個</p><p><img src="/blog/Arduino-lineagew/1660930089430.jpg" alt="LD3320"></p><p>杜邦線 多條</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、連接元件"><a href="#第一步、連接元件" class="headerlink" title="第一步、連接元件"></a>第一步、連接元件</h3><p>依照圖示使用杜邦線將孔未連接</p><p><img src="/blog/Arduino-lineagew/1655197062093.png" alt="杜邦線連接示意圖"></p><p>LD3320 連接方式<br>3.3V  –  VCC</p><p>GND  –  GND</p><p>*MISO  –  MISO</p><p>*MOSI  –  MOSI</p><p>*SCK  – SCK</p><p>NSS  –  D4</p><p>RST  –  D9</p><p>WR – GND</p><p>IRQ – D2</p><p>記號 * 的部分需要插置 ICSP 位置</p><p><img src="/blog/Arduino-lineagew/1655197062666.png" alt="ICSP 對應圖"></p><h3 id="第二步、程式碼撰寫"><a href="#第二步、程式碼撰寫" class="headerlink" title="第二步、程式碼撰寫"></a>第二步、程式碼撰寫</h3><p><img src="/blog/Arduino-lineagew/1660939386997.jpg" alt="Arduino IDE"></p><figure class="highlight arduino"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><code class="hljs Arduino"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;ld3320.h&gt;</span></span><br><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">"Keyboard.h"</span></span><br><br>VoiceRecognition Voice;                         <span class="hljs-comment">//聲明一個語音辨識對象</span><br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">setup</span><span class="hljs-params">()</span></span>{<br>    <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">begin</span>(<span class="hljs-number">9600</span>);<br>    <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">begin</span>();<br>    <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">releaseAll</span>();<br>    <br>    Voice.<span class="hljs-built_in">init</span>();                               <span class="hljs-comment">//初始化VoiceRecognition模組   </span><br>    Voice.<span class="hljs-built_in">addCommand</span>(<span class="hljs-string">"Chao Shou Di Ren Gong Ji"</span>, <span class="hljs-number">0</span>);<br>    Voice.<span class="hljs-built_in">addCommand</span>(<span class="hljs-string">"Ti Li Bu Zu Liao"</span>, <span class="hljs-number">1</span>);<br>    Voice.<span class="hljs-built_in">addCommand</span>(<span class="hljs-string">"Syu Yao Geng Duo De Yao Shuei"</span>, <span class="hljs-number">2</span>);<br>    Voice.<span class="hljs-built_in">addCommand</span>(<span class="hljs-string">"Syu Yao Jheng Li Yi Sia Bei Bao"</span>, <span class="hljs-number">3</span>);<br>    Voice.<span class="hljs-built_in">start</span>();<span class="hljs-comment">//開始辨識</span><br>}<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">loop</span><span class="hljs-params">()</span> </span>{<br>    <span class="hljs-keyword">switch</span>(Voice.<span class="hljs-built_in">read</span>()){<br>        <span class="hljs-keyword">case</span> <span class="hljs-number">0</span>:<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">press</span>(<span class="hljs-string">'3'</span>);<br>            <span class="hljs-built_in">delay</span>(<span class="hljs-number">50</span>);<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">releaseAll</span>();<br>            <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">println</span>(<span class="hljs-string">"遭受敵人攻擊了"</span>);<br>        <span class="hljs-keyword">break</span>;<br>        <br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">press</span>(<span class="hljs-string">'4'</span>);<br>            <span class="hljs-built_in">delay</span>(<span class="hljs-number">50</span>);<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">releaseAll</span>();<br>            <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">println</span>(<span class="hljs-string">"體力不足了"</span>);<br>        <span class="hljs-keyword">break</span>;<br>        <br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">press</span>(<span class="hljs-string">'4'</span>);<br>            <span class="hljs-built_in">delay</span>(<span class="hljs-number">50</span>);<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">releaseAll</span>();<br>            <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">println</span>(<span class="hljs-string">"需要更多的藥水"</span>);<br>        <span class="hljs-keyword">break</span>;  <br>        <br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">press</span>(<span class="hljs-string">'4'</span>);<br>            <span class="hljs-built_in">delay</span>(<span class="hljs-number">50</span>);<br>            <span class="hljs-built_in">Keyboard</span>.<span class="hljs-built_in">releaseAll</span>();<br>            <span class="hljs-built_in">Serial</span>.<span class="hljs-built_in">println</span>(<span class="hljs-string">"需要整理一下背包"</span>);<br>        <span class="hljs-keyword">break</span>;  <br><br>        <span class="hljs-keyword">default</span>:<br>        <span class="hljs-keyword">break</span>;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure><p><code>addCommand</code>:  設定想要辨識的詞句 <em>拼音為主</em></p><p><code>Keyboard.press</code>:  設定虛擬鍵盤按下的按鈕</p><p><code>Keyboard.releaseAll()</code>: 鬆開按下的按鈕</p><p><code>delay</code>: 設定延遲時間</p><h3 id="第三步、上傳程式碼"><a href="#第三步、上傳程式碼" class="headerlink" title="第三步、上傳程式碼"></a>第三步、上傳程式碼</h3><p>燒入前先檢查開發版是否選擇正確</p><p><img src="/blog/Arduino-lineagew/1660930089960.jpg" alt="開發版檢查"></p><p>如果設定皆無誤即可按下上傳</p><p><img src="/blog/Arduino-lineagew/1660939547182.jpg" alt="上傳按鈕範例"></p><p>上傳成功後即可立即測試指定語音是否能正常觸發按下按鈕囉 ~</p><p>今天的分享就到此結束</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://www.waveshare.net/study/article-11-1.html">Arduino系列教程十：语音识别模块 LD3320</a></li><li><a href="https://swf.com.tw/?p=406">Arduino Leonardo控制板的數位14<del>17腳、類比A6</del>A11腳以及SPI腳位介紹</a></li><li><a href="https://blog.csdn.net/zbp_12138/article/details/103653009">用Arduino Leonardo制作虚拟键盘(简易badusb)</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Arduino</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Arduino</tag>
+      
+      <tag>Leonardo</tag>
+      
+      <tag>LD3320</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Redis 基本安裝 及 外部連線設定</title>
+    <link href="/blog/Redis-install-setup/"/>
+    <url>/blog/Redis-install-setup/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Redis-基本安裝-及-外部連線設定"><a href="#Redis-基本安裝-及-外部連線設定" class="headerlink" title="Redis 基本安裝 及 外部連線設定"></a>Redis 基本安裝 及 外部連線設定</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><h3 id="安裝-Redis"><a href="#安裝-Redis" class="headerlink" title="安裝 Redis"></a>安裝 Redis</h3><p>Linux 版本<br>安裝方式：<a href="https://redis.io/docs/getting-started/installation/install-redis-on-linux/">https://redis.io/docs/getting-started/installation/install-redis-on-linux/</a></p><p>macOS 版本<br>安裝方式：<a href="https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/">https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/</a></p><p>Windows 版本<br>安裝方式：<a href="https://redis.io/docs/getting-started/installation/install-redis-on-windows/">https://redis.io/docs/getting-started/installation/install-redis-on-windows/</a></p><p>Docker Image 版本<br>安裝方式：<a href="https://hub.docker.com/_/redis">https://hub.docker.com/_/redis</a></p><p>*補充<br><a href="https://marcus116.blogspot.com/2019/02/how-to-install-redis-in-windows-os.html?m=1"><code> Windows 安裝及啟動教學</code></a></p><p><em>安裝完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、確認-config-位置"><a href="#一、確認-config-位置" class="headerlink" title="一、確認 config 位置"></a>一、確認 config 位置</h3><p>先使用 redis-cli 連進 redis</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ redis-cli<br></code></pre></td></tr></tbody></table></figure><p><code>127.0.0.1:6379 為系統顯示不需複製</code></p><p>成功連進後輸入 ping</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; ping<br></code></pre></td></tr></tbody></table></figure><p>回應 PONG 代表 redis 正常連線</p><p><img src="/blog/Redis-install-setup/1660285557863.jpg" alt="回應PONG"></p><p>接著輸入 info 查看 config 的位置</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; info<br></code></pre></td></tr></tbody></table></figure><p>位置在 config_file </p><p><img src="/blog/Redis-install-setup/1660285894330.jpg" alt="info 範例"></p><h3 id="二、設定-config"><a href="#二、設定-config" class="headerlink" title="二、設定 config"></a>二、設定 config</h3><p>確認 redis bind，請輸入以下指令</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt;  config get bind<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Redis-install-setup/1660286930448.jpg" alt="get bind 範例"></p><p>預設 redis config bind 為 127.0.0.1 因此只能 local 連線<br>因此需要對 config 進行修改</p><p>從上一步驟已得知 config 位置<br>可以對 config 直接進行修改</p><p><img src="/blog/Redis-install-setup/1660286516507.jpg" alt="config 範例"></p><p>也可以透過指令進行修改</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; set bind 0.0.0.0<br>127.0.0.1:6379&gt; save<br></code></pre></td></tr></tbody></table></figure><p>設定完畢即可重啟 redis</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">$ /etc/init.d/redis-server restart<br></code></pre></td></tr></tbody></table></figure><p>MAC 重啟方式</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">$ redis-cli shutdown<br></code></pre></td></tr></tbody></table></figure><p>重啟之後就設定完成囉 ~</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://www.jianshu.com/p/0ed7e88325dd">设置远程Redis服务可以被访问</a></li><li><a href="https://ubuntuqa.com/zh-tw/article/8351.html">如何停止redis-server？</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Redis</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Redis</tag>
+      
+      <tag>config</tag>
+      
+      <tag>bind</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Docker Desktop on Windows (ruby on rails)</title>
+    <link href="/blog/Docker-Desktop-on-Windows-ruby-on-rails/"/>
+    <url>/blog/Docker-Desktop-on-Windows-ruby-on-rails/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Docker-Desktop-on-Windows-ruby-on-rails"><a href="#Docker-Desktop-on-Windows-ruby-on-rails" class="headerlink" title="Docker Desktop on Windows (ruby on rails)"></a>Docker Desktop on Windows (ruby on rails)</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因工作環境需求必須在 Windows service 2019 佈署 ruby on rails </p><p>但 capistrano 無法支援佈署至 windows 因此選擇使用 docker desktop 解決問題</p><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>註冊 Docker hub<br>註冊網址：<a href="https://hub.docker.com/">https://hub.docker.com/</a></p><p>下載　Docker Desktop<br>下載網址：<a href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a></p><p>將 Docker Desktop Containers 切換為 Linux<br><img src="/blog/Docker-Desktop-on-Windows-ruby-on-rails/1659335415680.jpg" alt="Docker Desktop Containers"><br>*<em>出現 Switch to Windows containers 代表當前為 Linux</em></p><p><em>安裝完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-Dockerfile"><a href="#一、建立-Dockerfile" class="headerlink" title="一、建立 Dockerfile"></a>一、建立 Dockerfile</h3><p>參考 <a href="https://docs.docker.com/samples/rails/">Docker docs - Compose and Rails</a> 建立 Dockerfile</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ vim Dockerfile<br></code></pre></td></tr></tbody></table></figure><p>我在 <strong>docker desktop v4.10.1</strong> 照步驟走 docker run 無法正常啟動</p><p>因此我照著 <a href="https://docs.microsoft.com/zh-tw/virtualization/windowscontainers/manage-docker/manage-windows-dockerfile">Docker 上的 Windows</a> 教學稍微改版了一下</p><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment">## Dockerfile 內容</span><br><span class="hljs-comment"># syntax=docker/dockerfile:1</span><br><span class="hljs-keyword">FROM</span> ruby:<span class="hljs-number">2.4</span>.<span class="hljs-number">4</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get update -qq &amp;&amp; apt-get install -y nodejs</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /myapp</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> Gemfile /myapp/Gemfile</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> Gemfile.lock /myapp/Gemfile.lock</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> bundle install</span><br><br><span class="hljs-comment"># Add the app code</span><br><span class="hljs-keyword">ADD</span><span class="language-bash"> . /myapp</span><br><br><span class="hljs-comment"># Default command</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> bash -c <span class="hljs-string">"rm -f tmp/pids/server.pid &amp;&amp; bundle exec rails db:migrate &amp;&amp; bundle exec rails s -p 3000"</span></span><br></code></pre></td></tr></tbody></table></figure><p>範例 ruby 為 2.4.4</p><p>之後根據需安裝的套件新增指令</p><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-comment">## Dockerfile 內容</span><br><span class="hljs-comment"># syntax=docker/dockerfile:1</span><br><span class="hljs-keyword">FROM</span> ruby:<span class="hljs-number">2.4</span>.<span class="hljs-number">4</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> apt-get update &amp;&amp; apt-get install -y nodejs imagemagick freetds-dev wget build-essential</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> wget http://www.freetds.org/files/stable/freetds-1.1.24.tar.gz</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> tar -xzf freetds-1.1.24.tar.gz</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> <span class="hljs-built_in">cd</span> freetds-1.1.24 \</span><br><span class="language-bash">    &amp;&amp; ./configure --prefix=/usr/local --with-tdsver=7.3  \</span><br><span class="language-bash">    &amp;&amp; make \</span><br><span class="language-bash">    &amp;&amp; make install</span><br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /myapp</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> Gemfile /myapp/Gemfile</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> Gemfile.lock /myapp/Gemfile.lock</span><br><span class="hljs-keyword">ENV</span> BUNDLER_VERSION=<span class="hljs-number">2.3</span>.<span class="hljs-number">12</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> gem install bundler:2.3.12</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> gem install tiny_tds</span><br><span class="hljs-keyword">ENV</span> RAILS_ENV development<br><span class="hljs-keyword">RUN</span><span class="language-bash"> bundle install</span><br><br><span class="hljs-keyword">ADD</span><span class="language-bash"> . /myapp</span><br><br><span class="hljs-comment"># 設定 port</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">3000</span><br><br><span class="hljs-comment"># Default command</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> bash -c <span class="hljs-string">"rm -f tmp/pids/server.pid &amp;&amp; bundle exec rails db:migrate &amp;&amp; bundle exec rails s -p 3000"</span></span><br></code></pre></td></tr></tbody></table></figure><p>這邊新增了安裝 <code>imagemagick</code> 及 <code>sql server</code> 需要的套件</p><p>並加入指令 <code>bundler</code> 解決無法 bundle 的問題</p><p>以上的 <code>Dockerfile</code> 主要有用到的指令說明如下</p><p><code>FROM</code>： 使用 ruby 版本為 2.4.4</p><p><code>RUN</code>： RUN 指令後面放 Linux 指令，用來執行安裝和設定這個 Image 需要的東西</p><p><code>WORKDIR</code>：　指定工作目錄</p><p><code>COPY</code>：　複製檔案</p><p><code>ADD</code>： <code>COPY</code>　進階版，可用於自動解壓縮的場合</p><p><code>ENV</code>： 設定環境變數</p><p><code>CMD</code>： docker run 執行 bash 指令`</p><p>設定好 Dockerfile 接著就是打包產生 Image</p><h3 id="二、打包-Docker-Image"><a href="#二、打包-Docker-Image" class="headerlink" title="二、打包 Docker Image"></a>二、打包 Docker Image</h3><p>在和 Dockerfile 檔案同層的資料夾底下輸入 <code>docker build</code> 指令</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker build -t docker_test:<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span> . --no-cache<br></code></pre></td></tr></tbody></table></figure><p><code>docker_test</code> 為 Images Name</p><p><code>1.0.0</code> 為 Tag</p><p><code>--no-cache</code> 為避免 Dockerfile 被 cache 住，造成 build 到未修改過的 Dockerfile</p><p>build docker image 成功之後可以從 <code>Docker desktop</code> 看到</p><p><img src="/blog/Docker-Desktop-on-Windows-ruby-on-rails/1659433057364.jpg" alt="Docker Desktop Images"></p><p>或者輸入以下指令</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker images<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Desktop-on-Windows-ruby-on-rails/1659433027937.jpg" alt="docker images 指令範例"></p><h3 id="三、執行-Docker-Image"><a href="#三、執行-Docker-Image" class="headerlink" title="三、執行 Docker Image"></a>三、執行 Docker Image</h3><p>輸出好 Image 接著在 Docker Desktop 按下 RUN</p><p><img src="/blog/Docker-Desktop-on-Windows-ruby-on-rails/1659435150426.jpg" alt="Docker Desktop"></p><p>或輸入以下指令</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker run docker_test:<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></tbody></table></figure><p>基本上運行到這裡就順利完成囉 !</p><h3 id="四、刪除-Docker-Image"><a href="#四、刪除-Docker-Image" class="headerlink" title="四、刪除 Docker Image"></a>四、刪除 Docker Image</h3><p>如果有不需要的 Image 可輸入以下指令刪除</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs CMD">$ docker rmi -f docker_test:<span class="hljs-number">1</span>.<span class="hljs-number">0</span>.<span class="hljs-number">0</span><br></code></pre></td></tr></tbody></table></figure><h3 id="補充、Docker-compose"><a href="#補充、Docker-compose" class="headerlink" title="補充、Docker compose"></a>補充、Docker compose</h3><p>另外再本機 run 也可以使用 docker compose</p><p>建立 docker-compose.yml</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ docker-compose.yml<br></code></pre></td></tr></tbody></table></figure><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs docker-compose.yml">## docker-compose.yml 內容<br>version: "3.9"<br>services:<br>  web:<br>    image: MyProjectName:1.0<br>    build: .<br>    command: bash -c "rm -f tmp/pids/server.pid &amp;&amp; bundle exec rails s"<br>    volumes:<br>      - .:/myapp<br>    ports:<br>      - "3000:3000"<br></code></pre></td></tr></tbody></table></figure><p><code>MyProjectName</code> 為 Image Name</p><p><code>1.0</code> 為 Tag</p><p>因我的 database 是外連所以無補上 database 的資訊</p><p>建立好 <code>docker-compose.yml</code> 即可輸入以下指令</p><figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ docker-compose up<br></code></pre></td></tr></tbody></table></figure><p>等指令跑完</p><p>就完成了 docker image 及 docker run</p><hr><p>今天的教學就到此 ~</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Docker</tag>
+      
+      <tag>Ruby on Rails</tag>
+      
+      <tag>Windows</tag>
+      
+      <tag>Dockerfile</tag>
+      
+      <tag>docker-compose</tag>
+      
+      <tag>image</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>AWS Certificate Manager 匯入憑證</title>
+    <link href="/blog/AWSCertificateManager-SSL/"/>
+    <url>/blog/AWSCertificateManager-SSL/</url>
+    
+    <content type="html"><![CDATA[<h1 id="更新憑證-2-AWS-Certificate-Manager-匯入憑證"><a href="#更新憑證-2-AWS-Certificate-Manager-匯入憑證" class="headerlink" title="更新憑證#2 AWS Certificate Manager 匯入憑證"></a>更新憑證#2 AWS Certificate Manager 匯入憑證</h1><h3 id="匯入憑證"><a href="#匯入憑證" class="headerlink" title="匯入憑證"></a>匯入憑證</h3><p>進到 AWS Certificate Manager 點選匯入憑證</p><p><img src="/blog/AWSCertificateManager-SSL/1655192633804.jpg" alt="AWS Certificate Manager頁面"></p><p>將前一篇 <a href="https://hi-alan-liu.github.io/blog/2022/06/13/NAME.COM-certificate/">NAME.COM SSL 憑證</a> 得到的憑證填入表格中</p><p><img src="/blog/AWSCertificateManager-SSL/1655197062093.jpg" alt="憑證詳細資訊"></p><p>憑證內文為 NAME.COM 的 SERVER CERTIFICATE</p><p><img src="/blog/AWSCertificateManager-SSL/1655198650080.jpg" alt="SERVER CERTIFICATE"></p><p>憑證私有金鑰為 openssl 產出來的 Key</p><p><img src="/blog/AWSCertificateManager-SSL/1655198688389.jpg" alt="openssl private key"></p><p>憑證鏈為 NAME.COM 的 CA CERTIFICATES</p><p><img src="/blog/AWSCertificateManager-SSL/1655198667714.jpg" alt="CA CERTIFICATES"></p><p>內文都填入後即可看到此憑證的到期時間</p><p><img src="/blog/AWSCertificateManager-SSL/1655198974266.jpg" alt="憑證資訊"></p><p>再將憑證綁定於其他 AWS 的功能 </p><p><img src="/blog/AWSCertificateManager-SSL/1655200003246.jpg" alt="負載平衡SSL綁定範例"></p><p>這樣就大功告成囉!</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>SSL CERTIFICATES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SSL</tag>
+      
+      <tag>AWS Certificate Manager</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>NAME.COM建立憑證</title>
+    <link href="/blog/NAME.COM-certificate/"/>
+    <url>/blog/NAME.COM-certificate/</url>
+    
+    <content type="html"><![CDATA[<h1 id="更新憑證-1-NAME-COM-SSL-憑證更新"><a href="#更新憑證-1-NAME-COM-SSL-憑證更新" class="headerlink" title="更新憑證#1 NAME.COM SSL 憑證更新"></a>更新憑證#1 NAME.COM SSL 憑證更新</h1><h3 id="第一步、申請-SSL-CERTIFICATES"><a href="#第一步、申請-SSL-CERTIFICATES" class="headerlink" title="第一步、申請 SSL CERTIFICATES"></a>第一步、申請 SSL CERTIFICATES</h3><p>請至 NAME.COM 申請 SSL CERTIFICATES 並立即設置</p><p><img src="/blog/NAME.COM-certificate/1655101790321.jpg" alt="SSL CERTIFICATES 申請範例圖"></p><p>填寫網域個人資料</p><p><img src="/blog/NAME.COM-certificate/1655101880682.jpg" alt="Contact information 示意圖"></p><p>留 CERTIFICATE SIGNING REQUEST (CSR) 先不填</p><h3 id="第二步、產生-SSL-憑證簽署要求（CSR）"><a href="#第二步、產生-SSL-憑證簽署要求（CSR）" class="headerlink" title="第二步、產生 SSL 憑證簽署要求（CSR）"></a>第二步、產生 SSL 憑證簽署要求（CSR）</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo openssl req -nodes -newkey rsa:2048 -sha256 -keyout myserver.key -out myserver.csr -utf8<br></code></pre></td></tr></tbody></table></figure><ul><li><p>-newkey rsa:2048： 產生 CSR 與一個 2048 位元的 RSA 密鑰；</p></li><li><p>-sha256：使用 SHA-2，SHA256 雜湊演算法（hash algorithm）</p></li><li><p>-keyout myserver.key：將密鑰儲存在當下目錄的「myserver.key」檔案中。</p></li><li><p>-out myserver.csr：將 CSR 檔案儲存在當下目錄的「myserver.csr」檔案中。</p></li></ul><p>執行命令之後，系統會提示您輸入資料，這資料是憑證驗證單位在驗證憑證時會查閱的個人資料</p><p><img src="/blog/NAME.COM-certificate/1655109081353.jpg" alt="填寫憑證資料範例圖"></p><ul><li><p>Country Name 二字元國碼 : TW</p></li><li><p>State or Province Name 州或省名稱 : Taiwan</p></li><li><p>Locality Name 城市名稱 : Kaohsiung</p></li><li><p>Organization Name 公司名稱 : Company Name CO., LTD.</p></li><li><p>Organization Unit Name 部門名稱 : (可不填)</p></li><li><p>Common Name 網域名 : <a href="http://www.google.com/">www.google.com</a></p></li><li><p>Email Address 電子信箱 : (可不填)</p></li><li><p>A challenge password 密碼 : (可不填)</p></li><li><p>An optional company name 其他的公司名稱 : (可不填)</p></li></ul><p>資料填寫完獲得 「myserver.key」 及 「myserver.csr」兩個檔案</p><p>請將這產生出來的檔案保存好，以便未來使用</p><p><img src="/blog/NAME.COM-certificate/1655110345826.jpg" alt="獲得憑證資料"></p><h3 id="第三步、完成設定並取得憑證-crt"><a href="#第三步、完成設定並取得憑證-crt" class="headerlink" title="第三步、完成設定並取得憑證 (crt)"></a>第三步、完成設定並取得憑證 (crt)</h3><p>將剛剛產生的 csr 複製內文並貼入 CERTIFICATE SIGNING REQUEST (CSR)</p><p><img src="/blog/NAME.COM-certificate/1655111563482.jpg" alt="CERTIFICATE SIGNING REQUEST"></p><p>空格右方會顯示資訊是否正確</p><p>如果都沒問題就憑證中心將會給予中繼憑證 (CRT or PEM)</p><p><img src="/blog/NAME.COM-certificate/1655111920824.jpg" alt="取得 CRT"></p><p>得到這些憑證接下來就可以放置伺服器中囉 !</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://haway.30cm.gg/ssl-key-csr-crt-pem/">私有金鑰、CSR 、CRT 與 中繼憑證</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>SSL CERTIFICATES</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SSL</tag>
+      
+      <tag>CSR</tag>
+      
+      <tag>NAME.COM</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>logrotate 基本配置</title>
+    <link href="/blog/logrotate-configure/"/>
+    <url>/blog/logrotate-configure/</url>
+    
+    <content type="html"><![CDATA[<h1 id="logrotate-基本配置"><a href="#logrotate-基本配置" class="headerlink" title="logrotate 基本配置"></a>logrotate 基本配置</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>使用 Linux 內建的 logrotate 工具，定期清空和壓縮 Log 檔案。<br>Log 沒有做 rotate ，Log 檔案將會不斷成長到撐爆空間。</p><h3 id="第一步、-移動到-Logrotate-d-資料夾"><a href="#第一步、-移動到-Logrotate-d-資料夾" class="headerlink" title="第一步、 移動到 Logrotate.d 資料夾"></a>第一步、 移動到 Logrotate.d 資料夾</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">cd /etc/logrotate.d<br></code></pre></td></tr></tbody></table></figure><h3 id="第二步、-建立檔案"><a href="#第二步、-建立檔案" class="headerlink" title="第二步、 建立檔案"></a>第二步、 建立檔案</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo vi **project_name**<br></code></pre></td></tr></tbody></table></figure><ul><li><strong>project_name</strong> 請填入專案名稱，方便辨識</li></ul><h3 id="第三步、-填入設定"><a href="#第三步、-填入設定" class="headerlink" title="第三步、 填入設定"></a>第三步、 填入設定</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs logrotate">/home/**user_name**/**project_name**/*.log {<br>    daily <br>    dateext<br>    missingok<br>    rotate 30<br>    notifempty<br>    copytruncate<br>}<br></code></pre></td></tr></tbody></table></figure><ul><li><p><strong>user_name</strong> 請填入使用者名稱</p></li><li><p><strong>project_name</strong> 請填入專案名稱</p></li><li><p>daily 表示每天整理，也可以改成 weekly 或 monthly</p></li><li><p>dateext 表示檔案補上 rotate 的日期  |  EX: xxx.log-%Y%m%d</p></li><li><p>missingok 表示如果找不到 log 檔也沒關系</p></li><li><p>rotate 30 表示保留最近 30 份</p></li><li><p>compress 表示壓縮起來，預設用 gzip  |  EX: xxx.log-%Y%m%d.tar.gz</p></li><li><p>delaycompress 表示延後壓縮直到下一次 rotate</p></li><li><p>notifempty 表示如果 log 檔是空的，就不 rotate</p></li><li><p>copytruncate 先複製 log 檔的內容後，在清空</p></li></ul><h3 id="第四步、-立即執行設定"><a href="#第四步、-立即執行設定" class="headerlink" title="第四步、 立即執行設定"></a>第四步、 立即執行設定</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">sudo /usr/sbin/logrotate -v /etc/logrotate.conf<br></code></pre></td></tr></tbody></table></figure><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://www.tecmint.com/install-logrotate-to-manage-log-rotation-in-linux/">How to Setup and Manage Log Rotation Using Logrotate in Linux</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Linux</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>logrotate</tag>
+      
+      <tag>Linux</tag>
+      
+      <tag>log</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Nginx 常用配置</title>
+    <link href="/blog/Nginx-configure/"/>
+    <url>/blog/Nginx-configure/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Nginx-常用配置"><a href="#Nginx-常用配置" class="headerlink" title="Nginx 常用配置"></a>Nginx 常用配置</h1><h3 id="下載站點"><a href="#下載站點" class="headerlink" title="下載站點"></a>下載站點</h3><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">location</span> /download {    <br>    <span class="hljs-attribute">alias</span> /home/user/elivolution; <span class="hljs-comment"># 資料夾路徑</span><br>    <span class="hljs-attribute">autoindex</span> <span class="hljs-literal">on</span>;<br>    <span class="hljs-attribute">charset</span> utf-<span class="hljs-number">8</span>;<br>}<br></code></pre></td></tr></tbody></table></figure><ul><li>alias 資料夾路徑</li><li>autoindex 開啟目錄瀏覽</li><li>charset 防止中文亂碼需加入 utf-8 or gbk</li></ul><h3 id="反向代理並啟用-CORS"><a href="#反向代理並啟用-CORS" class="headerlink" title="反向代理並啟用 CORS"></a>反向代理並啟用 CORS</h3><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> {<br>    <span class="hljs-comment">#以上審略</span><br><br>    <span class="hljs-section">location</span> <span class="hljs-regexp">~ ^/(computer/|mobile|home)</span> {<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Access-Control-Allow-Origin'</span> *網域 server_name*;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Access-Control-Allow-Credentials'</span> <span class="hljs-string">'true'</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Access-Control-Allow-Headers'</span> <span class="hljs-string">'Authorization,Accept,Origin,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Content-Range,Range'</span>;<br>        <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Access-Control-Allow-Methods'</span> <span class="hljs-string">'GET,POST,OPTIONS,PUT,DELETE,PATCH'</span>;<br>    <br>        <span class="hljs-attribute">if</span> (<span class="hljs-variable">$request_method</span> = <span class="hljs-string">'OPTIONS'</span>) {<br>            <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Access-Control-Max-Age'</span> <span class="hljs-number">1728000</span>;<br>            <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Content-Type'</span> <span class="hljs-string">'text/plain charset=UTF-8'</span>;<br>            <span class="hljs-attribute">add_header</span> <span class="hljs-string">'Content-Length'</span> <span class="hljs-number">0</span>;<br>            <span class="hljs-attribute">return</span> <span class="hljs-number">204</span>;<br>        }<br>    <br>        <span class="hljs-attribute">proxy_redirect</span> <span class="hljs-literal">off</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> host <span class="hljs-variable">$host</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> X-real-ip <span class="hljs-variable">$remote_addr</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> X-forward-for <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>        <span class="hljs-attribute">proxy_pass</span> http://127.0.0.1:3000;<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure><ul><li>location ~ ^/(computer/|mobile|home)<br>當網址為 <a href="http://domain/computer/name">http://domain/computer/name</a> 或 <a href="http://domain/mobile">http://domain/mobile</a> 時進行轉址</li><li>proxy_pass 填入位置</li></ul><h3 id="http-轉-https"><a href="#http-轉-https" class="headerlink" title="http 轉 https"></a>http 轉 https</h3><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">listen</span> [::]:<span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> server_name;<br>    <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://<span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;<br>}<br></code></pre></td></tr></tbody></table></figure><h3 id="Vue-router"><a href="#Vue-router" class="headerlink" title="Vue-router"></a>Vue-router</h3><figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-section">server</span> {<br>    <span class="hljs-comment">#以上審略</span><br><br>    <span class="hljs-section">location</span> / {<br>        <span class="hljs-attribute">root</span>   /home/deploy/project_name/dist;<br>        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.html;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure><h3 id="防止機器人"><a href="#防止機器人" class="headerlink" title="防止機器人"></a>防止機器人</h3><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs javascript">server {<br>    #以上審略<br><br>    <span class="hljs-keyword">if</span> ($http_user_agent ~* <span class="hljs-string">"SemrushBot|PetalBot|BOT/0.1|YandexBot|Linguee Bot"</span> ) {<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">403</span>;             <br>    }<br>}<br></code></pre></td></tr></tbody></table></figure><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://iter01.com/515464.html">Nginx 配置下載站點</a></li><li><a href="https://stackoverflow.com/questions/45986631/how-to-enable-cors-in-nginx-proxy-server">How to enable CORS in Nginx proxy server?</a></li><li><a href="https://router.vuejs.org/guide/essentials/history-mode.html#nginx">Vue Router</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Nginx</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>nginx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IIS 架設 VUE 站台</title>
+    <link href="/blog/IIS-VUE/"/>
+    <url>/blog/IIS-VUE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="IIS-架設-vue-站台"><a href="#IIS-架設-vue-站台" class="headerlink" title="IIS 架設 vue 站台"></a>IIS 架設 vue 站台</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>待補!</p><hr><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>IIS</p><p>URL Rewrite<br>下載網址：<a href="https://www.iis.net/downloads/microsoft/url-rewrite">https://www.iis.net/downloads/microsoft/url-rewrite</a></p><p><em>安裝完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步-建立web-config"><a href="#第一步-建立web-config" class="headerlink" title="第一步 建立web.config"></a>第一步 建立web.config</h3><p>為了讓 IIS 能夠配置 vue-router<br>我們需要一份 web.config</p><p>官方範例 <a href="https://router.vuejs.org/guide/essentials/history-mode.html#internet-information-services-iis">Vue Router</a></p><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">system.webServer</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">rewrite</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">rules</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">rule</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Handle History Mode and custom 404/500"</span> <span class="hljs-attr">stopProcessing</span>=<span class="hljs-string">"true"</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">match</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"(.*)"</span> /&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">conditions</span> <span class="hljs-attr">logicalGrouping</span>=<span class="hljs-string">"MatchAll"</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">input</span>=<span class="hljs-string">"{REQUEST_FILENAME}"</span> <span class="hljs-attr">matchType</span>=<span class="hljs-string">"IsFile"</span> <span class="hljs-attr">negate</span>=<span class="hljs-string">"true"</span> /&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">input</span>=<span class="hljs-string">"{REQUEST_FILENAME}"</span> <span class="hljs-attr">matchType</span>=<span class="hljs-string">"IsDirectory"</span> <span class="hljs-attr">negate</span>=<span class="hljs-string">"true"</span> /&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">conditions</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"Rewrite"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"/"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">rule</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">rules</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">rewrite</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">system.webServer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure><p>並將此檔案儲存至 vue.js 專案的 public 底下<br>這樣一來，每次建置的時候就會自動將 web.config 產生至 dist 資料夾</p><p><img src="/blog/IIS-VUE/1651734577669_1.jpg" alt="web.config 存至 public 底下"></p><h3 id="第二步-建置專案"><a href="#第二步-建置專案" class="headerlink" title="第二步 建置專案"></a>第二步 建置專案</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs npm">npm run build<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/IIS-VUE/1651734577669_2.jpg" alt="建置完成範例圖"></p><h3 id="第三步-設定-IIS"><a href="#第三步-設定-IIS" class="headerlink" title="第三步 設定 IIS"></a>第三步 設定 IIS</h3><p><img src="/blog/IIS-VUE/1651734577669_3.jpg" alt="新增網站"></p><p>實體路徑需指定到佈署產生的 dist 資</p><p>如果沒有domain主機名稱可為空</p><p>設定完成後，即可測試 vue 站台是否架設成功</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://router.vuejs.org/guide/essentials/history-mode.html">Vue Router</a></li><li><a href="https://www.linkedin.com/pulse/hosting-vue-js-spa-build-microsoft-iis-zainul-zain">Hosting Vue JS SPA build on Microsoft IIS</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>IIS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IIS</tag>
+      
+      <tag>URL Rewrite</tag>
+      
+      <tag>Vue Router</tag>
+      
+      <tag>web.config</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IIS 實現反向代理</title>
+    <link href="/blog/IIS-Proxy/"/>
+    <url>/blog/IIS-Proxy/</url>
+    
+    <content type="html"><![CDATA[<h1 id="IIS-實現反向代理"><a href="#IIS-實現反向代理" class="headerlink" title="IIS 實現反向代理"></a>IIS 實現反向代理</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>反向代理（Reverse Proxy）方式是指以代理伺服器來接受internet上的連接請求，然後將請求轉發給內部網絡上的伺服器，並將從伺服器上得到的結果返回給internet上請求連接的客戶端，此時代理伺服器對外就表現為一個反向代理伺服器。</p><hr><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>IIS</p><p>Application Request Routing<br>下載網址：<a href="https://www.iis.net/downloads/microsoft/application-request-routing">https://www.iis.net/downloads/microsoft/application-request-routing</a></p><p>URL Rewrite<br>下載網址：<a href="https://www.iis.net/downloads/microsoft/url-rewrite">https://www.iis.net/downloads/microsoft/url-rewrite</a></p><p>當下載並安裝完成後 IIS 會多出兩個功能</p><p><img src="/blog/IIS-Proxy/1651667908894_new.jpg" alt="準備完成樣子"></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><p>第一步、啟動代理<br><img src="/blog/IIS-Proxy/1651667908894_1.jpg" alt="點擊設置"></p><p><img src="/blog/IIS-Proxy/1651668036918_2.jpg" alt="點擊反向代理設定"></p><p><img src="/blog/IIS-Proxy/1651668062343_3.jpg" alt="將反向代理開啟"></p><p>第二步、建立網站<br><img src="/blog/IIS-Proxy/1660295445854.jpg" alt="建立網站"></p><p><code>實體路徑</code> 設定至專案資料夾</p><p>第三步、新增反向代理，設置 URL 規則</p><p><img src="/blog/IIS-Proxy/1651668152705_1.jpg" alt="點擊站台設定URL Rewrite"></p><p><img src="/blog/IIS-Proxy/1651668152705_2.jpg" alt="新增規則 / 空白規則"></p><p><img src="/blog/IIS-Proxy/1651668152705_3.jpg" alt="設定並套用"></p><p><code>模式</code>  ^(.*)</p><p><code>重寫 URL</code>  /{R:1}</p><p>設置完畢即完成</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>IIS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Reverse Proxy</tag>
+      
+      <tag>IIS</tag>
+      
+      <tag>URL Rewrite</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
