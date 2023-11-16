@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-TW" data-default-color-scheme=auto>
+<html lang="zh-TW" >
 
 
 
@@ -19,23 +19,23 @@
   <meta name="description" content="IIS 架設 vue 站台前言待補!  準備IIS URL Rewrite下載網址：https:&#x2F;&#x2F;www.iis.net&#x2F;downloads&#x2F;microsoft&#x2F;url-rewrite 安裝完畢後在進行下一步  開始第一步 建立web.config為了讓 IIS 能夠配置 vue-router我們需要一份 web.config 官方範例 Vue Router 123456789101112131">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IIS 架設 VUE 站台">
-<meta property="og:url" content="https://hi-alan-liu.github.io/IIS-VUE/index.html">
+<meta property="og:url" content="https://hi-alan-liu.github.io/blog/IIS-VUE/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
 <meta property="og:description" content="IIS 架設 vue 站台前言待補!  準備IIS URL Rewrite下載網址：https:&#x2F;&#x2F;www.iis.net&#x2F;downloads&#x2F;microsoft&#x2F;url-rewrite 安裝完畢後在進行下一步  開始第一步 建立web.config為了讓 IIS 能夠配置 vue-router我們需要一份 web.config 官方範例 Vue Router 123456789101112131">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_1.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_2.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_3.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/IIS-VUE/1651734577669_1.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/IIS-VUE/1651734577669_2.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/IIS-VUE/1651734577669_3.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
 <meta property="article:published_time" content="2022-05-05T07:34:00.000Z">
-<meta property="article:modified_time" content="2023-11-04T12:23:45.882Z">
+<meta property="article:modified_time" content="2023-11-16T16:25:15.760Z">
 <meta property="article:author" content="Alan Liu">
 <meta property="article:tag" content="IIS">
 <meta property="article:tag" content="URL Rewrite">
 <meta property="article:tag" content="Vue Router">
 <meta property="article:tag" content="web.config">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_1.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/blog/IIS-VUE/1651734577669_1.jpg">
   
   <title>IIS 架設 VUE 站台 - 劉穎｜Alan Liu</title>
 
@@ -169,11 +169,6 @@
           </li>
         
         
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -258,11 +253,11 @@
 <figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">system.webServer</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">rewrite</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">rules</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">rule</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Handle History Mode and custom 404/500"</span> <span class="hljs-attr">stopProcessing</span>=<span class="hljs-string">"true"</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">match</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"(.*)"</span> /&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">conditions</span> <span class="hljs-attr">logicalGrouping</span>=<span class="hljs-string">"MatchAll"</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">input</span>=<span class="hljs-string">"{REQUEST_FILENAME}"</span> <span class="hljs-attr">matchType</span>=<span class="hljs-string">"IsFile"</span> <span class="hljs-attr">negate</span>=<span class="hljs-string">"true"</span> /&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">input</span>=<span class="hljs-string">"{REQUEST_FILENAME}"</span> <span class="hljs-attr">matchType</span>=<span class="hljs-string">"IsDirectory"</span> <span class="hljs-attr">negate</span>=<span class="hljs-string">"true"</span> /&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">conditions</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"Rewrite"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"/"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">rule</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">rules</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">rewrite</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">system.webServer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
 
 <p>並將此檔案儲存至 vue.js 專案的 public 底下<br>這樣一來，每次建置的時候就會自動將 web.config 產生至 dist 資料夾</p>
-<p><img src="/blog/IIS-VUE/1651734577669_1.jpg" srcset="/blog/img/loading.gif" lazyload alt="web.config 存至 public 底下"></p>
+<p><img src="/blog/blog/IIS-VUE/1651734577669_1.jpg" srcset="/blog/img/loading.gif" lazyload alt="web.config 存至 public 底下"></p>
 <h3 id="第二步-建置專案"><a href="#第二步-建置專案" class="headerlink" title="第二步 建置專案"></a>第二步 建置專案</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs npm">npm run build<br></code></pre></td></tr></tbody></table></figure>
 
-<p><img src="/blog/IIS-VUE/1651734577669_2.jpg" srcset="/blog/img/loading.gif" lazyload alt="建置完成範例圖"></p>
-<h3 id="第三步-設定-IIS"><a href="#第三步-設定-IIS" class="headerlink" title="第三步 設定 IIS"></a>第三步 設定 IIS</h3><p><img src="/blog/IIS-VUE/1651734577669_3.jpg" srcset="/blog/img/loading.gif" lazyload alt="新增網站"></p>
+<p><img src="/blog/blog/IIS-VUE/1651734577669_2.jpg" srcset="/blog/img/loading.gif" lazyload alt="建置完成範例圖"></p>
+<h3 id="第三步-設定-IIS"><a href="#第三步-設定-IIS" class="headerlink" title="第三步 設定 IIS"></a>第三步 設定 IIS</h3><p><img src="/blog/blog/IIS-VUE/1651734577669_3.jpg" srcset="/blog/img/loading.gif" lazyload alt="新增網站"></p>
 <p>實體路徑需指定到佈署產生的 dist 資</p>
 <p>如果沒有domain主機名稱可為空</p>
 <p>設定完成後，即可測試 vue 站台是否架設成功</p>
@@ -302,8 +297,8 @@
               </div>
               
                 <p class="note note-warning">
-                  <strong>本文作者: </strong><a href="/blog/">劉穎｜Alan Liu</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/IIS-VUE/">https://hi-alan-liu.github.io/IIS-VUE/</a> <br>
+                  <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/IIS-VUE/">https://hi-alan-liu.github.io/blog/IIS-VUE/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -345,7 +340,7 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/IIS-VUE/';
+          this.page.url = 'https://hi-alan-liu.github.io/blog/IIS-VUE/';
           this.page.identifier = '/blog/IIS-VUE/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {

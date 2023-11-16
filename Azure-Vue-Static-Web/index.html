@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-TW" data-default-color-scheme=auto>
+<html lang="zh-TW" >
 
 
 
@@ -19,22 +19,22 @@
   <meta name="description" content="解決 Azure - Vue 靜態網站 404 問題準備[Azure 官方網址] (https:&#x2F;&#x2F;portal.azure.com&#x2F;) 安裝完畢後在進行下一步  開始問題佈署於 Azure - 靜態 Web 應用程式 的 Vue 專案 再切換頁面時會出現 404 : not found 的問題  解決方式再 Vue 專案內建立 staticwebapp.config.json 檔案 static">
 <meta property="og:type" content="article">
 <meta property="og:title" content="解決 Azure - Vue 靜態網站 404 問題">
-<meta property="og:url" content="https://hi-alan-liu.github.io/Azure-Vue-Static-Web/index.html">
+<meta property="og:url" content="https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
 <meta property="og:description" content="解決 Azure - Vue 靜態網站 404 問題準備[Azure 官方網址] (https:&#x2F;&#x2F;portal.azure.com&#x2F;) 安裝完畢後在進行下一步  開始問題佈署於 Azure - 靜態 Web 應用程式 的 Vue 專案 再切換頁面時會出現 404 : not found 的問題  解決方式再 Vue 專案內建立 staticwebapp.config.json 檔案 static">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/1684226521857.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/1684227841490.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/Azure-Vue-Static-Web/1684226521857.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/Azure-Vue-Static-Web/1684227841490.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
 <meta property="article:published_time" content="2023-05-16T09:34:00.000Z">
-<meta property="article:modified_time" content="2023-11-04T12:23:45.848Z">
+<meta property="article:modified_time" content="2023-11-16T16:25:15.728Z">
 <meta property="article:author" content="Alan Liu">
 <meta property="article:tag" content="Vue.js">
 <meta property="article:tag" content="Azure">
 <meta property="article:tag" content="router">
 <meta property="article:tag" content="saticwebapp">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/1684226521857.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/blog/Azure-Vue-Static-Web/1684226521857.jpg">
   
   <title>解決 Azure - Vue 靜態網站 404 問題 - 劉穎｜Alan Liu</title>
 
@@ -168,11 +168,6 @@
           </li>
         
         
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -251,12 +246,12 @@
 <hr>
 <h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h3><p>佈署於 <code>Azure - 靜態 Web 應用程式</code> 的 Vue 專案</p>
 <p>再切換頁面時會出現 <code>404 : not found</code> 的問題</p>
-<p><img src="/blog/Azure-Vue-Static-Web/1684226521857.jpg" srcset="/blog/img/loading.gif" lazyload alt="404 : not found"></p>
+<p><img src="/blog/blog/Azure-Vue-Static-Web/1684226521857.jpg" srcset="/blog/img/loading.gif" lazyload alt="404 : not found"></p>
 <h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><p>再 Vue 專案內建立 <code>staticwebapp.config.json</code> 檔案</p>
 <p><code>staticwebapp.config.json</code> 是 Azure 靜態 Web 應用程式 的配置文件，用於定義路由和其他設定，以確保 Vue.js 應用程式在 Azure Static Web Apps 上正確運作。</p>
 <figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs CMD"># staticwebapp.config.json<br><br>{<br>  "navigationFallback": {<br>      "rewrite": "index.html"<br>  },<br>  "mimeTypes": {<br>      ".json": "text/json"<br>  }<br>}<br></code></pre></td></tr></tbody></table></figure>
 
-<p><img src="/blog/Azure-Vue-Static-Web/1684227841490.jpg" srcset="/blog/img/loading.gif" lazyload alt="staticwebapp.config.json 檔案位置"></p>
+<p><img src="/blog/blog/Azure-Vue-Static-Web/1684227841490.jpg" srcset="/blog/img/loading.gif" lazyload alt="staticwebapp.config.json 檔案位置"></p>
 <h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>Vue.js 是一個單頁應用程式框架，使用 Vue Router 來處理客戶端的路由。</p>
 <p>在 Azure Static Web Apps 上部署 Vue.js 應用程式時，伺服器需要知道如何處理這些路由。</p>
 <p>以確保所有路由都指向 index.html 檔案，讓 Vue Router 負責處理路由。</p>
@@ -297,8 +292,8 @@
               </div>
               
                 <p class="note note-warning">
-                  <strong>本文作者: </strong><a href="/blog/">劉穎｜Alan Liu</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/Azure-Vue-Static-Web/">https://hi-alan-liu.github.io/Azure-Vue-Static-Web/</a> <br>
+                  <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/">https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -340,7 +335,7 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/Azure-Vue-Static-Web/';
+          this.page.url = 'https://hi-alan-liu.github.io/blog/Azure-Vue-Static-Web/';
           this.page.identifier = '/blog/Azure-Vue-Static-Web/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
