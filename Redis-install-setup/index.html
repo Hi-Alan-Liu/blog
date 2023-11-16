@@ -19,14 +19,14 @@
   <meta name="description" content="Redis 基本安裝 及 外部連線設定準備安裝 RedisLinux 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-linux&#x2F; macOS 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-ma">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis 基本安裝 及 外部連線設定">
-<meta property="og:url" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/index.html">
+<meta property="og:url" content="https://hi-alan-liu.github.io/Redis-install-setup/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
 <meta property="og:description" content="Redis 基本安裝 及 外部連線設定準備安裝 RedisLinux 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-linux&#x2F; macOS 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-ma">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/Redis-install-setup/1660285557863.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/Redis-install-setup/1660285894330.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/Redis-install-setup/1660286930448.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/blog/Redis-install-setup/1660286516507.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660285557863.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660285894330.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660286930448.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660286516507.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
 <meta property="article:published_time" content="2022-08-05T06:05:00.000Z">
 <meta property="article:modified_time" content="2023-11-16T16:25:15.789Z">
@@ -35,7 +35,7 @@
 <meta property="article:tag" content="config">
 <meta property="article:tag" content="bind">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/blog/Redis-install-setup/1660285557863.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660285557863.jpg">
   
   <title>Redis 基本安裝 及 外部連線設定 - 劉穎｜Alan Liu</title>
 
@@ -257,19 +257,19 @@
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; ping<br></code></pre></td></tr></tbody></table></figure>
 
 <p>回應 PONG 代表 redis 正常連線</p>
-<p><img src="/blog/blog/Redis-install-setup/1660285557863.jpg" srcset="/blog/img/loading.gif" lazyload alt="回應PONG"></p>
+<p><img src="/blog/Redis-install-setup/1660285557863.jpg" srcset="/blog/img/loading.gif" lazyload alt="回應PONG"></p>
 <p>接著輸入 info 查看 config 的位置</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; info<br></code></pre></td></tr></tbody></table></figure>
 
 <p>位置在 config_file </p>
-<p><img src="/blog/blog/Redis-install-setup/1660285894330.jpg" srcset="/blog/img/loading.gif" lazyload alt="info 範例"></p>
+<p><img src="/blog/Redis-install-setup/1660285894330.jpg" srcset="/blog/img/loading.gif" lazyload alt="info 範例"></p>
 <h3 id="二、設定-config"><a href="#二、設定-config" class="headerlink" title="二、設定 config"></a>二、設定 config</h3><p>確認 redis bind，請輸入以下指令</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt;  config get bind<br></code></pre></td></tr></tbody></table></figure>
 
-<p><img src="/blog/blog/Redis-install-setup/1660286930448.jpg" srcset="/blog/img/loading.gif" lazyload alt="get bind 範例"></p>
+<p><img src="/blog/Redis-install-setup/1660286930448.jpg" srcset="/blog/img/loading.gif" lazyload alt="get bind 範例"></p>
 <p>預設 redis config bind 為 127.0.0.1 因此只能 local 連線<br>因此需要對 config 進行修改</p>
 <p>從上一步驟已得知 config 位置<br>可以對 config 直接進行修改</p>
-<p><img src="/blog/blog/Redis-install-setup/1660286516507.jpg" srcset="/blog/img/loading.gif" lazyload alt="config 範例"></p>
+<p><img src="/blog/Redis-install-setup/1660286516507.jpg" srcset="/blog/img/loading.gif" lazyload alt="config 範例"></p>
 <p>也可以透過指令進行修改</p>
 <figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; set bind 0.0.0.0<br>127.0.0.1:6379&gt; save<br></code></pre></td></tr></tbody></table></figure>
 
@@ -357,7 +357,7 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/blog/Redis-install-setup/';
+          this.page.url = 'https://hi-alan-liu.github.io/Redis-install-setup/';
           this.page.identifier = '/blog/Redis-install-setup/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
