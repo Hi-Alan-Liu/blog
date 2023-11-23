@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>IIS - Asp Net corn 設定 Environment</title>
+    <link href="/blog/IIS-NET-Core-Environment/"/>
+    <url>/blog/IIS-NET-Core-Environment/</url>
+    
+    <content type="html"><![CDATA[<h1 id="IIS-Asp-Net-corn-設定-Environment"><a href="#IIS-Asp-Net-corn-設定-Environment" class="headerlink" title="IIS - Asp Net corn 設定 Environment"></a>IIS - Asp Net corn 設定 Environment</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>佈署於伺服器上的專案，都需要依據需求設定不同的環境。</p><p>此教學為在 IIS 上的設定方式</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="方法一、進入-IIS-站台設定"><a href="#方法一、進入-IIS-站台設定" class="headerlink" title="方法一、進入 IIS 站台設定"></a>方法一、進入 IIS 站台設定</h3><p>進入 Internet Information Services (IIS) 管理員</p><p>點選需要設定的站台，選擇 設定編輯器</p><p><img src="/blog/IIS-NET-Core-Environment/1700475976275.jpg" alt="選擇設定編輯器"></p><p>點選上方區段，選擇 aspNetCore</p><p><img src="/blog/IIS-NET-Core-Environment/1700476543766.jpg" alt="選擇區段"></p><p>設定 environmentVariables </p><p><img src="/blog/IIS-NET-Core-Environment/1700476647073.jpg" alt="設定"></p><p>點選新增設定 name 、value</p><p>name : <code>ASPNETCORE_ENVIRONMENT</code></p><p>value : <code>Testing</code></p><p>依據環境設定 <code>Production</code>、<code>Staging</code>、<code>Testing</code></p><p><img src="/blog/IIS-NET-Core-Environment/1700476703339.jpg" alt="設定變數"></p><p>設定完畢重啟站台即可生效。</p><h3 id="方法二、透過-dotnet-publish-調整-Web-config"><a href="#方法二、透過-dotnet-publish-調整-Web-config" class="headerlink" title="方法二、透過 dotnet publish 調整 Web.config"></a>方法二、透過 dotnet publish 調整 Web.config</h3><p>也可以透過指令變更環境</p><p><code>-c</code> | <code>--configuration &lt;CONFIGURATION&gt;</code> : 建置配置，預設為 <code>Debug</code></p><p><code>-o</code> | <code>--output &lt;OUTPUT_DIRECTORY&gt;</code> : 設定輸出目錄路徑</p><p><code>-p:&lt;NAME&gt;=&lt;VALUE&gt;</code> : 設定屬性</p><figure class="highlight routeros"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">dotnet publish <span class="hljs-string">'xxx.csproj'</span> -c Release -p:<span class="hljs-attribute">EnvironmentName</span>=Testing -o <span class="hljs-string">'publish'</span><br></code></pre></td></tr></tbody></table></figure><p>這樣就會產生出對應的 Web.config</p><figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"utf-8"</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">location</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"."</span> <span class="hljs-attr">inheritInChildApplications</span>=<span class="hljs-string">"false"</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">system.webServer</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">handlers</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"aspNetCore"</span> <span class="hljs-attr">path</span>=<span class="hljs-string">"*"</span> <span class="hljs-attr">verb</span>=<span class="hljs-string">"*"</span> <span class="hljs-attr">modules</span>=<span class="hljs-string">"AspNetCoreModuleV2"</span> <span class="hljs-attr">resourceType</span>=<span class="hljs-string">"Unspecified"</span> /&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">handlers</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">aspNetCore</span> <span class="hljs-attr">processPath</span>=<span class="hljs-string">"dotnet"</span> <span class="hljs-attr">arguments</span>=<span class="hljs-string">".\ServerName.API.dll"</span> <span class="hljs-attr">stdoutLogEnabled</span>=<span class="hljs-string">"false"</span> <span class="hljs-attr">stdoutLogFile</span>=<span class="hljs-string">".\logs\stdout"</span> <span class="hljs-attr">hostingModel</span>=<span class="hljs-string">"inprocess"</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">environmentVariables</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">environmentVariable</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"ASPNETCORE_ENVIRONMENT"</span> <span class="hljs-attr">value</span>=<span class="hljs-string">"Testing"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">environmentVariables</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">aspNetCore</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">system.webServer</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">location</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure><p>設定完畢重啟站台即可生效。</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><p><a href="https://blog.miniasp.com/post/2023/03/30/How-to-set-environment-name-for-webconfig-when-run-dotnet-publish">如何透過 dotnet publish 調整 ASP․NET Core 部署到 IIS 的 Web.config 內容</a></p></li><li><p><a href="https://learn.microsoft.com/en-us/dotnet/core/tools/dotnet-publish">dotnet publish</a></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>IIS</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IIS</tag>
+      
+      <tag>ASP.NET</tag>
+      
+      <tag>Environment</tag>
+      
+      <tag>web.config</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>執行 Python 中文亂碼問題</title>
     <link href="/blog/Python-Encoding-UTF-8/"/>
     <url>/blog/Python-Encoding-UTF-8/</url>
@@ -726,11 +757,11 @@
       
       <tag>IIS</tag>
       
+      <tag>web.config</tag>
+      
       <tag>URL Rewrite</tag>
       
       <tag>Vue Router</tag>
-      
-      <tag>web.config</tag>
       
     </tags>
     
