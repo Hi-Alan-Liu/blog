@@ -13,7 +13,7 @@ date: 2023-01-30 16:06:00
 ## 準備
 
 
-指令產生憑證，可參考 [NAME.COM SSL 憑證](https://hi-alan-liu.github.io/blog/2022/06/13/NAME.COM-certificate/)
+指令產生憑證，可參考 [NAME.COM SSL 憑證](https://hi-alan-liu.github.io/blog/NAME.COM-certificate/)
 
 ![準備憑證檔案](1675069465828.jpg)
 
@@ -66,4 +66,3 @@ sudo openssl pkcs12 -in myserver.cer -inkey myserver.key -export -out myserver.p
 這樣就大功告成囉 !
 
 ### Thank you! :smile:
-
