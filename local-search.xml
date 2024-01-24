@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>幻獸帕魯伺服器常用指令</title>
+    <link href="/blog/Palworld-Instruction/"/>
+    <url>/blog/Palworld-Instruction/</url>
+    
+    <content type="html"><![CDATA[<h1 id="幻獸帕魯伺服器常用指令"><a href="#幻獸帕魯伺服器常用指令" class="headerlink" title="幻獸帕魯伺服器常用指令"></a>幻獸帕魯伺服器常用指令</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>這是一個為了玩幻獸帕魯架設伺服器的常用指令</p><p>如果有其他資訊會再補充</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h4 id="移動至主程式位置"><a href="#移動至主程式位置" class="headerlink" title="移動至主程式位置"></a>移動至主程式位置</h4><figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">cd ~<span class="hljs-regexp">/Steam/</span>steamapps<span class="hljs-regexp">/common/</span>PalServer<br></code></pre></td></tr></tbody></table></figure><h4 id="使用-tmux-啟動伺服器"><a href="#使用-tmux-啟動伺服器" class="headerlink" title="使用 tmux 啟動伺服器"></a>使用 tmux 啟動伺服器</h4><figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">tmux</span><br></code></pre></td></tr></tbody></table></figure><figure class="highlight jboss-cli"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">./PalServer.sh</span><br></code></pre></td></tr></tbody></table></figure><h4 id="編寫設定檔"><a href="#編寫設定檔" class="headerlink" title="編寫設定檔"></a>編寫設定檔</h4><figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">vi ~<span class="hljs-regexp">/Steam/</span>steamapps<span class="hljs-regexp">/common/</span>PalServer<span class="hljs-regexp">/Pal/</span>Saved<span class="hljs-regexp">/Config/</span>LinuxServer/PalWorldSettings.ini<br></code></pre></td></tr></tbody></table></figure><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://forum.gamer.com.tw/C.php?bsn=71458&amp;snA=94">【心得】簡易google雲端架設小小心得，圖多!</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Other</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Palworld</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用 Chrome 查看手機網頁 Console Log</title>
     <link href="/blog/Chrome-Mobile-Console-Log/"/>
     <url>/blog/Chrome-Mobile-Console-Log/</url>
