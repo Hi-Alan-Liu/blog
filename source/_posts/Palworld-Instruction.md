@@ -34,6 +34,15 @@ tmux
 ./PalServer.sh
 ```
 
+### 進入 tmux 關閉伺服器
+
+```
+tmux attach -t 0
+```
+
+按 ctrl + C 關閉伺服器
+
+
 #### 編寫設定檔
 
 ```
