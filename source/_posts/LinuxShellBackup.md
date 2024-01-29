@@ -1,7 +1,14 @@
 title: Linux - Shell Script 備份檔案
 author: Alan Liu
-date: 2024-01-30 00:29:32
 tags:
+  - Palworld
+  - Linux
+  - Shell Script
+  - Crontab
+  - Tar
+categories:
+  - Linux
+date: 2024-01-30 00:29:00
 ---
 # Linux - Shell Script 備份檔案
 
@@ -28,15 +35,19 @@ Palworld.sh 內容如下
 backup_path="/home/hialanliugood/Steam/steamapps/common/PalServer/Pal/Saved/SaveGames" # 備份路徑
 folder_name="0" # 目標資料夾名稱
 current_datetime=$(date +"%Y%m%d%H%M") # 取得當前日期和時間
-backup_file="${folder_name}_${current_datetime}.gz" # 壓縮檔名
-full_path="${backup_path}/backup" # 完整路徑
-
-# 檢查目標資料夾是否存在
+backup_file="${folder_name}_${current_datetime}.tar.gz" # 壓縮檔名
+full_path="${backup_path}/${folder_name}" # 完整路徑
+finish_backup_path="${backup_path}/backup"
 if [ -d "$full_path" ]; then
     cd "$full_path" || exit # 進入目標資料
     tar -czf "$backup_file" . # 壓縮目標資料夾內容到指定檔案
+    mv "$backup_file" "$finish_backup_path" # 搬移壓縮檔位置
     cd - || exit # 切換回原始目錄
     echo "備份成功：${full_path} -> ${backup_file}"
+
+    # 刪除過去3天以上的備份檔案
+    find "$finish_backup_path" -name "${folder_name}_*.tar.gz" -type f -mtime +3 -exec rm {} \;
+    echo "刪除過去3天以上的備份檔案完成"
 else
     echo "錯誤：目標資料夾 ${full_path} 不存在"
 fi
@@ -120,7 +131,7 @@ vi Palworld.sh
 
 ```Linux=
 # 刪除過去3天以上的備份檔案
-find "$full_path" -name "${folder_name}_*.gz" -type f -mtime +3 -exec rm {} \;
+find "$finish_backup_path" -name "${folder_name}_*.tar.gz" -type f -mtime +3 -exec rm {} \;
 echo "刪除過去3天以上的備份檔案完成"
 ```
 
@@ -138,4 +149,3 @@ echo "刪除過去3天以上的備份檔案完成"
 
 
 - [使用Linux Shell Script，每天自動刪除或定期備份超過N天的日誌檔案](https://klab.tw/2023/02/use-linux-script-to-automatically-delete-files-every-day/)
-
