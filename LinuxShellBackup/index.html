@@ -16,12 +16,12 @@
   <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content="Linux - Shell Script 備份檔案前言因遊玩幻獸帕魯需要定期備份伺服器 所以需要寫一個 shell 去進行備份檔案並壓縮檔案 開始第一步、建立 Shell Script 檔案進行檔案備份1vi Palworld.sh   Palworld.sh 內容如下 12345678910111213141516#!&#x2F;bin&#x2F;bashbackup_path&#x3D;&quot;&#x2F;home&#x2F;hialanliugo">
+  <meta name="description" content="Linux - Shell Script 備份檔案前言因遊玩幻獸帕魯需要定期備份伺服器 所以需要寫一個 shell 去進行備份檔案並壓縮檔案 開始第一步、建立 Shell Script 檔案進行檔案備份1vi Palworld.sh   Palworld.sh 內容如下 1234567891011121314151617181920#!&#x2F;bin&#x2F;bashbackup_path&#x3D;&quot;&#x2F;home&#x2F;hia">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux - Shell Script 備份檔案">
 <meta property="og:url" content="https://hi-alan-liu.github.io/LinuxShellBackup/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content="Linux - Shell Script 備份檔案前言因遊玩幻獸帕魯需要定期備份伺服器 所以需要寫一個 shell 去進行備份檔案並壓縮檔案 開始第一步、建立 Shell Script 檔案進行檔案備份1vi Palworld.sh   Palworld.sh 內容如下 12345678910111213141516#!&#x2F;bin&#x2F;bashbackup_path&#x3D;&quot;&#x2F;home&#x2F;hialanliugo">
+<meta property="og:description" content="Linux - Shell Script 備份檔案前言因遊玩幻獸帕魯需要定期備份伺服器 所以需要寫一個 shell 去進行備份檔案並壓縮檔案 開始第一步、建立 Shell Script 檔案進行檔案備份1vi Palworld.sh   Palworld.sh 內容如下 1234567891011121314151617181920#!&#x2F;bin&#x2F;bashbackup_path&#x3D;&quot;&#x2F;home&#x2F;hia">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:image" content="https://hi-alan-liu.github.io/blog/LinuxShellBackup/1706546050051.jpg">
 <meta property="og:image" content="https://hi-alan-liu.github.io/blog/LinuxShellBackup/1706546651028.jpg">
@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://hi-alan-liu.github.io/blog/LinuxShellBackup/1706548521298.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
 <meta property="article:published_time" content="2024-01-29T16:29:00.000Z">
-<meta property="article:modified_time" content="2024-01-29T18:04:33.978Z">
+<meta property="article:modified_time" content="2024-01-29T19:17:31.101Z">
 <meta property="article:author" content="Alan Liu">
 <meta property="article:tag" content="Palworld">
 <meta property="article:tag" content="Linux">
@@ -207,7 +207,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.4k 字
+      1.7k 字
     </span>
   
 
@@ -216,7 +216,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      4 分钟
+      5 分钟
     </span>
   
 
@@ -254,7 +254,7 @@
 
 <p><img src="/blog/LinuxShellBackup/1706546050051.jpg" srcset="/blog/img/loading.gif" lazyload alt="建立 sh 檔案"></p>
 <p>Palworld.sh 內容如下</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>backup_path=<span class="hljs-string">"/home/hialanliugood/Steam/steamapps/common/PalServer/Pal/Saved/SaveGames"</span> <span class="hljs-comment"># 備份路徑</span><br>folder_name=<span class="hljs-string">"0"</span> <span class="hljs-comment"># 目標資料夾名稱</span><br>current_datetime=$(<span class="hljs-built_in">date</span> +<span class="hljs-string">"%Y%m%d%H%M"</span>) <span class="hljs-comment"># 取得當前日期和時間</span><br>backup_file=<span class="hljs-string">"<span class="hljs-variable">${folder_name}</span>_<span class="hljs-variable">${current_datetime}</span>.gz"</span> <span class="hljs-comment"># 壓縮檔名</span><br>full_path=<span class="hljs-string">"<span class="hljs-variable">${backup_path}</span>/backup"</span> <span class="hljs-comment"># 完整路徑</span><br><br><span class="hljs-comment"># 檢查目標資料夾是否存在</span><br><span class="hljs-keyword">if</span> [ -d <span class="hljs-string">"<span class="hljs-variable">$full_path</span>"</span> ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">cd</span> <span class="hljs-string">"<span class="hljs-variable">$full_path</span>"</span> || <span class="hljs-built_in">exit</span> <span class="hljs-comment"># 進入目標資料</span><br>    tar -czf <span class="hljs-string">"<span class="hljs-variable">$backup_file</span>"</span> . <span class="hljs-comment"># 壓縮目標資料夾內容到指定檔案</span><br>    <span class="hljs-built_in">cd</span> - || <span class="hljs-built_in">exit</span> <span class="hljs-comment"># 切換回原始目錄</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">"備份成功：<span class="hljs-variable">${full_path}</span> -&gt; <span class="hljs-variable">${backup_file}</span>"</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">"錯誤：目標資料夾 <span class="hljs-variable">${full_path}</span> 不存在"</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/bin/bash</span><br>backup_path=<span class="hljs-string">"/home/hialanliugood/Steam/steamapps/common/PalServer/Pal/Saved/SaveGames"</span> <span class="hljs-comment"># 備份路徑</span><br>folder_name=<span class="hljs-string">"0"</span> <span class="hljs-comment"># 目標資料夾名稱</span><br>current_datetime=$(<span class="hljs-built_in">date</span> +<span class="hljs-string">"%Y%m%d%H%M"</span>) <span class="hljs-comment"># 取得當前日期和時間</span><br>backup_file=<span class="hljs-string">"<span class="hljs-variable">${folder_name}</span>_<span class="hljs-variable">${current_datetime}</span>.tar.gz"</span> <span class="hljs-comment"># 壓縮檔名</span><br>full_path=<span class="hljs-string">"<span class="hljs-variable">${backup_path}</span>/<span class="hljs-variable">${folder_name}</span>"</span> <span class="hljs-comment"># 完整路徑</span><br>finish_backup_path=<span class="hljs-string">"<span class="hljs-variable">${backup_path}</span>/backup"</span><br><span class="hljs-keyword">if</span> [ -d <span class="hljs-string">"<span class="hljs-variable">$full_path</span>"</span> ]; <span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">cd</span> <span class="hljs-string">"<span class="hljs-variable">$full_path</span>"</span> || <span class="hljs-built_in">exit</span> <span class="hljs-comment"># 進入目標資料</span><br>    tar -czf <span class="hljs-string">"<span class="hljs-variable">$backup_file</span>"</span> . <span class="hljs-comment"># 壓縮目標資料夾內容到指定檔案</span><br>    <span class="hljs-built_in">mv</span> <span class="hljs-string">"<span class="hljs-variable">$backup_file</span>"</span> <span class="hljs-string">"<span class="hljs-variable">$finish_backup_path</span>"</span> <span class="hljs-comment"># 搬移壓縮檔位置</span><br>    <span class="hljs-built_in">cd</span> - || <span class="hljs-built_in">exit</span> <span class="hljs-comment"># 切換回原始目錄</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">"備份成功：<span class="hljs-variable">${full_path}</span> -&gt; <span class="hljs-variable">${backup_file}</span>"</span><br><br>    <span class="hljs-comment"># 刪除過去3天以上的備份檔案</span><br>    find <span class="hljs-string">"<span class="hljs-variable">$finish_backup_path</span>"</span> -name <span class="hljs-string">"<span class="hljs-variable">${folder_name}</span>_*.tar.gz"</span> -<span class="hljs-built_in">type</span> f -mtime +3 -<span class="hljs-built_in">exec</span> <span class="hljs-built_in">rm</span> {} \;<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">"刪除過去3天以上的備份檔案完成"</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">"錯誤：目標資料夾 <span class="hljs-variable">${full_path}</span> 不存在"</span><br><span class="hljs-keyword">fi</span><br></code></pre></td></tr></tbody></table></figure>
 
 <p>backup_path: 需備份的檔案絕對路徑</p>
 <p>folder_name: 需要備份的資料夾</p>
@@ -289,7 +289,7 @@
 <h3 id="第五步、如果想要新增自動刪除"><a href="#第五步、如果想要新增自動刪除" class="headerlink" title="第五步、如果想要新增自動刪除"></a>第五步、如果想要新增自動刪除</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs Linux">vi Palworld.sh<br></code></pre></td></tr></tbody></table></figure>
 
 <p>新增 刪除判斷</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Linux"># 刪除過去3天以上的備份檔案<br>find "$full_path" -name "${folder_name}_*.gz" -type f -mtime +3 -exec rm {} \;<br>echo "刪除過去3天以上的備份檔案完成"<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs Linux"># 刪除過去3天以上的備份檔案<br>find "$finish_backup_path" -name "${folder_name}_*.tar.gz" -type f -mtime +3 -exec rm {} \;<br>echo "刪除過去3天以上的備份檔案完成"<br></code></pre></td></tr></tbody></table></figure>
 
 <p><img src="/blog/LinuxShellBackup/1706548521298.jpg" srcset="/blog/img/loading.gif" lazyload alt="完整範例"></p>
 <p>今天的教學就到此</p>
