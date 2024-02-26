@@ -4,6 +4,68 @@
   
   
   <entry>
+    <title>Vue 專案 Docker 化</title>
+    <link href="/blog/Docker-Vue-Merge/"/>
+    <url>/blog/Docker-Vue-Merge/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Vue-專案-Docker-化"><a href="#Vue-專案-Docker-化" class="headerlink" title="Vue 專案 Docker 化"></a>Vue 專案 Docker 化</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因後端專案逐漸 Docker 化，前端專案也來跟風處理。</p><hr><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>註冊 Docker hub<br>註冊網址：<a href="https://hub.docker.com/">https://hub.docker.com/</a></p><p>下載　Docker Desktop<br>下載網址：<a href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a></p><p><em>安裝完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-Dockerfile"><a href="#一、建立-Dockerfile" class="headerlink" title="一、建立 Dockerfile"></a>一、建立 Dockerfile</h3><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> node:<span class="hljs-number">18</span> as build-stage<br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> package*.json ./</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm install</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . .</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm run build</span><br><br><span class="hljs-keyword">FROM</span> nginx as production-stage<br><span class="hljs-keyword">COPY</span><span class="language-bash"> --from=build-stage /app/dist /usr/share/nginx/html</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">"nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]</span><br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/Docker-Vue-Merge/1708943495204.jpg" alt="Dockerfile 範例"></p><p>我們利用 Docker 多階段建構來完成建置</p><ul><li>處理vue.js專案建置與打包 </li><li>處理 Nginx 設定並將 Vue.js 打包好的專案進行複製</li></ul><p>npm run build 可根據 package Scripts 進行更動</p><h3 id="二、執行指令並測試"><a href="#二、執行指令並測試" class="headerlink" title="二、執行指令並測試"></a>二、執行指令並測試</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell#">docker build -t dockerize-vuejs-app .<br></code></pre></td></tr></tbody></table></figure><p>vuejs-cookbook/dockerize-vuejs-app 為打包的成 Docker Images 的名稱</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell#">docker images<br></code></pre></td></tr></tbody></table></figure><p>輸入 Docker Images 可查看打包好的Images</p><p><img src="/blog/Docker-Vue-Merge/1708943480518.jpg" alt="Docker Images"></p><p>運行 Images</p><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell#">docker run -d -p 8080:80 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app<br></code></pre></td></tr></tbody></table></figure><p><code>-d</code>: 為背景執行</p><p><code>-p</code>: 設定 Port</p><p><code>--name</code>: 設定 Containers 名稱</p><p>之後打開瀏覽器進入 <a href="http://localhost:8080/">http://localhost:8080/</a></p><p>有出現專案就完成囉 !</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://v2.vuejs.org/v2/cookbook/dockerize-vuejs-app">Dockerize Vue.js App</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Vue.js</tag>
+      
+      <tag>Docker</tag>
+      
+      <tag>Docker hub</tag>
+      
+      <tag>Docker Images</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>.NET - 本地檔案讀取及寫入</title>
+    <link href="/blog/DotnetFileReadAndWrite/"/>
+    <url>/blog/DotnetFileReadAndWrite/</url>
+    
+    <content type="html"><![CDATA[<h1 id="NET-本地檔案讀取及寫入"><a href="#NET-本地檔案讀取及寫入" class="headerlink" title=".NET - 本地檔案讀取及寫入"></a>.NET - 本地檔案讀取及寫入</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>待補</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、讀取檔案"><a href="#一、讀取檔案" class="headerlink" title="一、讀取檔案"></a>一、讀取檔案</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> path = Directory.GetCurrentDirectory();<br><span class="hljs-keyword">var</span> filePath = <span class="hljs-string">$"Assets/User/Setting.json"</span>;<br><span class="hljs-keyword">var</span> text = File.ReadAllText(Path.Combine(path, filePath));<br></code></pre></td></tr></tbody></table></figure><p>如果檔案內容為 JSON 可使用 JsonSerializer 進行轉換</p><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs C#">JsonSerializer.Deserialize&lt;TValue&gt;();<br></code></pre></td></tr></tbody></table></figure><h3 id="二、寫入檔案"><a href="#二、寫入檔案" class="headerlink" title="二、寫入檔案"></a>二、寫入檔案</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> jsonData = <span class="hljs-string">'儲存的內容'</span>;<br><span class="hljs-keyword">var</span> filePath = <span class="hljs-string">$"Assets/User/Setting.json"</span>;<br>File.WriteAllText(filePath, jsonData);<br></code></pre></td></tr></tbody></table></figure><p>也可以在建立前，新增判斷檢查資料夾是否建立</p><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> directoryPath = <span class="hljs-string">$"Assets/User"</span>;<br><span class="hljs-comment">// 檢查資料夾是否建立</span><br><span class="hljs-keyword">if</span> (!Directory.Exists(directoryPath))<br>{<br>   Directory.CreateDirectory(directoryPath);<br>}<br></code></pre></td></tr></tbody></table></figure><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>.NET</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>dotnet</tag>
+      
+      <tag>JsonSerializer</tag>
+      
+      <tag>Directory</tag>
+      
+      <tag>File</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Linux - Shell Script 備份檔案</title>
     <link href="/blog/LinuxShellBackup/"/>
     <url>/blog/LinuxShellBackup/</url>
@@ -374,11 +436,11 @@
     
     <tags>
       
+      <tag>dotnet</tag>
+      
       <tag>MiniExcel</tag>
       
       <tag>Excel</tag>
-      
-      <tag>dotnet</tag>
       
     </tags>
     
@@ -875,9 +937,9 @@
       
       <tag>IIS</tag>
       
-      <tag>Reverse Proxy</tag>
-      
       <tag>URL Rewrite</tag>
+      
+      <tag>Reverse Proxy</tag>
       
     </tags>
     

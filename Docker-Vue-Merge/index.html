@@ -16,28 +16,27 @@
   <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content=".NET MiniExcel 匯入資料準備1.NuGet 套件安裝 MiniExcel  準備完畢後在進行下一步  開始第一步、創建 ViewModel創建與 Excel 相同欄位名稱的 ViewModel    ExcelColumnName 需要與 Excel 欄位名稱相同  第二步、讀取 Excel 並塞入資料Query 查詢 Excel 返回強型別 IEnumerable 資料 12345">
+  <meta name="description" content="Vue 專案 Docker 化前言因後端專案逐漸 Docker 化，前端專案也來跟風處理。  準備註冊 Docker hub註冊網址：https:&#x2F;&#x2F;hub.docker.com&#x2F; 下載　Docker Desktop下載網址：https:&#x2F;&#x2F;docs.docker.com&#x2F;desktop&#x2F;install&#x2F;windows-install&#x2F; 安裝完畢後在進行下一步  開始一、建立 Dockerfile">
 <meta property="og:type" content="article">
-<meta property="og:title" content=".NET  MiniExcel 匯入資料">
-<meta property="og:url" content="https://hi-alan-liu.github.io/dotnet-miniexcel/index.html">
+<meta property="og:title" content="Vue 專案 Docker 化">
+<meta property="og:url" content="https://hi-alan-liu.github.io/Docker-Vue-Merge/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content=".NET MiniExcel 匯入資料準備1.NuGet 套件安裝 MiniExcel  準備完畢後在進行下一步  開始第一步、創建 ViewModel創建與 Excel 相同欄位名稱的 ViewModel    ExcelColumnName 需要與 Excel 欄位名稱相同  第二步、讀取 Excel 並塞入資料Query 查詢 Excel 返回強型別 IEnumerable 資料 12345">
+<meta property="og:description" content="Vue 專案 Docker 化前言因後端專案逐漸 Docker 化，前端專案也來跟風處理。  準備註冊 Docker hub註冊網址：https:&#x2F;&#x2F;hub.docker.com&#x2F; 下載　Docker Desktop下載網址：https:&#x2F;&#x2F;docs.docker.com&#x2F;desktop&#x2F;install&#x2F;windows-install&#x2F; 安裝完畢後在進行下一步  開始一、建立 Dockerfile">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dotnet-miniexcel/1679037848159.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dotnet-miniexcel/1679038144989.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dotnet-miniexcel/1679037963610.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dotnet-miniexcel/1679038627943.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Docker-Vue-Merge/1708943495204.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Docker-Vue-Merge/1708943480518.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
-<meta property="article:published_time" content="2023-03-17T08:50:00.000Z">
-<meta property="article:modified_time" content="2023-11-16T16:25:15.810Z">
+<meta property="article:published_time" content="2024-02-26T09:47:00.000Z">
+<meta property="article:modified_time" content="2024-02-26T13:20:22.078Z">
 <meta property="article:author" content="Alan Liu">
-<meta property="article:tag" content="dotnet">
-<meta property="article:tag" content="MiniExcel">
-<meta property="article:tag" content="Excel">
+<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Docker hub">
+<meta property="article:tag" content="Docker Images">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/dotnet-miniexcel/1679037848159.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/Docker-Vue-Merge/1708943495204.jpg">
   
-  <title>.NET  MiniExcel 匯入資料 - 劉穎｜Alan Liu</title>
+  <title>Vue 專案 Docker 化 - 劉穎｜Alan Liu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -180,7 +179,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title=".NET  MiniExcel 匯入資料">
+            <span class="h2" id="subtitle" title="Vue 專案 Docker 化">
               
             </span>
 
@@ -190,8 +189,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-03-17 16:50" pubdate>
-        2023年3月17日 下午
+      <time datetime="2024-02-26 17:47" pubdate>
+        2024年2月26日 下午
       </time>
     </span>
   
@@ -201,7 +200,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      578 字
+      884 字
     </span>
   
 
@@ -210,7 +209,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      3 分钟
     </span>
   
 
@@ -239,32 +238,44 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">.NET  MiniExcel 匯入資料</h1>
+            <h1 style="display: none">Vue 專案 Docker 化</h1>
             
             <div class="markdown-body">
-              <h1 id="NET-MiniExcel-匯入資料"><a href="#NET-MiniExcel-匯入資料" class="headerlink" title=".NET MiniExcel 匯入資料"></a>.NET MiniExcel 匯入資料</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>1.NuGet 套件安裝 MiniExcel</p>
-<p><img src="/blog/dotnet-miniexcel/1679037848159.jpg" srcset="/blog/img/loading.gif" lazyload alt="安裝 MiniExcel"></p>
-<p><em>準備完畢後在進行下一步</em></p>
+              <h1 id="Vue-專案-Docker-化"><a href="#Vue-專案-Docker-化" class="headerlink" title="Vue 專案 Docker 化"></a>Vue 專案 Docker 化</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因後端專案逐漸 Docker 化，前端專案也來跟風處理。</p>
 <hr>
-<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、創建-ViewModel"><a href="#第一步、創建-ViewModel" class="headerlink" title="第一步、創建 ViewModel"></a>第一步、創建 ViewModel</h3><p>創建與 Excel 相同欄位名稱的 ViewModel</p>
-<p><img src="/blog/dotnet-miniexcel/1679038144989.jpg" srcset="/blog/img/loading.gif" lazyload alt="Excel 範例"></p>
-<p><img src="/blog/dotnet-miniexcel/1679037963610.jpg" srcset="/blog/img/loading.gif" lazyload alt="創建 ViewModel"></p>
+<h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>註冊 Docker hub<br>註冊網址：<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p>下載　Docker Desktop<br>下載網址：<a target="_blank" rel="noopener" href="https://docs.docker.com/desktop/install/windows-install/">https://docs.docker.com/desktop/install/windows-install/</a></p>
+<p><em>安裝完畢後在進行下一步</em></p>
+<hr>
+<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-Dockerfile"><a href="#一、建立-Dockerfile" class="headerlink" title="一、建立 Dockerfile"></a>一、建立 Dockerfile</h3><figure class="highlight dockerfile"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs Dockerfile"><span class="hljs-keyword">FROM</span> node:<span class="hljs-number">18</span> as build-stage<br><span class="hljs-keyword">WORKDIR</span><span class="language-bash"> /app</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> package*.json ./</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm install</span><br><span class="hljs-keyword">COPY</span><span class="language-bash"> . .</span><br><span class="hljs-keyword">RUN</span><span class="language-bash"> npm run build</span><br><br><span class="hljs-keyword">FROM</span> nginx as production-stage<br><span class="hljs-keyword">COPY</span><span class="language-bash"> --from=build-stage /app/dist /usr/share/nginx/html</span><br><span class="hljs-keyword">EXPOSE</span> <span class="hljs-number">80</span><br><span class="hljs-keyword">CMD</span><span class="language-bash"> [<span class="hljs-string">"nginx"</span>, <span class="hljs-string">"-g"</span>, <span class="hljs-string">"daemon off;"</span>]</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/blog/Docker-Vue-Merge/1708943495204.jpg" srcset="/blog/img/loading.gif" lazyload alt="Dockerfile 範例"></p>
+<p>我們利用 Docker 多階段建構來完成建置</p>
 <ul>
-<li>ExcelColumnName 需要與 Excel 欄位名稱相同</li>
+<li>處理vue.js專案建置與打包 </li>
+<li>處理 Nginx 設定並將 Vue.js 打包好的專案進行複製</li>
 </ul>
-<h3 id="第二步、讀取-Excel-並塞入資料"><a href="#第二步、讀取-Excel-並塞入資料" class="headerlink" title="第二步、讀取 Excel 並塞入資料"></a>第二步、讀取 Excel 並塞入資料</h3><p>Query 查詢 Excel 返回強型別 IEnumerable 資料</p>
-<figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> rows = MiniExcel.Query&lt;ViewModel&gt;(path);<br><br><span class="hljs-comment">// or</span><br><br><span class="hljs-keyword">using</span> (<span class="hljs-keyword">var</span> stream = File.OpenRead(path))<br>    <span class="hljs-keyword">var</span> rows = stream.Query&lt;ViewModel&gt;();<br></code></pre></td></tr></tbody></table></figure>
+<p>npm run build 可根據 package Scripts 進行更動</p>
+<h3 id="二、執行指令並測試"><a href="#二、執行指令並測試" class="headerlink" title="二、執行指令並測試"></a>二、執行指令並測試</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell#">docker build -t dockerize-vuejs-app .<br></code></pre></td></tr></tbody></table></figure>
 
-<p><img src="/blog/dotnet-miniexcel/1679038627943.jpg" srcset="/blog/img/loading.gif" lazyload alt="獲得 Excel 資料"></p>
-<p>這樣就可以獲得 Excel 內的資料</p>
-<h3 id="補充、將欄位相同的資料整理好"><a href="#補充、將欄位相同的資料整理好" class="headerlink" title="補充、將欄位相同的資料整理好"></a>補充、將欄位相同的資料整理好</h3><figure class="highlight c#"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs C#"><span class="hljs-keyword">var</span> empoyeeList = rows.GroupBy(x =&gt; x.EmployeeId).Select(x =&gt; <span class="hljs-keyword">new</span><br>{<br>  EmployeeId = x.Key,<br>  Questions = x.Select(a =&gt; <span class="hljs-keyword">new</span> { a.QuestionCode, a.Answer, a.ResponseAt })<br>}).ToList();<br></code></pre></td></tr></tbody></table></figure>
+<p>vuejs-cookbook/dockerize-vuejs-app 為打包的成 Docker Images 的名稱</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell#">docker images<br></code></pre></td></tr></tbody></table></figure>
 
-<p>如此就能將相同 EmployeeId 的資料合併再一起。</p>
-<p>今天的分享就到此結束</p>
+<p>輸入 Docker Images 可查看打包好的Images</p>
+<p><img src="/blog/Docker-Vue-Merge/1708943480518.jpg" srcset="/blog/img/loading.gif" lazyload alt="Docker Images"></p>
+<p>運行 Images</p>
+<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell#">docker run -d -p 8080:80 --rm --name dockerize-vuejs-app-1 vuejs-cookbook/dockerize-vuejs-app<br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>-d</code>: 為背景執行</p>
+<p><code>-p</code>: 設定 Port</p>
+<p><code>--name</code>: 設定 Containers 名稱</p>
+<p>之後打開瀏覽器進入 <a target="_blank" rel="noopener" href="http://localhost:8080/">http://localhost:8080/</a></p>
+<p>有出現專案就完成囉 !</p>
+<p>今天的教學就到此</p>
 <h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr>
 <p>參考</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://github.com/mini-software/MiniExcel">MiniExcel</a></li>
+<li><a target="_blank" rel="noopener" href="https://v2.vuejs.org/v2/cookbook/dockerize-vuejs-app">Dockerize Vue.js App</a></li>
 </ul>
 
             </div>
@@ -275,7 +286,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/blog/categories/NET/"> .NET</a>
+                      <a class="hover-with-bg" href="/blog/categories/Docker/">Docker</a>
                     
                   </div>
                 
@@ -283,11 +294,13 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/dotnet/">dotnet</a>
+                      <a class="hover-with-bg" href="/blog/tags/Vue-js/">Vue.js</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/MiniExcel/">MiniExcel</a>
+                      <a class="hover-with-bg" href="/blog/tags/Docker/">Docker</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/Excel/">Excel</a>
+                      <a class="hover-with-bg" href="/blog/tags/Docker-hub/">Docker hub</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Docker-Images/">Docker Images</a>
                     
                   </div>
                 
@@ -295,7 +308,7 @@
               
                 <p class="note note-warning">
                   <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/dotnet-miniexcel/">https://hi-alan-liu.github.io/blog/dotnet-miniexcel/</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/Docker-Vue-Merge/">https://hi-alan-liu.github.io/blog/Docker-Vue-Merge/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -304,18 +317,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/Python-Beautiful-Soup/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Python 使用 BeautifulSoup 解析頁面資料</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/Script-deploy/">
-                        <span class="hidden-mobile">Package Script 新增自動佈署指令</span>
+                      <a href="/blog/DotnetFileReadAndWrite/">
+                        <span class="hidden-mobile">.NET - 本地檔案讀取及寫入</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -337,8 +344,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/dotnet-miniexcel/';
-          this.page.identifier = '/blog/dotnet-miniexcel/';
+          this.page.url = 'https://hi-alan-liu.github.io/Docker-Vue-Merge/';
+          this.page.identifier = '/blog/Docker-Vue-Merge/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
