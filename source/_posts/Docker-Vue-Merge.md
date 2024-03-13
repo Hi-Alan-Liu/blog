@@ -99,3 +99,5 @@ vuejs-cookbook/dockerize-vuejs-app 為打包的成 Docker Images 的名稱
 參考
 
 - [Dockerize Vue.js App](https://v2.vuejs.org/v2/cookbook/dockerize-vuejs-app)
+
+- [在 Docker 容器中使用 Nginx 部署你的应用](https://cli.vuejs.org/zh/guide/deployment.html#docker-nginx)
