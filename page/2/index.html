@@ -189,6 +189,68 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/blog/Docker-Containers-Restart/" target="_self">
+          Docker 設定容器自動重啟
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Docker-Containers-Restart/" target="_self">
+          
+          
+            
+          
+          Docker 設定容器自動重啟前言因 Windows 系統定期會重新啟動，所以需設置 Docker container (容器) 能夠自動啟動。
+避免 server 無運作等問題。
+開始第一步、確認 Container ID在使用指令前 先使用 Docker PS 查看執行中的容器ID
+1docker ps
+
+
+第二步、設定 Container 重啟策略使用指令設定 Container (容器) 
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-10-13 12:00" pubdate>
+              2023-10-13
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Docker/">Docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Docker/">Docker</a>
+            
+              <a href="/blog/tags/Container/">Container</a>
+            
+              <a href="/blog/tags/Restart/">Restart</a>
+            
+              <a href="/blog/tags/Policy/">Policy</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/blog/ruby-mailer/" target="_self">
           Ruby 信件功能及本地瀏覽
         </a>
@@ -743,71 +805,6 @@ myserver.cer :
               <a href="/blog/tags/IIS/">IIS</a>
             
               <a href="/blog/tags/Certificate/">Certificate</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/blog/Docker-Container-exec/" target="_self">
-          Docker 進入容器並進行操作
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/blog/Docker-Container-exec/" target="_self">
-          
-          
-            
-          
-          Docker 進入容器並進行操作前言Docker container(容器) 運行時，某些時候需要進入容器進行操作，因此紀錄操作方法及過程。
-開始一、使用指令進入容器在使用指令前 先使用 ps 查看執行中的容器
-1docker ps
-
-
-使用 exec 進入容器
-1docker exec -ti "CONTAINER ID" bash
-
-CONTAINER ID: 為容器的 ID
--i : 保持打
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-10-28 17:34" pubdate>
-              2022-10-28
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/blog/categories/Docker/">Docker</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/blog/tags/Docker/">Docker</a>
-            
-              <a href="/blog/tags/Container/">Container</a>
-            
-              <a href="/blog/tags/docker-exec/">docker exec</a>
-            
-              <a href="/blog/tags/vim/">vim</a>
             
           </div>
         

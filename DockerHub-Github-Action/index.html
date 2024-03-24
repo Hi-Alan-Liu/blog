@@ -16,28 +16,33 @@
   <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content="IIS 架設 vue 站台前言待補!  準備IIS URL Rewrite下載網址：https:&#x2F;&#x2F;www.iis.net&#x2F;downloads&#x2F;microsoft&#x2F;url-rewrite 安裝完畢後在進行下一步  開始第一步 建立web.config為了讓 IIS 能夠配置 vue-router我們需要一份 web.config 官方範例 Vue Router 123456789101112131">
+  <meta name="description" content="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署前言因後端專案逐漸 Docker 化，前端專案也來跟風處理。  準備註冊 Docker hub網址：https:&#x2F;&#x2F;hub.docker.com&#x2F; 註冊 GitHub網址：https:&#x2F;&#x2F;github.com&#x2F; 一個 Docker 化的專案本篇範例：https:&#x2F;&#x2F;github.com&#x2F;Hi-Alan-Liu&#x2F;dock">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IIS 架設 VUE 站台">
-<meta property="og:url" content="https://hi-alan-liu.github.io/IIS-VUE/index.html">
+<meta property="og:title" content="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署">
+<meta property="og:url" content="https://hi-alan-liu.github.io/DockerHub-Github-Action/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content="IIS 架設 vue 站台前言待補!  準備IIS URL Rewrite下載網址：https:&#x2F;&#x2F;www.iis.net&#x2F;downloads&#x2F;microsoft&#x2F;url-rewrite 安裝完畢後在進行下一步  開始第一步 建立web.config為了讓 IIS 能夠配置 vue-router我們需要一份 web.config 官方範例 Vue Router 123456789101112131">
+<meta property="og:description" content="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署前言因後端專案逐漸 Docker 化，前端專案也來跟風處理。  準備註冊 Docker hub網址：https:&#x2F;&#x2F;hub.docker.com&#x2F; 註冊 GitHub網址：https:&#x2F;&#x2F;github.com&#x2F; 一個 Docker 化的專案本篇範例：https:&#x2F;&#x2F;github.com&#x2F;Hi-Alan-Liu&#x2F;dock">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_1.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_2.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_3.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711294253296.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711295086499.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/messageImage_1711295596311.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711294516622.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711294929554.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711296512499.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711296738243.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
-<meta property="article:published_time" content="2022-05-05T07:34:00.000Z">
-<meta property="article:modified_time" content="2023-11-16T16:25:15.760Z">
+<meta property="article:published_time" content="2024-03-24T15:23:00.000Z">
+<meta property="article:modified_time" content="2024-03-24T16:19:21.162Z">
 <meta property="article:author" content="Alan Liu">
-<meta property="article:tag" content="IIS">
-<meta property="article:tag" content="web.config">
-<meta property="article:tag" content="URL Rewrite">
-<meta property="article:tag" content="Vue Router">
+<meta property="article:tag" content="DockerHub">
+<meta property="article:tag" content="Github Action">
+<meta property="article:tag" content="Build">
+<meta property="article:tag" content="CI&#x2F;CD">
+<meta property="article:tag" content="Images">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/IIS-VUE/1651734577669_1.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/1711294253296.jpg">
   
-  <title>IIS 架設 VUE 站台 - 劉穎｜Alan Liu</title>
+  <title>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署 - 劉穎｜Alan Liu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -180,7 +185,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="IIS 架設 VUE 站台">
+            <span class="h2" id="subtitle" title="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署">
               
             </span>
 
@@ -190,8 +195,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-05-05 15:34" pubdate>
-        2022年5月5日 下午
+      <time datetime="2024-03-24 23:23" pubdate>
+        2024年3月24日 晚上
       </time>
     </span>
   
@@ -201,7 +206,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      1.1k 字
+      2.2k 字
     </span>
   
 
@@ -210,7 +215,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      7 分钟
     </span>
   
 
@@ -239,35 +244,52 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">IIS 架設 VUE 站台</h1>
+            <h1 style="display: none">使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</h1>
             
             <div class="markdown-body">
-              <h1 id="IIS-架設-vue-站台"><a href="#IIS-架設-vue-站台" class="headerlink" title="IIS 架設 vue 站台"></a>IIS 架設 vue 站台</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>待補!</p>
+              <h1 id="使用-Github-Action-將-Docker-化的專案進行打包、上傳並佈署"><a href="#使用-Github-Action-將-Docker-化的專案進行打包、上傳並佈署" class="headerlink" title="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署"></a>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因後端專案逐漸 Docker 化，前端專案也來跟風處理。</p>
 <hr>
-<h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>IIS</p>
-<p>URL Rewrite<br>下載網址：<a target="_blank" rel="noopener" href="https://www.iis.net/downloads/microsoft/url-rewrite">https://www.iis.net/downloads/microsoft/url-rewrite</a></p>
-<p><em>安裝完畢後在進行下一步</em></p>
+<h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>註冊 Docker hub<br>網址：<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p>註冊 GitHub<br>網址：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+<p>一個 Docker 化的專案<br>本篇範例：<a target="_blank" rel="noopener" href="https://github.com/Hi-Alan-Liu/docker-vue">https://github.com/Hi-Alan-Liu/docker-vue</a></p>
+<p><em>準備完畢後在進行下一步</em></p>
 <hr>
-<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步-建立web-config"><a href="#第一步-建立web-config" class="headerlink" title="第一步 建立web.config"></a>第一步 建立web.config</h3><p>為了讓 IIS 能夠配置 vue-router<br>我們需要一份 web.config</p>
-<p>官方範例 <a target="_blank" rel="noopener" href="https://router.vuejs.org/guide/essentials/history-mode.html#internet-information-services-iis">Vue Router</a></p>
-<figure class="highlight xml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs xml"><span class="hljs-meta">&lt;?xml version=<span class="hljs-string">"1.0"</span> encoding=<span class="hljs-string">"UTF-8"</span>?&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">configuration</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">system.webServer</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">rewrite</span>&gt;</span><br>      <span class="hljs-tag">&lt;<span class="hljs-name">rules</span>&gt;</span><br>        <span class="hljs-tag">&lt;<span class="hljs-name">rule</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"Handle History Mode and custom 404/500"</span> <span class="hljs-attr">stopProcessing</span>=<span class="hljs-string">"true"</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">match</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"(.*)"</span> /&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">conditions</span> <span class="hljs-attr">logicalGrouping</span>=<span class="hljs-string">"MatchAll"</span>&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">input</span>=<span class="hljs-string">"{REQUEST_FILENAME}"</span> <span class="hljs-attr">matchType</span>=<span class="hljs-string">"IsFile"</span> <span class="hljs-attr">negate</span>=<span class="hljs-string">"true"</span> /&gt;</span><br>            <span class="hljs-tag">&lt;<span class="hljs-name">add</span> <span class="hljs-attr">input</span>=<span class="hljs-string">"{REQUEST_FILENAME}"</span> <span class="hljs-attr">matchType</span>=<span class="hljs-string">"IsDirectory"</span> <span class="hljs-attr">negate</span>=<span class="hljs-string">"true"</span> /&gt;</span><br>          <span class="hljs-tag">&lt;/<span class="hljs-name">conditions</span>&gt;</span><br>          <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"Rewrite"</span> <span class="hljs-attr">url</span>=<span class="hljs-string">"/"</span> /&gt;</span><br>        <span class="hljs-tag">&lt;/<span class="hljs-name">rule</span>&gt;</span><br>      <span class="hljs-tag">&lt;/<span class="hljs-name">rules</span>&gt;</span><br>    <span class="hljs-tag">&lt;/<span class="hljs-name">rewrite</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">system.webServer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">configuration</span>&gt;</span><br></code></pre></td></tr></tbody></table></figure>
+<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-Github-Action"><a href="#一、建立-Github-Action" class="headerlink" title="一、建立 Github Action"></a>一、建立 Github Action</h3><p>從 Github 專案頁面點選 Actions </p>
+<p>並選擇 Docker images</p>
+<p><img src="/blog/DockerHub-Github-Action/1711294253296.jpg" srcset="/blog/img/loading.gif" lazyload alt="Action 範例"></p>
+<p>撰寫待會需要執行的 yml 檔案</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Image</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">Deploy</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span> [<span class="hljs-string">"main"</span>]<br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">code</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Login</span> <span class="hljs-string">to</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Hub</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/login-action@v1</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">username:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_USERNAME</span> <span class="hljs-string">}}</span><br>          <span class="hljs-attr">password:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_ACCESS_TOKEN</span> <span class="hljs-string">}}</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">push</span> <span class="hljs-string">Docker</span> <span class="hljs-string">image</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/build-push-action@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">context:</span> <span class="hljs-string">.</span><br>          <span class="hljs-attr">push:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">tags:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_USERNAME</span> <span class="hljs-string">}}/${{</span> <span class="hljs-string">secrets.DOCKER_HUB_PROJECT</span> <span class="hljs-string">}}:latest</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">Docker</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          echo "${{ secrets.DEPLOY_SSH_KEY }}" &gt; private_key &amp;&amp; chmod 600 private_key</span><br><span class="hljs-string">          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_IP }} '</span><br><span class="hljs-string">            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_PROJECT }}:latest</span><br><span class="hljs-string">            sudo docker stop ${{ secrets.DOCKER_HUB_PROJECT }}</span><br><span class="hljs-string">            sudo docker run -d  --rm --name ${{ secrets.DOCKER_HUB_PROJECT }} -p 2083:80 ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_PROJECT }}:latest</span><br><span class="hljs-string">          '</span><br></code></pre></td></tr></tbody></table></figure>
 
-<p>並將此檔案儲存至 vue.js 專案的 public 底下<br>這樣一來，每次建置的時候就會自動將 web.config 產生至 dist 資料夾</p>
-<p><img src="/blog/IIS-VUE/1651734577669_1.jpg" srcset="/blog/img/loading.gif" lazyload alt="web.config 存至 public 底下"></p>
-<h3 id="第二步-建置專案"><a href="#第二步-建置專案" class="headerlink" title="第二步 建置專案"></a>第二步 建置專案</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs npm">npm run build<br></code></pre></td></tr></tbody></table></figure>
-
-<p><img src="/blog/IIS-VUE/1651734577669_2.jpg" srcset="/blog/img/loading.gif" lazyload alt="建置完成範例圖"></p>
-<h3 id="第三步-設定-IIS"><a href="#第三步-設定-IIS" class="headerlink" title="第三步 設定 IIS"></a>第三步 設定 IIS</h3><p><img src="/blog/IIS-VUE/1651734577669_3.jpg" srcset="/blog/img/loading.gif" lazyload alt="新增網站"></p>
-<p>實體路徑需指定到佈署產生的 dist 資</p>
-<p>如果沒有domain主機名稱可為空</p>
-<p>設定完成後，即可測試 vue 站台是否架設成功</p>
-<h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr>
-<p>參考</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://router.vuejs.org/guide/essentials/history-mode.html">Vue Router</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.linkedin.com/pulse/hosting-vue-js-spa-build-microsoft-iis-zainul-zain">Hosting Vue JS SPA build on Microsoft IIS</a></li>
-</ul>
-
+<p>此篇範例是使用 docker/login-action@v1 進行登入</p>
+<p>接著執行 docker/build-push-action@v2</p>
+<p>將專案打包並更新至 DockerHub</p>
+<p>最後使用 ssh 連上雲端主機</p>
+<p>進行 Docker pull 及 run 等等指令</p>
+<p><img src="/blog/DockerHub-Github-Action/1711295086499.jpg" srcset="/blog/img/loading.gif" lazyload alt="Yml 範例"></p>
+<p>儲存 Commit 後， Action 會開始自動執行</p>
+<p>目前一定會顯示執行失敗</p>
+<p><img src="/blog/DockerHub-Github-Action/messageImage_1711295596311.jpg" srcset="/blog/img/loading.gif" lazyload alt="失敗範例"></p>
+<p>原因是因為我們沒有將 secrets 相關的 Key Value 設定上去</p>
+<h3 id="二、設定-Github-secrets"><a href="#二、設定-Github-secrets" class="headerlink" title="二、設定 Github secrets"></a>二、設定 Github secrets</h3><p>從 Github 專案頁面點選 Settings</p>
+<p>接著點 Secrets and variables &gt; Actions</p>
+<p><img src="/blog/DockerHub-Github-Action/1711294516622.jpg" srcset="/blog/img/loading.gif" lazyload alt="Settings 範例"></p>
+<p>接下來點選 New repository secret</p>
+<p>將 Action 會使用到的參數全部填入</p>
+<p><img src="/blog/DockerHub-Github-Action/1711294929554.jpg" srcset="/blog/img/loading.gif" lazyload alt="參數範例"></p>
+<p>本篇範例會使用到</p>
+<p><code>DOCKER_HUB_USERNAME</code>: DockerHub Username</p>
+<p><code>DOCKER_HUB_ACCESS_TOKEN</code>: DockerHub Token</p>
+<p><code>DOCKER_HUB_PROJECT</code>: DockerHub 專案名稱</p>
+<p><code>DEPLOY_SSH_IP</code>: 雲端主機的公開IP位置</p>
+<p><code>DEPLOY_SSH_KEY</code>: 雲端主機的 Private Key</p>
+<p><code>DEPLOY_SSH_USER</code>: 雲端主機的使用者名稱</p>
+<p><img src="/blog/DockerHub-Github-Action/1711296512499.jpg" srcset="/blog/img/loading.gif" lazyload alt="DOCKER_HUB_ACCESS_TOKEN"></p>
+<p>DOCKER_HUB_ACCESS_TOKEN 可以從 DockerHub Account &gt; Security 裡面建立 Access Tokens</p>
+<h3 id="三、重新執行-Github-Action"><a href="#三、重新執行-Github-Action" class="headerlink" title="三、重新執行 Github Action"></a>三、重新執行 Github Action</h3><p>從 Github Actino 點選 Re-run jobs 就可以重新執行剛剛的失敗的 Action</p>
+<p><img src="/blog/DockerHub-Github-Action/1711296738243.jpg" srcset="/blog/img/loading.gif" lazyload alt="Github Action"></p>
+<p>之後等他執行完成基本上就成功囉 ~</p>
+<p>今天的教學就到此</p>
+<h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>
             </div>
             <hr>
             <div>
@@ -276,7 +298,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/blog/categories/IIS/">IIS</a>
+                      <a class="hover-with-bg" href="/blog/categories/Docker/">Docker</a>
                     
                   </div>
                 
@@ -284,13 +306,15 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/IIS/">IIS</a>
+                      <a class="hover-with-bg" href="/blog/tags/DockerHub/">DockerHub</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/web-config/">web.config</a>
+                      <a class="hover-with-bg" href="/blog/tags/Github-Action/">Github Action</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/URL-Rewrite/">URL Rewrite</a>
+                      <a class="hover-with-bg" href="/blog/tags/Build/">Build</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/Vue-Router/">Vue Router</a>
+                      <a class="hover-with-bg" href="/blog/tags/CI-CD/">CI/CD</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Images/">Images</a>
                     
                   </div>
                 
@@ -298,7 +322,7 @@
               
                 <p class="note note-warning">
                   <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/IIS-VUE/">https://hi-alan-liu.github.io/blog/IIS-VUE/</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/">https://hi-alan-liu.github.io/blog/DockerHub-Github-Action/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -307,18 +331,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/Nginx-configure/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Nginx 常用配置</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/IIS-Proxy/">
-                        <span class="hidden-mobile">IIS 實現反向代理</span>
+                      <a href="/blog/Dotnet-Database-Index/">
+                        <span class="hidden-mobile">.NET - 新增資料庫索引</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -340,8 +358,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/IIS-VUE/';
-          this.page.identifier = '/blog/IIS-VUE/';
+          this.page.url = 'https://hi-alan-liu.github.io/DockerHub-Github-Action/';
+          this.page.identifier = '/blog/DockerHub-Github-Action/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');

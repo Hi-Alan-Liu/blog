@@ -189,6 +189,71 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/blog/Docker-Container-exec/" target="_self">
+          Docker 進入容器並進行操作
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/Docker-Container-exec/" target="_self">
+          
+          
+            
+          
+          Docker 進入容器並進行操作前言Docker container(容器) 運行時，某些時候需要進入容器進行操作，因此紀錄操作方法及過程。
+開始一、使用指令進入容器在使用指令前 先使用 ps 查看執行中的容器
+1docker ps
+
+
+使用 exec 進入容器
+1docker exec -ti "CONTAINER ID" bash
+
+CONTAINER ID: 為容器的 ID
+-i : 保持打
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2022-10-28 17:34" pubdate>
+              2022-10-28
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Docker/">Docker</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Docker/">Docker</a>
+            
+              <a href="/blog/tags/Container/">Container</a>
+            
+              <a href="/blog/tags/docker-exec/">docker exec</a>
+            
+              <a href="/blog/tags/vim/">vim</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/blog/Docker-hub-Images-push/" target="_self">
           Docker 生成 Images 並更新至 Docker Hub
         </a>
@@ -718,66 +783,6 @@ macOS 版本安裝方式：https://redis.io/docs/getting-started/installation/in
               <a href="/blog/tags/CSR/">CSR</a>
             
               <a href="/blog/tags/NAME-COM/">NAME.COM</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/blog/logrotate-configure/" target="_self">
-          logrotate 基本配置
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/blog/logrotate-configure/" target="_self">
-          
-          
-            
-          
-          logrotate 基本配置前言使用 Linux 內建的 logrotate 工具，定期清空和壓縮 Log 檔案。Log 沒有做 rotate ，Log 檔案將會不斷成長到撐爆空間。
-第一步、 移動到 Logrotate.d 資料夾1cd /etc/logrotate.d
-
-第二步、 建立檔案1sudo vi **project_name**
-
-
-project_name 請填入專案名稱，方便辨識
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2022-05-19 16:19" pubdate>
-              2022-05-19
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/blog/categories/Linux/">Linux</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/blog/tags/Linux/">Linux</a>
-            
-              <a href="/blog/tags/logrotate/">logrotate</a>
-            
-              <a href="/blog/tags/log/">log</a>
             
           </div>
         

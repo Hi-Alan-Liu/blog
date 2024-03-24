@@ -4,6 +4,39 @@
   
   
   <entry>
+    <title>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</title>
+    <link href="/blog/DockerHub-Github-Action/"/>
+    <url>/blog/DockerHub-Github-Action/</url>
+    
+    <content type="html"><![CDATA[<h1 id="使用-Github-Action-將-Docker-化的專案進行打包、上傳並佈署"><a href="#使用-Github-Action-將-Docker-化的專案進行打包、上傳並佈署" class="headerlink" title="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署"></a>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因後端專案逐漸 Docker 化，前端專案也來跟風處理。</p><hr><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>註冊 Docker hub<br>網址：<a href="https://hub.docker.com/">https://hub.docker.com/</a></p><p>註冊 GitHub<br>網址：<a href="https://github.com/">https://github.com/</a></p><p>一個 Docker 化的專案<br>本篇範例：<a href="https://github.com/Hi-Alan-Liu/docker-vue">https://github.com/Hi-Alan-Liu/docker-vue</a></p><p><em>準備完畢後在進行下一步</em></p><hr><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-Github-Action"><a href="#一、建立-Github-Action" class="headerlink" title="一、建立 Github Action"></a>一、建立 Github Action</h3><p>從 Github 專案頁面點選 Actions </p><p>並選擇 Docker images</p><p><img src="/blog/DockerHub-Github-Action/1711294253296.jpg" alt="Action 範例"></p><p>撰寫待會需要執行的 yml 檔案</p><figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Image</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">Deploy</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span> [<span class="hljs-string">"main"</span>]<br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">code</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Login</span> <span class="hljs-string">to</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Hub</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/login-action@v1</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">username:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_USERNAME</span> <span class="hljs-string">}}</span><br>          <span class="hljs-attr">password:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_ACCESS_TOKEN</span> <span class="hljs-string">}}</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">push</span> <span class="hljs-string">Docker</span> <span class="hljs-string">image</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/build-push-action@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">context:</span> <span class="hljs-string">.</span><br>          <span class="hljs-attr">push:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">tags:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_USERNAME</span> <span class="hljs-string">}}/${{</span> <span class="hljs-string">secrets.DOCKER_HUB_PROJECT</span> <span class="hljs-string">}}:latest</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">Docker</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          echo "${{ secrets.DEPLOY_SSH_KEY }}" &gt; private_key &amp;&amp; chmod 600 private_key</span><br><span class="hljs-string">          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_IP }} '</span><br><span class="hljs-string">            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_PROJECT }}:latest</span><br><span class="hljs-string">            sudo docker stop ${{ secrets.DOCKER_HUB_PROJECT }}</span><br><span class="hljs-string">            sudo docker run -d  --rm --name ${{ secrets.DOCKER_HUB_PROJECT }} -p 2083:80 ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_PROJECT }}:latest</span><br><span class="hljs-string">          '</span><br></code></pre></td></tr></tbody></table></figure><p>此篇範例是使用 docker/login-action@v1 進行登入</p><p>接著執行 docker/build-push-action@v2</p><p>將專案打包並更新至 DockerHub</p><p>最後使用 ssh 連上雲端主機</p><p>進行 Docker pull 及 run 等等指令</p><p><img src="/blog/DockerHub-Github-Action/1711295086499.jpg" alt="Yml 範例"></p><p>儲存 Commit 後， Action 會開始自動執行</p><p>目前一定會顯示執行失敗</p><p><img src="/blog/DockerHub-Github-Action/messageImage_1711295596311.jpg" alt="失敗範例"></p><p>原因是因為我們沒有將 secrets 相關的 Key Value 設定上去</p><h3 id="二、設定-Github-secrets"><a href="#二、設定-Github-secrets" class="headerlink" title="二、設定 Github secrets"></a>二、設定 Github secrets</h3><p>從 Github 專案頁面點選 Settings</p><p>接著點 Secrets and variables &gt; Actions</p><p><img src="/blog/DockerHub-Github-Action/1711294516622.jpg" alt="Settings 範例"></p><p>接下來點選 New repository secret</p><p>將 Action 會使用到的參數全部填入</p><p><img src="/blog/DockerHub-Github-Action/1711294929554.jpg" alt="參數範例"></p><p>本篇範例會使用到</p><p><code>DOCKER_HUB_USERNAME</code>: DockerHub Username</p><p><code>DOCKER_HUB_ACCESS_TOKEN</code>: DockerHub Token</p><p><code>DOCKER_HUB_PROJECT</code>: DockerHub 專案名稱</p><p><code>DEPLOY_SSH_IP</code>: 雲端主機的公開IP位置</p><p><code>DEPLOY_SSH_KEY</code>: 雲端主機的 Private Key</p><p><code>DEPLOY_SSH_USER</code>: 雲端主機的使用者名稱</p><p><img src="/blog/DockerHub-Github-Action/1711296512499.jpg" alt="DOCKER_HUB_ACCESS_TOKEN"></p><p>DOCKER_HUB_ACCESS_TOKEN 可以從 DockerHub Account &gt; Security 裡面建立 Access Tokens</p><h3 id="三、重新執行-Github-Action"><a href="#三、重新執行-Github-Action" class="headerlink" title="三、重新執行 Github Action"></a>三、重新執行 Github Action</h3><p>從 Github Actino 點選 Re-run jobs 就可以重新執行剛剛的失敗的 Action</p><p><img src="/blog/DockerHub-Github-Action/1711296738243.jpg" alt="Github Action"></p><p>之後等他執行完成基本上就成功囉 ~</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>Docker</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>DockerHub</tag>
+      
+      <tag>Github Action</tag>
+      
+      <tag>Build</tag>
+      
+      <tag>CI/CD</tag>
+      
+      <tag>Images</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>.NET - 新增資料庫索引</title>
     <link href="/blog/Dotnet-Database-Index/"/>
     <url>/blog/Dotnet-Database-Index/</url>
@@ -937,9 +970,9 @@
       
       <tag>IIS</tag>
       
-      <tag>URL Rewrite</tag>
-      
       <tag>web.config</tag>
+      
+      <tag>URL Rewrite</tag>
       
       <tag>Vue Router</tag>
       
