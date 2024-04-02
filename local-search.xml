@@ -4,6 +4,37 @@
   
   
   <entry>
+    <title>Windows OpenSSH 使用 Authorized Keys 登入的方法</title>
+    <link href="/blog/Windows-OpenSSH-Authorized-Keys/"/>
+    <url>/blog/Windows-OpenSSH-Authorized-Keys/</url>
+    
+    <content type="html"><![CDATA[<h1 id="Windows-OpenSSH-使用-Authorized-Keys-登入的方法"><a href="#Windows-OpenSSH-使用-Authorized-Keys-登入的方法" class="headerlink" title="Windows OpenSSH 使用 Authorized Keys 登入的方法"></a>Windows OpenSSH 使用 Authorized Keys 登入的方法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>因環境需求我們需要架設一台 Windows 主機讓我們遠端使用，<br>每次遠端都需要輸入密碼很麻煩，因此使用 Authorized Keys 免手輸密碼直接登入，</p><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>1.下載並安裝 FileZilla : <a href="https://filezilla-project.org/">https://filezilla-project.org/</a></p><p><img src="/blog/Windows-OpenSSH-Authorized-Keys/1712080597425.jpg" alt="FileZilla"></p><p>2.準備 SSH Key，可直接使用指令進行建立</p><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="建立-administrators-authorized-keys"><a href="#建立-administrators-authorized-keys" class="headerlink" title="建立 administrators_authorized_keys"></a>建立 administrators_authorized_keys</h3><p>首先我們要先建立一個名為 administrators_authorized_keys 的檔案</p><p>之後將 ssh-keygen 產生出來的公鑰 <code>xxx.pub</code> 貼近此檔案內</p><h3 id="使用-FileZilla-上傳-administrators-authorized-keys"><a href="#使用-FileZilla-上傳-administrators-authorized-keys" class="headerlink" title="使用 FileZilla 上傳 administrators_authorized_keys"></a>使用 FileZilla 上傳 administrators_authorized_keys</h3><p>接著我們使用 FileZilla 進行連線</p><p>協定選擇 <code>SFTP</code>  登入型式 <code>一般</code></p><p><img src="/blog/Windows-OpenSSH-Authorized-Keys/1712055388767.jpg" alt="FileZilla"></p><p>連上主機後</p><p>我們將位置移動到 <code>C:/ProgramData/ssh</code></p><p><img src="/blog/Windows-OpenSSH-Authorized-Keys/1712081530904.jpg" alt="上傳的位置"></p><p>並將 administrators_authorized_keys 上傳上去</p><p>基本上這樣就可以使用 ssh 連線測試囉</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><p><a href="https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement?WT.mc_id=DOP-MVP-37580#administrative-user">Administrative user</a></p></li><li><p><a href="https://xenby.com/b/220-%E6%95%99%E5%AD%B8-%E7%94%A2%E7%94%9Fssh-key%E4%B8%A6%E4%B8%94%E9%80%8F%E9%81%8Ekey%E9%80%B2%E8%A1%8C%E5%85%8D%E5%AF%86%E7%A2%BC%E7%99%BB%E5%85%A5">產生SSH Key並且透過KEY進行免密碼登入</a></p></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Windows</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>OpenSSh</tag>
+      
+      <tag>FileZilla</tag>
+      
+      <tag>Authorized Keys</tag>
+      
+      <tag>ssh-ketgen</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</title>
     <link href="/blog/DockerHub-Github-Action/"/>
     <url>/blog/DockerHub-Github-Action/</url>
