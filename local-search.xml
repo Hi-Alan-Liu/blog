@@ -4,6 +4,35 @@
   
   
   <entry>
+    <title>.NET - Swagger 設定 Host</title>
+    <link href="/blog/NET-Swagger-SetHost/"/>
+    <url>/blog/NET-Swagger-SetHost/</url>
+    
+    <content type="html"><![CDATA[<h1 id="NET-Swagger-設定-Host"><a href="#NET-Swagger-設定-Host" class="headerlink" title=".NET - Swagger 設定 Host"></a>.NET - Swagger 設定 Host</h1><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>因為雲端上的主機使用 Nginx 將請求轉發到不同 Docker 容器。</p><p>所以雲端上的 Swagger 預設連線網域會錯誤的，造成無法正常連線</p><p>以下是我的設定及錯誤訊息</p><p><img src="/blog/NET-Swagger-SetHost/1713102062196.jpg" alt="Nginx 設定"></p><p><img src="/blog/NET-Swagger-SetHost/1713102309197.jpg" alt="錯誤的Servers"></p><p><img src="/blog/NET-Swagger-SetHost/1713102331373.jpg" alt="連線錯誤的樣子"></p><h2 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h2><h3 id="設定-OpenApi-Host"><a href="#設定-OpenApi-Host" class="headerlink" title="設定 OpenApi Host"></a>設定 OpenApi Host</h3><p>首先我們來到 Program.cs</p><p>設置 UseOpenApi </p><figure class="highlight arcade"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">var</span> app = builder.Build();<br><br>app.UseOpenApi(<span class="hljs-function"><span class="hljs-params">options</span> =&gt;</span><br>{<br>    options.PostProcess = <span class="hljs-function">(<span class="hljs-params">context, request</span>) =&gt;</span><br>    {<br>        <span class="hljs-keyword">if</span> (app.Environment.IsProduction())<br>        {<br>            context.Host = context.Host = <span class="hljs-string">"backend.******.***"</span>;<br>        };<br>    };<br>});<br><br>app.UseSwaggerUi3();<br></code></pre></td></tr></tbody></table></figure><p>目前我是只有 Production 的環境會遇到這個問題</p><p>所以我新增了一個判斷</p><p><img src="/blog/NET-Swagger-SetHost/1713103212299.jpg" alt="Program.cs 設定方式"></p><p>設定後就完成囉 !</p><p><img src="/blog/NET-Swagger-SetHost/1713102516679.jpg" alt="完成的樣子"></p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://github.com/RicoSuter/NSwag/issues/2914">UI document Server URL cannot be change</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>.NET</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Swagger</tag>
+      
+      <tag>OpenAPi</tag>
+      
+      <tag>Nginx</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Windows OpenSSH 使用 Authorized Keys 登入的方法</title>
     <link href="/blog/Windows-OpenSSH-Authorized-Keys/"/>
     <url>/blog/Windows-OpenSSH-Authorized-Keys/</url>

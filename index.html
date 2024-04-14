@@ -189,6 +189,68 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/blog/NET-Swagger-SetHost/" target="_self">
+          .NET - Swagger 設定 Host
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/NET-Swagger-SetHost/" target="_self">
+          
+          
+            
+          
+          .NET - Swagger 設定 Host問題因為雲端上的主機使用 Nginx 將請求轉發到不同 Docker 容器。
+所以雲端上的 Swagger 預設連線網域會錯誤的，造成無法正常連線
+以下是我的設定及錯誤訊息
+
+
+
+解決辦法設定 OpenApi Host首先我們來到 Program.cs
+設置 UseOpenApi 
+1234567891011121314var app = builder
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-14 21:50" pubdate>
+              2024-04-14
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/NET/">.NET</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Swagger/">Swagger</a>
+            
+              <a href="/blog/tags/OpenAPi/">OpenAPi</a>
+            
+              <a href="/blog/tags/Nginx/">Nginx</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/blog/Windows-OpenSSH-Authorized-Keys/" target="_self">
           Windows OpenSSH 使用 Authorized Keys 登入的方法
         </a>
@@ -732,68 +794,6 @@ Palworld.sh 內容如下
               <a href="/blog/tags/Environment/">Environment</a>
             
               <a href="/blog/tags/web-config/">web.config</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/blog/Python-Encoding-UTF-8/" target="_self">
-          執行 Python 中文亂碼問題
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/blog/Python-Encoding-UTF-8/" target="_self">
-          
-          
-            
-          
-          執行 Python 中文亂碼問題前言Python 執行指令時偵測到中文，導致執行指令中斷無法正常運作。
-
-開始其實解法很簡單，只需要在檔案最上方加上 encoding:utf-8
-1# encoding:utf-8
-
-
-這樣就可以正常運行囉 !
-今天的分享就到此結束
-Thank you! 😄
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-01 18:01" pubdate>
-              2023-11-01
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/blog/categories/Python/">Python</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/blog/tags/Python/">Python</a>
-            
-              <a href="/blog/tags/Encoding/">Encoding</a>
-            
-              <a href="/blog/tags/UTF-8/">UTF-8</a>
             
           </div>
         

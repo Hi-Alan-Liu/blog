@@ -16,28 +16,29 @@
   <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content="Redis 基本安裝 及 外部連線設定準備安裝 RedisLinux 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-linux&#x2F; macOS 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-ma">
+  <meta name="description" content=".NET - Swagger 設定 Host問題因為雲端上的主機使用 Nginx 將請求轉發到不同 Docker 容器。 所以雲端上的 Swagger 預設連線網域會錯誤的，造成無法正常連線 以下是我的設定及錯誤訊息    解決辦法設定 OpenApi Host首先我們來到 Program.cs 設置 UseOpenApi  1234567891011121314var app &#x3D; builder">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis 基本安裝 及 外部連線設定">
-<meta property="og:url" content="https://hi-alan-liu.github.io/Redis-install-setup/index.html">
+<meta property="og:title" content=".NET - Swagger 設定 Host">
+<meta property="og:url" content="https://hi-alan-liu.github.io/NET-Swagger-SetHost/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content="Redis 基本安裝 及 外部連線設定準備安裝 RedisLinux 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-linux&#x2F; macOS 版本安裝方式：https:&#x2F;&#x2F;redis.io&#x2F;docs&#x2F;getting-started&#x2F;installation&#x2F;install-redis-on-ma">
+<meta property="og:description" content=".NET - Swagger 設定 Host問題因為雲端上的主機使用 Nginx 將請求轉發到不同 Docker 容器。 所以雲端上的 Swagger 預設連線網域會錯誤的，造成無法正常連線 以下是我的設定及錯誤訊息    解決辦法設定 OpenApi Host首先我們來到 Program.cs 設置 UseOpenApi  1234567891011121314var app &#x3D; builder">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660285557863.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660285894330.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660286930448.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660286516507.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/1713102062196.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/1713102309197.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/1713102331373.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/1713103212299.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/1713102516679.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
-<meta property="article:published_time" content="2022-08-05T06:05:00.000Z">
-<meta property="article:modified_time" content="2024-04-14T14:10:26.682Z">
+<meta property="article:published_time" content="2024-04-14T13:50:00.000Z">
+<meta property="article:modified_time" content="2024-04-14T14:10:26.666Z">
 <meta property="article:author" content="Alan Liu">
-<meta property="article:tag" content="Redis">
-<meta property="article:tag" content="config">
-<meta property="article:tag" content="bind">
+<meta property="article:tag" content="Swagger">
+<meta property="article:tag" content="OpenAPi">
+<meta property="article:tag" content="Nginx">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/Redis-install-setup/1660285557863.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/1713102062196.jpg">
   
-  <title>Redis 基本安裝 及 外部連線設定 - 劉穎｜Alan Liu</title>
+  <title>.NET - Swagger 設定 Host - 劉穎｜Alan Liu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -180,7 +181,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Redis 基本安裝 及 外部連線設定">
+            <span class="h2" id="subtitle" title=".NET - Swagger 設定 Host">
               
             </span>
 
@@ -190,8 +191,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2022-08-05 14:05" pubdate>
-        2022年8月5日 下午
+      <time datetime="2024-04-14 21:50" pubdate>
+        2024年4月14日 晚上
       </time>
     </span>
   
@@ -201,7 +202,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      884 字
+      506 字
     </span>
   
 
@@ -210,7 +211,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      3 分钟
+      2 分钟
     </span>
   
 
@@ -239,52 +240,29 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">Redis 基本安裝 及 外部連線設定</h1>
+            <h1 style="display: none">.NET - Swagger 設定 Host</h1>
             
             <div class="markdown-body">
-              <h1 id="Redis-基本安裝-及-外部連線設定"><a href="#Redis-基本安裝-及-外部連線設定" class="headerlink" title="Redis 基本安裝 及 外部連線設定"></a>Redis 基本安裝 及 外部連線設定</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><h3 id="安裝-Redis"><a href="#安裝-Redis" class="headerlink" title="安裝 Redis"></a>安裝 Redis</h3><p>Linux 版本<br>安裝方式：<a target="_blank" rel="noopener" href="https://redis.io/docs/getting-started/installation/install-redis-on-linux/">https://redis.io/docs/getting-started/installation/install-redis-on-linux/</a></p>
-<p>macOS 版本<br>安裝方式：<a target="_blank" rel="noopener" href="https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/">https://redis.io/docs/getting-started/installation/install-redis-on-mac-os/</a></p>
-<p>Windows 版本<br>安裝方式：<a target="_blank" rel="noopener" href="https://redis.io/docs/getting-started/installation/install-redis-on-windows/">https://redis.io/docs/getting-started/installation/install-redis-on-windows/</a></p>
-<p>Docker Image 版本<br>安裝方式：<a target="_blank" rel="noopener" href="https://hub.docker.com/_/redis">https://hub.docker.com/_/redis</a></p>
-<p>*補充<br><a target="_blank" rel="noopener" href="https://marcus116.blogspot.com/2019/02/how-to-install-redis-in-windows-os.html?m=1"><code> Windows 安裝及啟動教學</code></a></p>
-<p><em>安裝完畢後在進行下一步</em></p>
-<hr>
-<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、確認-config-位置"><a href="#一、確認-config-位置" class="headerlink" title="一、確認 config 位置"></a>一、確認 config 位置</h3><p>先使用 redis-cli 連進 redis</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ redis-cli<br></code></pre></td></tr></tbody></table></figure>
+              <h1 id="NET-Swagger-設定-Host"><a href="#NET-Swagger-設定-Host" class="headerlink" title=".NET - Swagger 設定 Host"></a>.NET - Swagger 設定 Host</h1><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>因為雲端上的主機使用 Nginx 將請求轉發到不同 Docker 容器。</p>
+<p>所以雲端上的 Swagger 預設連線網域會錯誤的，造成無法正常連線</p>
+<p>以下是我的設定及錯誤訊息</p>
+<p><img src="/blog/NET-Swagger-SetHost/1713102062196.jpg" srcset="/blog/img/loading.gif" lazyload alt="Nginx 設定"></p>
+<p><img src="/blog/NET-Swagger-SetHost/1713102309197.jpg" srcset="/blog/img/loading.gif" lazyload alt="錯誤的Servers"></p>
+<p><img src="/blog/NET-Swagger-SetHost/1713102331373.jpg" srcset="/blog/img/loading.gif" lazyload alt="連線錯誤的樣子"></p>
+<h2 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h2><h3 id="設定-OpenApi-Host"><a href="#設定-OpenApi-Host" class="headerlink" title="設定 OpenApi Host"></a>設定 OpenApi Host</h3><p>首先我們來到 Program.cs</p>
+<p>設置 UseOpenApi </p>
+<figure class="highlight arcade"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs arcade"><span class="hljs-keyword">var</span> app = builder.Build();<br><br>app.UseOpenApi(<span class="hljs-function"><span class="hljs-params">options</span> =&gt;</span><br>{<br>    options.PostProcess = <span class="hljs-function">(<span class="hljs-params">context, request</span>) =&gt;</span><br>    {<br>        <span class="hljs-keyword">if</span> (app.Environment.IsProduction())<br>        {<br>            context.Host = context.Host = <span class="hljs-string">"backend.******.***"</span>;<br>        };<br>    };<br>});<br><br>app.UseSwaggerUi3();<br></code></pre></td></tr></tbody></table></figure>
 
-<p><code>127.0.0.1:6379 為系統顯示不需複製</code></p>
-<p>成功連進後輸入 ping</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; ping<br></code></pre></td></tr></tbody></table></figure>
-
-<p>回應 PONG 代表 redis 正常連線</p>
-<p><img src="/blog/Redis-install-setup/1660285557863.jpg" srcset="/blog/img/loading.gif" lazyload alt="回應PONG"></p>
-<p>接著輸入 info 查看 config 的位置</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; info<br></code></pre></td></tr></tbody></table></figure>
-
-<p>位置在 config_file </p>
-<p><img src="/blog/Redis-install-setup/1660285894330.jpg" srcset="/blog/img/loading.gif" lazyload alt="info 範例"></p>
-<h3 id="二、設定-config"><a href="#二、設定-config" class="headerlink" title="二、設定 config"></a>二、設定 config</h3><p>確認 redis bind，請輸入以下指令</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt;  config get bind<br></code></pre></td></tr></tbody></table></figure>
-
-<p><img src="/blog/Redis-install-setup/1660286930448.jpg" srcset="/blog/img/loading.gif" lazyload alt="get bind 範例"></p>
-<p>預設 redis config bind 為 127.0.0.1 因此只能 local 連線<br>因此需要對 config 進行修改</p>
-<p>從上一步驟已得知 config 位置<br>可以對 config 直接進行修改</p>
-<p><img src="/blog/Redis-install-setup/1660286516507.jpg" srcset="/blog/img/loading.gif" lazyload alt="config 範例"></p>
-<p>也可以透過指令進行修改</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">127.0.0.1:6379&gt; set bind 0.0.0.0<br>127.0.0.1:6379&gt; save<br></code></pre></td></tr></tbody></table></figure>
-
-<p>設定完畢即可重啟 redis</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">$ /etc/init.d/redis-server restart<br></code></pre></td></tr></tbody></table></figure>
-
-<p>MAC 重啟方式</p>
-<figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs redis-cli">$ redis-cli shutdown<br></code></pre></td></tr></tbody></table></figure>
-
-<p>重啟之後就設定完成囉 ~</p>
+<p>目前我是只有 Production 的環境會遇到這個問題</p>
+<p>所以我新增了一個判斷</p>
+<p><img src="/blog/NET-Swagger-SetHost/1713103212299.jpg" srcset="/blog/img/loading.gif" lazyload alt="Program.cs 設定方式"></p>
+<p>設定後就完成囉 !</p>
+<p><img src="/blog/NET-Swagger-SetHost/1713102516679.jpg" srcset="/blog/img/loading.gif" lazyload alt="完成的樣子"></p>
+<p>今天的教學就到此</p>
 <h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr>
 <p>參考</p>
 <ul>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/0ed7e88325dd">设置远程Redis服务可以被访问</a></li>
-<li><a target="_blank" rel="noopener" href="https://ubuntuqa.com/zh-tw/article/8351.html">如何停止redis-server？</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/RicoSuter/NSwag/issues/2914">UI document Server URL cannot be change</a></li>
 </ul>
 
             </div>
@@ -295,7 +273,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/blog/categories/Redis/">Redis</a>
+                      <a class="hover-with-bg" href="/blog/categories/NET/">.NET</a>
                     
                   </div>
                 
@@ -303,11 +281,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/Redis/">Redis</a>
+                      <a class="hover-with-bg" href="/blog/tags/Swagger/">Swagger</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/config/">config</a>
+                      <a class="hover-with-bg" href="/blog/tags/OpenAPi/">OpenAPi</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/bind/">bind</a>
+                      <a class="hover-with-bg" href="/blog/tags/Nginx/">Nginx</a>
                     
                   </div>
                 
@@ -315,7 +293,7 @@
               
                 <p class="note note-warning">
                   <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/Redis-install-setup/">https://hi-alan-liu.github.io/blog/Redis-install-setup/</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/">https://hi-alan-liu.github.io/blog/NET-Swagger-SetHost/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -324,18 +302,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/Arduino-lineagew/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Arduino 自製天堂神器</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/Docker-Desktop-on-Windows-ruby-on-rails/">
-                        <span class="hidden-mobile">Docker Desktop on Windows (ruby on rails)</span>
+                      <a href="/blog/Windows-OpenSSH-Authorized-Keys/">
+                        <span class="hidden-mobile">Windows OpenSSH 使用 Authorized Keys 登入的方法</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -357,8 +329,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/Redis-install-setup/';
-          this.page.identifier = '/blog/Redis-install-setup/';
+          this.page.url = 'https://hi-alan-liu.github.io/NET-Swagger-SetHost/';
+          this.page.identifier = '/blog/NET-Swagger-SetHost/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
