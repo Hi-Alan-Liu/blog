@@ -12,7 +12,7 @@
     "version": "7.1.1"
   },
   "dependencies": {
-    "hexo": "^7.1.1",
+    "hexo": "^7.2.0",
     "hexo-admin": "^2.3.0",
     "hexo-admonition": "^1.1.2",
     "hexo-asset-image": "github:CodeFalling/hexo-asset-image",
