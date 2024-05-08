@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>解決 SQLServer 憑證鏈結不受信任問題</title>
+    <link href="/blog/SQLServer-Certificate-Failed/"/>
+    <url>/blog/SQLServer-Certificate-Failed/</url>
+    
+    <content type="html"><![CDATA[<h1 id="解決-SQLServer-憑證鏈結不受信任問題"><a href="#解決-SQLServer-憑證鏈結不受信任問題" class="headerlink" title="解決 SQLServer 憑證鏈結不受信任問題"></a>解決 SQLServer 憑證鏈結不受信任問題</h1><h2 id="問題"><a href="#問題" class="headerlink" title="問題"></a>問題</h2><p>在運行本地資料庫的時候，出現了不受信任的錯誤連線訊息</p><p><img src="/blog/SQLServer-Certificate-Failed/1714984424877.jpg" alt="錯誤訊息範例"></p><h2 id="解決辦法"><a href="#解決辦法" class="headerlink" title="解決辦法"></a>解決辦法</h2><p>我們只需要到 <code>其他連線參數</code> 設定參數就行了</p><p>先點選右下角選項 &gt;&gt; 再點選其他連線參數<br><img src="/blog/SQLServer-Certificate-Failed/1714984451088.jpg" alt="手動設定選項"></p><p>接著將以下參數填入</p><figure class="highlight ini"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ini"><span class="hljs-attr">TrustServerCertificate</span>=<span class="hljs-literal">true</span><br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/SQLServer-Certificate-Failed/1714984484134.jpg" alt="填入參數範例"></p><p>這樣就可以正常連線囉 !</p><p>今天的教學就到此</p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><hr><p>參考</p><ul><li><a href="https://learn.microsoft.com/zh-tw/sql/connect/ado-net/sqlclient-troubleshooting-guide?view=sql-server-ver16">SqlClient 疑難排解指南</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category> Other</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Certificate</tag>
+      
+      <tag>SQL Server</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>.NET - Swagger 設定 Host</title>
     <link href="/blog/NET-Swagger-SetHost/"/>
     <url>/blog/NET-Swagger-SetHost/</url>

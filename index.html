@@ -189,6 +189,71 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h1 class="index-header">
         
+        <a href="/blog/SQLServer-Certificate-Failed/" target="_self">
+          解決 SQLServer 憑證鏈結不受信任問題
+        </a>
+      </h1>
+
+      <p class="index-excerpt">
+        <a href="/blog/SQLServer-Certificate-Failed/" target="_self">
+          
+          
+            
+          
+          解決 SQLServer 憑證鏈結不受信任問題問題在運行本地資料庫的時候，出現了不受信任的錯誤連線訊息
+
+解決辦法我們只需要到 其他連線參數 設定參數就行了
+先點選右下角選項 &gt;&gt; 再點選其他連線參數
+接著將以下參數填入
+1TrustServerCertificate=true
+
+
+這樣就可以正常連線囉 !
+今天的教學就到此
+Thank you! 😄
+參考
+
+SqlClient 疑難
+        </a>
+      </p>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-05-08 17:46" pubdate>
+              2024-05-08
+            </time>
+          </div>
+        
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-category"></i>
+            
+              <a href="/blog/categories/Other/"> Other</a>
+            
+          </div>
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/blog/tags/Certificate/">Certificate</a>
+            
+              <a href="/blog/tags/SQL-Server/">SQL Server</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h1 class="index-header">
+        
         <a href="/blog/NET-Swagger-SetHost/" target="_self">
           .NET - Swagger 設定 Host
         </a>
@@ -731,69 +796,6 @@ Palworld.sh 內容如下
               <a href="/blog/tags/Mobile/">Mobile</a>
             
               <a href="/blog/tags/Console/">Console</a>
-            
-          </div>
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h1 class="index-header">
-        
-        <a href="/blog/IIS-NET-Core-Environment/" target="_self">
-          IIS - Asp Net corn 設定 Environment
-        </a>
-      </h1>
-
-      <p class="index-excerpt">
-        <a href="/blog/IIS-NET-Core-Environment/" target="_self">
-          
-          
-            
-          
-          IIS - Asp Net corn 設定 Environment前言佈署於伺服器上的專案，都需要依據需求設定不同的環境。
-此教學為在 IIS 上的設定方式
-開始方法一、進入 IIS 站台設定進入 Internet Information Services (IIS) 管理員
-點選需要設定的站台，選擇 設定編輯器
-
-點選上方區段，選擇 aspNetCore
-
-設定 environmentVaria
-        </a>
-      </p>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2023-11-22 17:59" pubdate>
-              2023-11-22
-            </time>
-          </div>
-        
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-category"></i>
-            
-              <a href="/blog/categories/IIS/">IIS</a>
-            
-          </div>
-        
-        
-          <div class="post-meta">
-            <i class="iconfont icon-tags"></i>
-            
-              <a href="/blog/tags/IIS/">IIS</a>
-            
-              <a href="/blog/tags/ASP-NET/">ASP.NET</a>
-            
-              <a href="/blog/tags/Environment/">Environment</a>
-            
-              <a href="/blog/tags/web-config/">web.config</a>
             
           </div>
         
