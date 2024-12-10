@@ -15,6 +15,7 @@ hexo server
 ```
 
 ### 專案編輯與佈署
+`#已設置 GitHub Action 自動編譯佈署`
 ```
 hexo clean
 hexo deploy -generate
