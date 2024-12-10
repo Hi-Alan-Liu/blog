@@ -16,30 +16,28 @@
   <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content="IIS 實現 Autoindex 下載站點準備IIS 安裝完畢後在進行下一步  開始第一步、建立虛擬目錄點擊想新增下載點的站台新增虛擬目錄  填入路徑別名與下載點資料夾位置  第二步、啟動瀏覽目錄點擊剛剛設定的虛擬目錄 並點擊瀏覽目錄  點擊啟用並設置想顯示於目錄中的資訊  第三步、完成進入網站並填入設定的路徑  今天的分享就到此結束 Thank you! 😄">
+  <meta name="description" content="Nginx Docker 常用設置方式與Let’s Encrypt 產生 SSL憑證前言目前佈署環境大多使用 Docker 並且同時運行多個容器，因此獨立起一個 Nginx Docker 進行網域處理 *範例 虛擬經環境版本為 Amazon Linux 2023 開始下載 Nginx Docker1sudo docker pull nginx  如果有指定版本可新增 1sudo docker pu">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IIS 實現 Autoindex 下載站點">
-<meta property="og:url" content="https://hi-alan-liu.github.io/IIS-Autoindex/index.html">
+<meta property="og:title" content="Nginx Docker 常用設置方式">
+<meta property="og:url" content="https://hi-alan-liu.github.io/Nginx-Docker-LetsEncrypt/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content="IIS 實現 Autoindex 下載站點準備IIS 安裝完畢後在進行下一步  開始第一步、建立虛擬目錄點擊想新增下載點的站台新增虛擬目錄  填入路徑別名與下載點資料夾位置  第二步、啟動瀏覽目錄點擊剛剛設定的虛擬目錄 並點擊瀏覽目錄  點擊啟用並設置想顯示於目錄中的資訊  第三步、完成進入網站並填入設定的路徑  今天的分享就到此結束 Thank you! 😄">
+<meta property="og:description" content="Nginx Docker 常用設置方式與Let’s Encrypt 產生 SSL憑證前言目前佈署環境大多使用 Docker 並且同時運行多個容器，因此獨立起一個 Nginx Docker 進行網域處理 *範例 虛擬經環境版本為 Amazon Linux 2023 開始下載 Nginx Docker1sudo docker pull nginx  如果有指定版本可新增 1sudo docker pu">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-Autoindex/1682676944394.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-Autoindex/1682676981528.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-Autoindex/1682677051490.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-Autoindex/1682677092120.jpg">
-<meta property="og:image" content="https://hi-alan-liu.github.io/blog/IIS-Autoindex/1682678304743.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Nginx-Docker-LetsEncrypt/1733824806554.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Nginx-Docker-LetsEncrypt/1733824621970.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Nginx-Docker-LetsEncrypt/1733825168715.jpg">
 <meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
-<meta property="article:published_time" content="2023-04-28T09:50:00.000Z">
-<meta property="article:modified_time" content="2024-12-10T10:18:37.661Z">
+<meta property="article:published_time" content="2024-12-10T08:50:00.000Z">
+<meta property="article:modified_time" content="2024-12-10T10:18:37.684Z">
 <meta property="article:author" content="Alan Liu">
-<meta property="article:tag" content="IIS">
-<meta property="article:tag" content="autoindex">
-<meta property="article:tag" content="mp4">
-<meta property="article:tag" content="Autoindex">
+<meta property="article:tag" content="SSL">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Nginx">
+<meta property="article:tag" content="Let’s Encrypt">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/IIS-Autoindex/1682676944394.jpg">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/Nginx-Docker-LetsEncrypt/1733824806554.jpg">
   
-  <title>IIS 實現 Autoindex 下載站點 - 劉穎｜Alan Liu</title>
+  <title>Nginx Docker 常用設置方式 - 劉穎｜Alan Liu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -182,7 +180,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="IIS 實現 Autoindex 下載站點">
+            <span class="h2" id="subtitle" title="Nginx Docker 常用設置方式">
               
             </span>
 
@@ -192,8 +190,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-04-28 17:50" pubdate>
-        2023年4月28日 下午
+      <time datetime="2024-12-10 16:50" pubdate>
+        2024年12月10日 下午
       </time>
     </span>
   
@@ -203,7 +201,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      167 字
+      2.1k 字
     </span>
   
 
@@ -212,7 +210,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      1 分钟
+      7 分钟
     </span>
   
 
@@ -241,24 +239,56 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">IIS 實現 Autoindex 下載站點</h1>
+            <h1 style="display: none">Nginx Docker 常用設置方式</h1>
             
             <div class="markdown-body">
-              <h1 id="IIS-實現-Autoindex-下載站點"><a href="#IIS-實現-Autoindex-下載站點" class="headerlink" title="IIS 實現 Autoindex 下載站點"></a>IIS 實現 Autoindex 下載站點</h1><h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>IIS</p>
-<p><em>安裝完畢後在進行下一步</em></p>
-<hr>
-<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="第一步、建立虛擬目錄"><a href="#第一步、建立虛擬目錄" class="headerlink" title="第一步、建立虛擬目錄"></a>第一步、建立虛擬目錄</h3><p>點擊想新增下載點的站台新增虛擬目錄</p>
-<p><img src="/blog/IIS-Autoindex/1682676944394.jpg" srcset="/blog/img/loading.gif" lazyload alt="新增虛擬目錄"></p>
-<p>填入路徑別名與下載點資料夾位置</p>
-<p><img src="/blog/IIS-Autoindex/1682676981528.jpg" srcset="/blog/img/loading.gif" lazyload alt="設定別名與實體路徑"></p>
-<h3 id="第二步、啟動瀏覽目錄"><a href="#第二步、啟動瀏覽目錄" class="headerlink" title="第二步、啟動瀏覽目錄"></a>第二步、啟動瀏覽目錄</h3><p>點擊剛剛設定的虛擬目錄</p>
-<p>並點擊瀏覽目錄</p>
-<p><img src="/blog/IIS-Autoindex/1682677051490.jpg" srcset="/blog/img/loading.gif" lazyload alt="點擊瀏覽目錄"></p>
-<p>點擊啟用並設置想顯示於目錄中的資訊</p>
-<p><img src="/blog/IIS-Autoindex/1682677092120.jpg" srcset="/blog/img/loading.gif" lazyload alt="設定瀏覽目錄"></p>
-<h3 id="第三步、完成"><a href="#第三步、完成" class="headerlink" title="第三步、完成"></a>第三步、完成</h3><p>進入網站並填入設定的路徑</p>
-<p><img src="/blog/IIS-Autoindex/1682678304743.jpg" srcset="/blog/img/loading.gif" lazyload alt="完成後樣子"></p>
-<p>今天的分享就到此結束</p>
+              <h1 id="Nginx-Docker-常用設置方式與Let’s-Encrypt-產生-SSL憑證"><a href="#Nginx-Docker-常用設置方式與Let’s-Encrypt-產生-SSL憑證" class="headerlink" title="Nginx Docker 常用設置方式與Let’s Encrypt 產生 SSL憑證"></a>Nginx Docker 常用設置方式與Let’s Encrypt 產生 SSL憑證</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>目前佈署環境大多使用 Docker 並且同時運行多個容器，因此獨立起一個 Nginx Docker 進行網域處理</p>
+<p>*範例 虛擬經環境版本為 Amazon Linux 2023</p>
+<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="下載-Nginx-Docker"><a href="#下載-Nginx-Docker" class="headerlink" title="下載 Nginx Docker"></a>下載 Nginx Docker</h3><figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo docker pull nginx</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>如果有指定版本可新增</p>
+<figure class="highlight apache"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sudo</span> docker pull nginx:<span class="hljs-number">1</span>.<span class="hljs-number">23</span><br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="新增-conf-文件"><a href="#新增-conf-文件" class="headerlink" title="新增 .conf 文件"></a>新增 .conf 文件</h3><p>在目錄創建一個 nginx 資料夾</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> -p ~/nginx<br></code></pre></td></tr></tbody></table></figure>
+
+<p>建立 .conf 文件</p>
+<figure class="highlight arcade"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs arcade">vi ~<span class="hljs-regexp">/nginx/</span>ServerName.conf<br></code></pre></td></tr></tbody></table></figure>
+
+<p>設置文件， 以下範例為參考。</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># HTTPS 伺服器 (wwww.domain.com)</span><br><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> wwww.domain.com;<br><br>    <span class="hljs-section">location</span> / {<br>        <span class="hljs-attribute">proxy_pass</span> http://172.17.0.1:8090;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>取得文件完整路徑</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">pwd</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/blog/Nginx-Docker-LetsEncrypt/1733824806554.jpg" srcset="/blog/img/loading.gif" lazyload alt="pwd 範例"></p>
+<h3 id="啟動-Nginx"><a href="#啟動-Nginx" class="headerlink" title="啟動 Nginx"></a>啟動 Nginx</h3><p>執行 Docker 並掛載設定好的文件。</p>
+<figure class="highlight awk"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">sudo docker run -d --rm \<br>-p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> \<br>--name nginx \<br>-v <span class="hljs-regexp">/home/</span>ec2-user<span class="hljs-regexp">/nginx/</span>ServerName.conf:<span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>ServerName.conf:ro \<br>nginx<br></code></pre></td></tr></tbody></table></figure>
+
+<p>指令說明</p>
+<p><code>-d</code>: 為背景執行</p>
+<p><code>--name</code>: 為指令容器名稱</p>
+<p><code>--rm</code>: 表示在容器停止後自動刪除容器。</p>
+<p><code>-v</code>: 將主機上的目錄或文件掛載到容器內部。</p>
+<p><code>:ro</code>: 為只可讀</p>
+<p>成功執行後即可查看執行狀態</p>
+<figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo docker ps</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/blog/Nginx-Docker-LetsEncrypt/1733824621970.jpg" srcset="/blog/img/loading.gif" lazyload alt="docker ps"></p>
+<h3 id="掛載-Let’s-Encrypt-SSL-憑證"><a href="#掛載-Let’s-Encrypt-SSL-憑證" class="headerlink" title="掛載 Let’s Encrypt SSL 憑證"></a>掛載 Let’s Encrypt SSL 憑證</h3><p>查看憑證</p>
+<figure class="highlight ebnf"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">sudo certbot certificates</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p><img src="/blog/Nginx-Docker-LetsEncrypt/1733825168715.jpg" srcset="/blog/img/loading.gif" lazyload alt="docker ps"></p>
+<p>從圖可以看到憑證位置</p>
+<p>設置 .conf 文件</p>
+<figure class="highlight nginx"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-comment"># HTTP 重定向到 HTTPS</span><br><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">80</span>;<br>    <span class="hljs-attribute">server_name</span> wwww.domain.com;<br>    <span class="hljs-attribute">return</span> <span class="hljs-number">301</span> https://<span class="hljs-variable">$host</span><span class="hljs-variable">$request_uri</span>;<br>}<br><br><span class="hljs-comment"># HTTPS 伺服器 (wwww.domain.com)</span><br><span class="hljs-section">server</span> {<br>    <span class="hljs-attribute">listen</span> <span class="hljs-number">443</span> ssl;<br>    <span class="hljs-attribute">server_name</span> wwww.domain.com;<br><br>    <span class="hljs-attribute">ssl_certificate</span>     /usr/share/certbot/ssl/live/wwww.domain.com/fullchain.pem;<br>    <span class="hljs-attribute">ssl_certificate_key</span> /usr/share/certbot/ssl/live/wwww.domain.com/privkey.pem;<br>    <span class="hljs-attribute">ssl_protocols</span>       TLSv1.<span class="hljs-number">2</span> TLSv1.<span class="hljs-number">3</span>;<br>    <span class="hljs-attribute">ssl_ciphers</span>         HIGH:!aNULL:!MD5;<br><br>    <span class="hljs-section">location</span> / {<br>        <span class="hljs-attribute">proxy_pass</span> http://172.17.0.1:8083;<br>        <span class="hljs-attribute">proxy_set_header</span> Host <span class="hljs-variable">$host</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> X-Real-IP <span class="hljs-variable">$remote_addr</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-For <span class="hljs-variable">$proxy_add_x_forwarded_for</span>;<br>        <span class="hljs-attribute">proxy_set_header</span> X-Forwarded-Proto <span class="hljs-variable">$scheme</span>;<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>執行並掛載 SSL 憑證</p>
+<figure class="highlight gradle"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sudo docker run -d --rm \<br>-p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> -p <span class="hljs-number">443</span>:<span class="hljs-number">443</span> \<br>--name nginx \<br>-v <span class="hljs-regexp">/home/</span>ec2-user<span class="hljs-regexp">/nginx/</span>ServerName.conf:<span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>ServerName.conf:ro \<br>-v <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>wwww.domain.com<span class="hljs-regexp">/fullchain.pem:/</span>etc<span class="hljs-regexp">/ssl/</span>certs/fullchain.pem:ro \<br>-v <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>wwww.domain.com<span class="hljs-regexp">/privkey.pem:/</span>etc<span class="hljs-regexp">/ssl/</span><span class="hljs-keyword">private</span>/privkey.pem:ro \<br>nginx<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="更新-Let’s-Encrypt-SSL-憑證"><a href="#更新-Let’s-Encrypt-SSL-憑證" class="headerlink" title="更新 Let’s Encrypt SSL 憑證"></a>更新 Let’s Encrypt SSL 憑證</h3><figure class="highlight gradle"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs gradle">sudo certbot renew &amp;&amp; sudo docker stop nginx &amp;&amp; sudo docker run -d --rm \<br>-p <span class="hljs-number">80</span>:<span class="hljs-number">80</span> -p <span class="hljs-number">443</span>:<span class="hljs-number">443</span> \<br>--name nginx \<br>-v <span class="hljs-regexp">/home/</span>ec2-user<span class="hljs-regexp">/nginx/</span>ServerName.conf:<span class="hljs-regexp">/etc/</span>nginx<span class="hljs-regexp">/conf.d/</span>ServerName.conf:ro \<br>-v <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>wwww.domain.com<span class="hljs-regexp">/fullchain.pem:/</span>etc<span class="hljs-regexp">/ssl/</span>certs/fullchain.pem:ro \<br>-v <span class="hljs-regexp">/etc/</span>letsencrypt<span class="hljs-regexp">/live/</span>wwww.domain.com<span class="hljs-regexp">/privkey.pem:/</span>etc<span class="hljs-regexp">/ssl/</span><span class="hljs-keyword">private</span>/privkey.pem:ro \<br>nginx<br></code></pre></td></tr></tbody></table></figure>
+
+<p>今天的教學就到此</p>
 <h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>
             </div>
             <hr>
@@ -268,7 +298,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/blog/categories/IIS/">IIS</a>
+                      <a class="hover-with-bg" href="/blog/categories/Docker/">Docker</a>
                     
                   </div>
                 
@@ -276,13 +306,13 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/IIS/">IIS</a>
+                      <a class="hover-with-bg" href="/blog/tags/SSL/">SSL</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/autoindex/">autoindex</a>
+                      <a class="hover-with-bg" href="/blog/tags/Docker/">Docker</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/mp4/">mp4</a>
+                      <a class="hover-with-bg" href="/blog/tags/Nginx/">Nginx</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/Autoindex/">Autoindex</a>
+                      <a class="hover-with-bg" href="/blog/tags/Let%E2%80%99s-Encrypt/">Let’s Encrypt</a>
                     
                   </div>
                 
@@ -290,7 +320,7 @@
               
                 <p class="note note-warning">
                   <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/IIS-Autoindex/">https://hi-alan-liu.github.io/blog/IIS-Autoindex/</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/Nginx-Docker-LetsEncrypt/">https://hi-alan-liu.github.io/blog/Nginx-Docker-LetsEncrypt/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -299,18 +329,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/Azure-Vue-Static-Web/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">解決 Azure - Vue 靜態網站 404 問題</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/Python-Beautiful-Soup/">
-                        <span class="hidden-mobile">Python 使用 BeautifulSoup 解析頁面資料</span>
+                      <a href="/blog/SQLServer-Certificate-Failed/">
+                        <span class="hidden-mobile">解決 SQLServer 憑證鏈結不受信任問題</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -332,8 +356,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/IIS-Autoindex/';
-          this.page.identifier = '/blog/IIS-Autoindex/';
+          this.page.url = 'https://hi-alan-liu.github.io/Nginx-Docker-LetsEncrypt/';
+          this.page.identifier = '/blog/Nginx-Docker-LetsEncrypt/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
