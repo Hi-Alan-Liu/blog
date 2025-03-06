@@ -128,8 +128,8 @@ server {
     listen 443 ssl;
     server_name wwww.domain.com;
 
-    ssl_certificate     /usr/share/certbot/ssl/live/wwww.domain.com/fullchain.pem;
-    ssl_certificate_key /usr/share/certbot/ssl/live/wwww.domain.com/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/wwww.domain.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/wwww.domain.com/privkey.pem;
     ssl_protocols       TLSv1.2 TLSv1.3;
     ssl_ciphers         HIGH:!aNULL:!MD5;
 
@@ -149,21 +149,8 @@ server {
 sudo docker run -d --rm \
 -p 80:80 -p 443:443 \
 --name nginx \
--v /home/ec2-user/nginx/ServerName.conf:/etc/nginx/conf.d/ServerName.conf:ro \
--v /etc/letsencrypt/live/wwww.domain.com/fullchain.pem:/etc/ssl/certs/fullchain.pem:ro \
--v /etc/letsencrypt/live/wwww.domain.com/privkey.pem:/etc/ssl/private/privkey.pem:ro \
-nginx
-```
-
-### 更新 Let's Encrypt SSL 憑證
-
-```
-sudo certbot renew && sudo docker stop nginx && sudo docker run -d --rm \
--p 80:80 -p 443:443 \
---name nginx \
--v /home/ec2-user/nginx/ServerName.conf:/etc/nginx/conf.d/ServerName.conf:ro \
--v /etc/letsencrypt/live/wwww.domain.com/fullchain.pem:/etc/ssl/certs/fullchain.pem:ro \
--v /etc/letsencrypt/live/wwww.domain.com/privkey.pem:/etc/ssl/private/privkey.pem:ro \
+-v /home/ec2-user/nginx:/etc/nginx/conf.d \
+-v /etc/letsencrypt:/etc/letsencrypt \
 nginx
 ```
 
