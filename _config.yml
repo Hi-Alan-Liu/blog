@@ -106,3 +106,9 @@ deploy:
   type: git
   repo: git@github.com:Hi-Alan-Liu/blog.git
   branch: gh-pages
+
+# hexo-admin authentification
+admin:
+  username: AlanLiu
+  password_hash: $2a$10$v8RcioBjcrdy3RE.q2JbK.Hwz6C23A3DSyjD1FSD9qP90UKA7GXWm
+  secret: Alan
