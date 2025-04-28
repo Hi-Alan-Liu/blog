@@ -16,23 +16,24 @@
   <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content="FFmpeg 轉檔及合併音訊開始安裝 FFmpeg (Linux)[FFmpeg 官方網址] (https:&#x2F;&#x2F;www.ffmpeg.org&#x2F;) 更新 packages 1$ sudo apt update  安裝 ffmpeg 1$ sudo apt-get install ffmpeg  檢查 ffmpeg 是否成功，成為則會回應 ffmpeg 當前版本 1$ ffmpeg -version">
+  <meta name="description" content="Vue3 × Unity WebGL 整合實戰紀錄前言 使用 Vue 作為前端框架 使用 Unity 製作 WebGL 遊戲 實作 Vue 與 Unity 雙向溝通 玩家可從遊戲大廳 Lobby 自由切換遊戲  經過整合後，能讓瀏覽器直接載入 Unity 遊戲，無需安裝 App，即可順暢遊玩。  環境版本   項目 版本    前端 Vue 3 + TypeScript   遊戲引擎 Unity">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FFmpeg 轉檔及合併音訊">
-<meta property="og:url" content="https://hi-alan-liu.github.io/ffmpeg-filter-complex/index.html">
+<meta property="og:title" content="Vue3 × Unity WebGL 整合實戰紀錄">
+<meta property="og:url" content="https://hi-alan-liu.github.io/Vue3-Unity-WebGL/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content="FFmpeg 轉檔及合併音訊開始安裝 FFmpeg (Linux)[FFmpeg 官方網址] (https:&#x2F;&#x2F;www.ffmpeg.org&#x2F;) 更新 packages 1$ sudo apt update  安裝 ffmpeg 1$ sudo apt-get install ffmpeg  檢查 ffmpeg 是否成功，成為則會回應 ffmpeg 當前版本 1$ ffmpeg -version">
+<meta property="og:description" content="Vue3 × Unity WebGL 整合實戰紀錄前言 使用 Vue 作為前端框架 使用 Unity 製作 WebGL 遊戲 實作 Vue 與 Unity 雙向溝通 玩家可從遊戲大廳 Lobby 自由切換遊戲  經過整合後，能讓瀏覽器直接載入 Unity 遊戲，無需安裝 App，即可順暢遊玩。  環境版本   項目 版本    前端 Vue 3 + TypeScript   遊戲引擎 Unity">
 <meta property="og:locale" content="zh_TW">
-<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
-<meta property="article:published_time" content="2023-02-06T00:00:00.000Z">
-<meta property="article:modified_time" content="2025-04-28T09:01:50.278Z">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/Vue3-Unity-WebGL/1745334138859.jpg">
+<meta property="article:published_time" content="2025-04-28T07:11:00.000Z">
+<meta property="article:modified_time" content="2025-04-28T09:01:50.265Z">
 <meta property="article:author" content="Alan Liu">
-<meta property="article:tag" content="FFmpeg">
-<meta property="article:tag" content="filter">
+<meta property="article:tag" content="Vue.js">
+<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="WebGL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/Vue3-Unity-WebGL/1745334138859.jpg">
   
-  <title>FFmpeg 轉檔及合併音訊 - 劉穎｜Alan Liu</title>
+  <title>Vue3 × Unity WebGL 整合實戰紀錄 - 劉穎｜Alan Liu</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -175,7 +176,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="FFmpeg 轉檔及合併音訊">
+            <span class="h2" id="subtitle" title="Vue3 × Unity WebGL 整合實戰紀錄">
               
             </span>
 
@@ -185,8 +186,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2023-02-06 08:00" pubdate>
-        2023年2月6日 早上
+      <time datetime="2025-04-28 15:11" pubdate>
+        2025年4月28日 下午
       </time>
     </span>
   
@@ -196,7 +197,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      770 字
+      3.7k 字
     </span>
   
 
@@ -205,7 +206,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      12 分钟
     </span>
   
 
@@ -234,41 +235,129 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">FFmpeg 轉檔及合併音訊</h1>
+            <h1 style="display: none">Vue3 × Unity WebGL 整合實戰紀錄</h1>
             
             <div class="markdown-body">
-              <h1 id="FFmpeg-轉檔及合併音訊"><a href="#FFmpeg-轉檔及合併音訊" class="headerlink" title="FFmpeg 轉檔及合併音訊"></a>FFmpeg 轉檔及合併音訊</h1><h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="安裝-FFmpeg-Linux"><a href="#安裝-FFmpeg-Linux" class="headerlink" title="安裝 FFmpeg (Linux)"></a>安裝 FFmpeg (Linux)</h3><p>[FFmpeg 官方網址] (<a target="_blank" rel="noopener" href="https://www.ffmpeg.org/">https://www.ffmpeg.org/</a>)</p>
-<p>更新 packages</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ sudo apt update<br></code></pre></td></tr></tbody></table></figure>
-
-<p>安裝 ffmpeg</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ sudo apt-get install ffmpeg<br></code></pre></td></tr></tbody></table></figure>
-
-<p>檢查 ffmpeg 是否成功，成為則會回應 ffmpeg 當前版本</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">$ ffmpeg -version<br></code></pre></td></tr></tbody></table></figure>
-
-<p><em>安裝完畢後在進行下一步</em></p>
-<h3 id="轉檔"><a href="#轉檔" class="headerlink" title="轉檔"></a>轉檔</h3><p>將音訊檔 m4a 轉為 mp3</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.m4a output.mp3<br></code></pre></td></tr></tbody></table></figure>
-
-<p><code>-i demo_1.m4a</code>：為需轉檔的檔案 *需輸入檔案位置，如與指令同層則不需完整位置</p>
-<p><code>output.mp3</code>：為輸出的檔案名</p>
-<h3 id="合併音訊"><a href="#合併音訊" class="headerlink" title="合併音訊"></a>合併音訊</h3><p>將 2 個音訊拼湊</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.mp3 -i demo_2.mp3 -filter_complex "[<span class="hljs-number">0</span>:a][<span class="hljs-number">1</span>:a]concat=n=<span class="hljs-number">2</span>" demo_final.mp3<br></code></pre></td></tr></tbody></table></figure>
-
-<p>產生出來的檔案會先撥放 <code>demo_1.mp3</code> 接著撥放 <code>demo_2.mp3</code> </p>
-<p>如果需拼湊 2 個以上的音訊 只需要將 <code>concat=n=2</code> 中的 2 改為拼湊數量即可</p>
-<p>拼湊 3 個音訊 Demo</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.mp3 -i demo_2.mp3 -i demo_3.mp3 -filter_complex "[<span class="hljs-number">0</span>:a][<span class="hljs-number">1</span>:a]concat=n=<span class="hljs-number">3</span>" demo_final.mp3<br></code></pre></td></tr></tbody></table></figure>
-
-<h3 id="重疊音訊"><a href="#重疊音訊" class="headerlink" title="重疊音訊"></a>重疊音訊</h3><p>將 2 個音訊合併</p>
-<figure class="highlight cmd"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">ffmpeg -i demo_1.mp3 -i demo_2.mp3 -filter_complex "[<span class="hljs-number">0</span>:a] [<span class="hljs-number">1</span>:a] amerge=inputs=<span class="hljs-number">2</span>[aout]" -map "[aout]" -ac <span class="hljs-number">2</span> demo_final.mp3<br></code></pre></td></tr></tbody></table></figure>
-
-<p>這個效果會將兩個音訊重疊同時播放</p>
+              <h1 id="Vue3-×-Unity-WebGL-整合實戰紀錄"><a href="#Vue3-×-Unity-WebGL-整合實戰紀錄" class="headerlink" title="Vue3 × Unity WebGL 整合實戰紀錄"></a>Vue3 × Unity WebGL 整合實戰紀錄</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>使用 <strong>Vue</strong> 作為前端框架</li>
+<li>使用 <strong>Unity</strong> 製作 WebGL 遊戲</li>
+<li>實作 <strong>Vue 與 Unity 雙向溝通</strong></li>
+<li>玩家可從遊戲大廳 Lobby 自由切換遊戲</li>
+</ul>
+<p>經過整合後，能讓瀏覽器直接載入 Unity 遊戲，無需安裝 App，即可順暢遊玩。</p>
 <hr>
-<p>這次的分享主要是以音訊為主</p>
-<p>在後再來分享影音的部分</p>
-<h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>
+<h2 id="環境版本"><a href="#環境版本" class="headerlink" title="環境版本"></a>環境版本</h2><table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">版本</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">前端</td>
+<td align="left">Vue 3 + TypeScript</td>
+</tr>
+<tr>
+<td align="left">遊戲引擎</td>
+<td align="left">Unity 2021.3.22f1 LTS</td>
+</tr>
+<tr>
+<td align="left">WebGL Plugin</td>
+<td align="left"><a target="_blank" rel="noopener" href="https://github.com/Marinerer/unity-webgl">Marinerer/unity-webgl</a></td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="技術流程說明"><a href="#技術流程說明" class="headerlink" title="技術流程說明"></a>技術流程說明</h2><h3 id="Unity-Build"><a href="#Unity-Build" class="headerlink" title="Unity Build"></a>Unity Build</h3><ol>
+<li>設定 WebGL Build Target</li>
+<li>調整 Player Settings 以壓縮與最佳化</li>
+<li>Build 出 <code>.loader.js</code>, <code>.framework.js</code>, <code>.data</code>, <code>.wasm</code> 等檔案</li>
+<li>於網頁中引用與載入</li>
+</ol>
+<p>👉 <a href="#%E8%A3%9C%E5%85%85%E3%80%81Unity-WebGL-%E6%89%93%E5%8C%85%E8%A8%AD%E5%AE%9A">如何設定 Unity 打包最佳化？請點我跳到下方教學</a></p>
+<h3 id="Vue3-整合"><a href="#Vue3-整合" class="headerlink" title="Vue3 整合"></a>Vue3 整合</h3><ol>
+<li>使用 <code>unity-webgl</code> npm 套件封裝 Unity 載入</li>
+<li>雙向溝通：<ul>
+<li>Vue 傳訊息給 Unity</li>
+<li>Unity 回傳資料給 Vue</li>
+</ul>
+</li>
+<li>確保每次切換遊戲時完整釋放 Unity 實例，避免記憶體洩漏</li>
+</ol>
+<hr>
+<h2 id="Vue-端主要程式碼"><a href="#Vue-端主要程式碼" class="headerlink" title="Vue 端主要程式碼"></a>Vue 端主要程式碼</h2><h3 id="載入-Unity-遊戲"><a href="#載入-Unity-遊戲" class="headerlink" title="載入 Unity 遊戲"></a>載入 Unity 遊戲</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs vue">&lt;script setup lang="ts"&gt;<br>import { ref, onMounted } from "vue";<br>import UnityWebgl from "unity-webgl";<br>import Swal from "sweetalert2";<br>import { useRouter } from "vue-router";<br><br>const unityContext = ref&lt;InstanceType&lt;typeof UnityWebgl&gt; | null&gt;(null);<br>const router = useRouter();<br>const wait = (ms: number) =&gt; new Promise(resolve =&gt; setTimeout(resolve, ms));<br><br>onMounted(() =&gt; {<br>  Swal.fire({ title: "遊戲載入中", html: "載入進度：&lt;b&gt;0%&lt;/b&gt;", allowOutsideClick: false, showConfirmButton: false });<br><br>  const basePath = import.meta.env.VITE_APP_PROXY_URL;<br><br>  unityContext.value = new UnityWebgl("#unity-canvas", {<br>    loaderUrl: `${basePath}/Build/Project.loader.js`,<br>    dataUrl: `${basePath}/Build/Project.data.unityweb`,<br>    frameworkUrl: `${basePath}/Build/Project.framework.js.unityweb`,<br>    codeUrl: `${basePath}/Build/Project.wasm.unityweb`,<br>  });<br><br>  unityContext.value.on("progress", (progress: number) =&gt; {<br>    const percent = Math.round(progress * 100);<br>    const content = Swal.getHtmlContainer()?.querySelector("b");<br>    if (content) content.textContent = `${percent}%`;<br>  });<br><br>  unityContext.value.on("mounted", () =&gt; {<br>    Swal.close();<br>  });<br>});<br>&lt;/script&gt;<br><br>&lt;template&gt;<br>  &lt;div class="unity-container"&gt;<br>    &lt;canvas id="unity-canvas"&gt;&lt;/canvas&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br></code></pre></td></tr></tbody></table></figure>
+
+<p>特別注意：</p>
+<p>.loader.js, .framework.js, .data, .wasm 檔案路徑需要正確。</p>
+<p>我的檔案帶有 .unityweb 是因為使用 Unity 壓縮功能（Gzip）。</p>
+<p>另外我用 SweetAlert2 (Swal) 顯示遊戲載入進度條，若不需要可以自行省略。</p>
+<h3 id="Vue-發送資料給-Unity"><a href="#Vue-發送資料給-Unity" class="headerlink" title="Vue 發送資料給 Unity"></a>Vue 發送資料給 Unity</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs vue">const sendPlayerDataToUnity = () =&gt; {<br>  if (!unityContext.value) return;<br><br>  const playerData = {<br>    action: "GameTurnOn",<br>    msg: { playerName: "player", score: 0 },<br>  };<br><br>  unityContext.value.sendMessage("VueMsgProcessor", "ReceiveMsgFromVue", JSON.stringify(playerData));<br>};<br><br></code></pre></td></tr></tbody></table></figure>
+
+<p>這裡我傳遞玩家暱稱與歷史分數。</p>
+<p>兩邊協定好資料格式就行了！</p>
+<h2 id="Unity-WebGL-端主要程式碼"><a href="#Unity-WebGL-端主要程式碼" class="headerlink" title="Unity WebGL 端主要程式碼"></a>Unity WebGL 端主要程式碼</h2><h3 id="Unity-呼叫-Vue"><a href="#Unity-呼叫-Vue" class="headerlink" title="Unity 呼叫 Vue"></a>Unity 呼叫 Vue</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs unity">[DllImport("__Internal")]<br>static extern void SendMessageToVue(string message);<br><br>public void ProcessSendMessageToVue(string action, object pack) {<br>    var json = JsonConvert.SerializeObject(new MsgPack(action, pack));<br>    SendMessageToVue(json);<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>這段程式讓 Unity 可以從 C# 呼叫網頁端 (Vue) 的 window.SendMessageToVue 函數。</p>
+<h3 id="Unity-接收-Vue-傳來的訊息"><a href="#Unity-接收-Vue-傳來的訊息" class="headerlink" title="Unity 接收 Vue 傳來的訊息"></a>Unity 接收 Vue 傳來的訊息</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs unity">public void ReceiveMsgFromVue(string msgPack) {<br>    var container = JsonConvert.DeserializeObject&lt;MsgPackContainer&gt;(msgPack);<br>    if (msgHandlerTable.TryGetValue(container.action, out var handler)) {<br>        handler.Invoke(container.msg);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<p>這裡會根據 <code>action</code> 決定觸發哪個遊戲內邏輯，例如開始遊戲、載入玩家資料等。</p>
+<h3 id="Unity-傳送資料到-Vue"><a href="#Unity-傳送資料到-Vue" class="headerlink" title="Unity 傳送資料到 Vue"></a>Unity 傳送資料到 Vue</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs unity">var json = JsonConvert.SerializeObject(new MsgPack("GameFinish", new { score = 100 }));<br>SendMessageToVue(json);<br></code></pre></td></tr></tbody></table></figure>
+
+<p>傳送內容包括：</p>
+<ul>
+<li><p>action：動作名稱，例如 GameFinish</p>
+</li>
+<li><p>msg：可自訂成績、玩家 ID 等附加資訊</p>
+</li>
+</ul>
+<h3 id="Vue-端接收訊息"><a href="#Vue-端接收訊息" class="headerlink" title="Vue 端接收訊息"></a>Vue 端接收訊息</h3><figure class="highlight plaintext"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs vue">unityContext.value.addUnityListener("SendMessageToVue", (message: string) =&gt; {<br>  const data = JSON.parse(message);<br>  if (data.action === "GameFinish") {<br>    console.log("🎯 遊戲結束，成績：", data.msg);<br>  }<br>});<br></code></pre></td></tr></tbody></table></figure>
+
+<p>這樣就完成了 Unity → Vue 的資料傳遞！</p>
+<h2 id="補充、Unity-WebGL-打包設定"><a href="#補充、Unity-WebGL-打包設定" class="headerlink" title="補充、Unity WebGL 打包設定"></a>補充、Unity WebGL 打包設定</h2><p><img src="/blog/Vue3-Unity-WebGL/1745334138859.jpg" srcset="/blog/img/loading.gif" lazyload alt="Build 範例"></p>
+<table>
+<thead>
+<tr>
+<th align="left">項目</th>
+<th align="left">建議設定</th>
+<th align="left">說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Compression Format</td>
+<td align="left">Gzip</td>
+<td align="left">相容性好，瀏覽器通用</td>
+</tr>
+<tr>
+<td align="left">Decompression Fallback</td>
+<td align="left">開啟</td>
+<td align="left">防止老舊瀏覽器問題</td>
+</tr>
+<tr>
+<td align="left">Name Files As Hashes</td>
+<td align="left">開啟</td>
+<td align="left">支援 Cache Control</td>
+</tr>
+<tr>
+<td align="left">Debug Symbols</td>
+<td align="left">Off</td>
+<td align="left">移除 Debug，減少包體</td>
+</tr>
+<tr>
+<td align="left">Enable Exceptions</td>
+<td align="left">None 或 Explicit</td>
+<td align="left">減少例外支援以減小體積</td>
+</tr>
+<tr>
+<td align="left">Code Optimization</td>
+<td align="left">Size</td>
+<td align="left">以體積最小為優先目標</td>
+</tr>
+<tr>
+<td align="left">Max Texture Size</td>
+<td align="left">1024 或以下</td>
+<td align="left">減少貼圖資源，提升初次載入速度</td>
+</tr>
+</tbody></table>
+
             </div>
             <hr>
             <div>
@@ -277,7 +366,7 @@
                   <div class="post-meta mr-3">
                     <i class="iconfont icon-category"></i>
                     
-                      <a class="hover-with-bg" href="/blog/categories/Tool/">Tool</a>
+                      <a class="hover-with-bg" href="/blog/categories/Unity/">Unity</a>
                     
                   </div>
                 
@@ -285,9 +374,11 @@
                   <div class="post-meta">
                     <i class="iconfont icon-tags"></i>
                     
-                      <a class="hover-with-bg" href="/blog/tags/FFmpeg/">FFmpeg</a>
+                      <a class="hover-with-bg" href="/blog/tags/Vue-js/">Vue.js</a>
                     
-                      <a class="hover-with-bg" href="/blog/tags/filter/">filter</a>
+                      <a class="hover-with-bg" href="/blog/tags/Unity/">Unity</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/WebGL/">WebGL</a>
                     
                   </div>
                 
@@ -295,7 +386,7 @@
               
                 <p class="note note-warning">
                   <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
-                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/ffmpeg-filter-complex/">https://hi-alan-liu.github.io/blog/ffmpeg-filter-complex/</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/Vue3-Unity-WebGL/">https://hi-alan-liu.github.io/blog/Vue3-Unity-WebGL/</a> <br>
                   <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
                 </p>
               
@@ -304,18 +395,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/blog/Script-deploy/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Package Script 新增自動佈署指令</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/blog/IIS-Server-Certificate/">
-                        <span class="hidden-mobile">IIS Server Certificate 憑證更新</span>
+                      <a href="/blog/Nginx-Docker-LetsEncrypt/">
+                        <span class="hidden-mobile">Nginx Docker 常用設置方式</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -337,8 +422,8 @@
     
       <script type="text/javascript">
         var disqus_config = function() {
-          this.page.url = 'https://hi-alan-liu.github.io/ffmpeg-filter-complex/';
-          this.page.identifier = '/blog/ffmpeg-filter-complex/';
+          this.page.url = 'https://hi-alan-liu.github.io/Vue3-Unity-WebGL/';
+          this.page.identifier = '/blog/Vue3-Unity-WebGL/';
         };
         Fluid.utils.loadComments('#disqus_thread', function() {
           var d = document, s = d.createElement('script');
