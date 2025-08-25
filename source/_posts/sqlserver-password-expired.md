@@ -9,7 +9,7 @@ date: 2025-08-25 11:30:00
 ---
 # SQL Server 密碼過期問題處理
 
-### 前言
+## 前言
 
 在使用 API 連線至資料庫時，若遇到以下錯誤：
 
@@ -21,13 +21,13 @@ Login failed for user 'howtalent'.  Reason: The password of the account has expi
 
 代表該資料庫帳號的密碼已經過期，必須更新或取消密碼過期規則。
 
-### 原因
+## 原因
 
 SQL Server 在建立登入帳號時，若勾選了 **「強制執行密碼原則」(Enforce password policy)** 與 **「強制執行密碼過期」(Enforce password expiration)** ，則密碼會有存活期限，過期後無法再登入。
 
-### 解決方式
+## 解決方式
 
-#### 方法一：取消密碼過期規則
+### 方法一：取消密碼過期規則
 
 1.  進入 SQL Server Management Studio (SSMS)
 2.  找到登入帳號（例：`howtalent`）
@@ -41,7 +41,9 @@ SQL Server 在建立登入帳號時，若勾選了 **「強制執行密碼原則
 
 ![取消勾選](1756092046716.jpg)
 
-#### 方法二：修改帳號密碼
+---
+
+### 方法二：修改帳號密碼
 
 透過 SQL 指令直接更新帳號密碼：
 
@@ -54,8 +56,9 @@ ALTER LOGIN howtalent WITH PASSWORD = 'T7p#x2Lq!' UNLOCK;
 
 如果只想維持舊密碼，直接用同一組即可。
 
+---
 
-### Zeabur 密碼位置
+## 補充、 Zeabur 密碼位置
 
 在 Zeabur 部署的 MSSQL 資料庫，`SA` 密碼儲存在 **變數設定 (Variable)** 裡：
 - Key: `MSSQL_SA_PASSWORD`
@@ -66,7 +69,7 @@ ALTER LOGIN howtalent WITH PASSWORD = 'T7p#x2Lq!' UNLOCK;
 
 ### Thank you! :smile:
 
+---
 
 參考
-- [ALTER LOGIN (Transact-SQL) - Microsoft
-Docs](https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-login-transact-sql)
+- [ALTER LOGIN (Transact-SQL) - Microsoft Docs](https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-login-transact-sql)
