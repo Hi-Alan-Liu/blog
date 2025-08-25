@@ -4,6 +4,33 @@
   
   
   <entry>
+    <title>SQL Server 密碼過期問題處理</title>
+    <link href="/blog/sqlserver-password-expired/"/>
+    <url>/blog/sqlserver-password-expired/</url>
+    
+    <content type="html"><![CDATA[<h1 id="SQL-Server-密碼過期問題處理"><a href="#SQL-Server-密碼過期問題處理" class="headerlink" title="SQL Server 密碼過期問題處理"></a>SQL Server 密碼過期問題處理</h1><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>在使用 API 連線至資料庫時，若遇到以下錯誤：</p><figure class="highlight pgsql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">Login</span> failed <span class="hljs-keyword">for</span> <span class="hljs-keyword">user</span> <span class="hljs-string">'howtalent'</span>.  Reason: The <span class="hljs-keyword">password</span> <span class="hljs-keyword">of</span> the account has expired.<br></code></pre></td></tr></tbody></table></figure><p><img src="/blog/sqlserver-password-expired/1756095053153.jpg" alt="錯誤訊息範例"></p><p>代表該資料庫帳號的密碼已經過期，必須更新或取消密碼過期規則。</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>SQL Server 在建立登入帳號時，若勾選了 <strong>「強制執行密碼原則」(Enforce password policy)</strong> 與 <strong>「強制執行密碼過期」(Enforce password expiration)</strong> ，則密碼會有存活期限，過期後無法再登入。</p><h3 id="解決方式"><a href="#解決方式" class="headerlink" title="解決方式"></a>解決方式</h3><h4 id="方法一：取消密碼過期規則"><a href="#方法一：取消密碼過期規則" class="headerlink" title="方法一：取消密碼過期規則"></a>方法一：取消密碼過期規則</h4><ol><li>進入 SQL Server Management Studio (SSMS)</li><li>找到登入帳號（例：<code>howtalent</code>）</li><li>編輯帳號屬性</li></ol><p><img src="/blog/sqlserver-password-expired/1756092089667.jpg" alt="找到登入帳號"></p><ol start="4"><li>取消勾選：<ul><li>✅ 強制執行密碼原則 (Enforce password policy)</li><li>✅ 強制執行密碼過期 (Enforce password expiration)</li></ul></li></ol><p><img src="/blog/sqlserver-password-expired/1756092046716.jpg" alt="取消勾選"></p><h4 id="方法二：修改帳號密碼"><a href="#方法二：修改帳號密碼" class="headerlink" title="方法二：修改帳號密碼"></a>方法二：修改帳號密碼</h4><p>透過 SQL 指令直接更新帳號密碼：</p><figure class="highlight sql"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-keyword">ALTER</span> LOGIN howtalent <span class="hljs-keyword">WITH</span> PASSWORD <span class="hljs-operator">=</span> <span class="hljs-string">'T7p#x2Lq!'</span> UNLOCK;<br></code></pre></td></tr></tbody></table></figure><ul><li><code>howtalent</code>：登入帳號名稱</li><li><code>T7p#x2Lq!</code>：新密碼（可維持與原本相同，除非 SQL Server 強制需更換）</li></ul><p>如果只想維持舊密碼，直接用同一組即可。</p><h3 id="Zeabur-密碼位置"><a href="#Zeabur-密碼位置" class="headerlink" title="Zeabur 密碼位置"></a>Zeabur 密碼位置</h3><p>在 Zeabur 部署的 MSSQL 資料庫，<code>SA</code> 密碼儲存在 <strong>變數設定 (Variable)</strong> 裡：</p><ul><li>Key: <code>MSSQL_SA_PASSWORD</code></li><li>Value: <code>T7p#x2Lq!</code></li></ul><p><img src="/blog/sqlserver-password-expired/1756092168443.jpg" alt="Zeabur 密碼位置"></p><h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3><p>參考</p><ul><li><a href="https://learn.microsoft.com/en-us/sql/t-sql/statements/alter-login-transact-sql">ALTER LOGIN (Transact-SQL) - Microsoft<br>Docs</a></li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>Database</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>SQLServer</tag>
+      
+      <tag>Database</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Vue3 × Unity WebGL 整合實戰紀錄</title>
     <link href="/blog/vue3-unity-webgl/"/>
     <url>/blog/vue3-unity-webgl/</url>
@@ -293,9 +320,9 @@
     
     <tags>
       
-      <tag>Palworld</tag>
-      
       <tag>Linux</tag>
+      
+      <tag>Palworld</tag>
       
       <tag>Shell Script</tag>
       
@@ -1061,9 +1088,9 @@
     
     <tags>
       
-      <tag>Linux</tag>
-      
       <tag>logrotate</tag>
+      
+      <tag>Linux</tag>
       
       <tag>log</tag>
       
