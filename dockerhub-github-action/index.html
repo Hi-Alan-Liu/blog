@@ -1,0 +1,591 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="Hi , 這是 Alan 隨手紀錄的程式手札">
+  <meta name="author" content="Alan Liu">
+  <meta name="keywords" content="">
+  <meta name="description" content="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署前言專案 Docker 化後，開始將專案自動佈署化，因此找到的 Github Action 替我們輸出、打包並上傳至伺服器。  準備註冊 Docker hub網址：https:&#x2F;&#x2F;hub.docker.com&#x2F; 註冊 GitHub網址：https:&#x2F;&#x2F;github.com&#x2F; 一個 Docker 化的專案本篇範例：htt">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署">
+<meta property="og:url" content="https://hi-alan-liu.github.io/dockerhub-github-action/index.html">
+<meta property="og:site_name" content="劉穎｜Alan Liu">
+<meta property="og:description" content="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署前言專案 Docker 化後，開始將專案自動佈署化，因此找到的 Github Action 替我們輸出、打包並上傳至伺服器。  準備註冊 Docker hub網址：https:&#x2F;&#x2F;hub.docker.com&#x2F; 註冊 GitHub網址：https:&#x2F;&#x2F;github.com&#x2F; 一個 Docker 化的專案本篇範例：htt">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711294253296.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711295086499.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/messageImage_1711295596311.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711294516622.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711294929554.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711296512499.jpg">
+<meta property="og:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711296738243.jpg">
+<meta property="og:image" content="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8">
+<meta property="article:published_time" content="2024-03-24T15:23:00.000Z">
+<meta property="article:modified_time" content="2025-08-25T03:52:02.185Z">
+<meta property="article:author" content="Alan Liu">
+<meta property="article:tag" content="DockerHub">
+<meta property="article:tag" content="Github Action">
+<meta property="article:tag" content="Build">
+<meta property="article:tag" content="CI&#x2F;CD">
+<meta property="article:tag" content="Images">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://hi-alan-liu.github.io/blog/dockerhub-github-action/1711294253296.jpg">
+  
+  <title>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署 - 劉穎｜Alan Liu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hi-alan-liu.github.io","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"G-RMEY7HCZWR","gtag":"G-RMEY7HCZWR","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Alan Liu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.gif') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2024-03-24 23:23" pubdate>
+        2024年3月24日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</h1>
+            
+            <div class="markdown-body">
+              <h1 id="使用-Github-Action-將-Docker-化的專案進行打包、上傳並佈署"><a href="#使用-Github-Action-將-Docker-化的專案進行打包、上傳並佈署" class="headerlink" title="使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署"></a>使用 Github Action 將 Docker 化的專案進行打包、上傳並佈署</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>專案 Docker 化後，開始將專案自動佈署化，因此找到的 Github Action 替我們輸出、打包並上傳至伺服器。</p>
+<hr>
+<h2 id="準備"><a href="#準備" class="headerlink" title="準備"></a>準備</h2><p>註冊 Docker hub<br>網址：<a target="_blank" rel="noopener" href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p>註冊 GitHub<br>網址：<a target="_blank" rel="noopener" href="https://github.com/">https://github.com/</a></p>
+<p>一個 Docker 化的專案<br>本篇範例：<a target="_blank" rel="noopener" href="https://github.com/Hi-Alan-Liu/docker-vue">https://github.com/Hi-Alan-Liu/docker-vue</a></p>
+<p><em>準備完畢後在進行下一步</em></p>
+<hr>
+<h2 id="開始"><a href="#開始" class="headerlink" title="開始"></a>開始</h2><h3 id="一、建立-Github-Action"><a href="#一、建立-Github-Action" class="headerlink" title="一、建立 Github Action"></a>一、建立 Github Action</h3><p>從 Github 專案頁面點選 Actions </p>
+<p>並選擇 Docker images</p>
+<p><img src="/blog/dockerhub-github-action/1711294253296.jpg" srcset="/blog/img/loading.gif" lazyload alt="Action 範例"></p>
+<p>撰寫待會需要執行的 yml 檔案</p>
+<figure class="highlight yml"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs yml"><span class="hljs-attr">name:</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Image</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">Deploy</span><br><br><span class="hljs-attr">on:</span><br>  <span class="hljs-attr">push:</span><br>    <span class="hljs-attr">branches:</span> [<span class="hljs-string">"main"</span>]<br><br><span class="hljs-attr">jobs:</span><br>  <span class="hljs-attr">deploy:</span><br>    <span class="hljs-attr">runs-on:</span> <span class="hljs-string">ubuntu-latest</span><br>    <span class="hljs-attr">steps:</span><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Checkout</span> <span class="hljs-string">code</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">actions/checkout@v3</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Login</span> <span class="hljs-string">to</span> <span class="hljs-string">Docker</span> <span class="hljs-string">Hub</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/login-action@v1</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">username:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_USERNAME</span> <span class="hljs-string">}}</span><br>          <span class="hljs-attr">password:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_ACCESS_TOKEN</span> <span class="hljs-string">}}</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Build</span> <span class="hljs-string">and</span> <span class="hljs-string">push</span> <span class="hljs-string">Docker</span> <span class="hljs-string">image</span><br>        <span class="hljs-attr">uses:</span> <span class="hljs-string">docker/build-push-action@v2</span><br>        <span class="hljs-attr">with:</span><br>          <span class="hljs-attr">context:</span> <span class="hljs-string">.</span><br>          <span class="hljs-attr">push:</span> <span class="hljs-literal">true</span><br>          <span class="hljs-attr">tags:</span> <span class="hljs-string">${{</span> <span class="hljs-string">secrets.DOCKER_HUB_USERNAME</span> <span class="hljs-string">}}/${{</span> <span class="hljs-string">secrets.DOCKER_HUB_PROJECT</span> <span class="hljs-string">}}:latest</span><br><br>      <span class="hljs-bullet">-</span> <span class="hljs-attr">name:</span> <span class="hljs-string">Deploy</span> <span class="hljs-string">to</span> <span class="hljs-string">Docker</span><br>        <span class="hljs-attr">run:</span> <span class="hljs-string">|</span><br><span class="hljs-string">          echo "${{ secrets.DEPLOY_SSH_KEY }}" &gt; private_key &amp;&amp; chmod 600 private_key</span><br><span class="hljs-string">          ssh -o StrictHostKeyChecking=no -i private_key ${{ secrets.DEPLOY_SSH_USER }}@${{ secrets.DEPLOY_SSH_IP }} '</span><br><span class="hljs-string">            sudo docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_PROJECT }}:latest</span><br><span class="hljs-string">            sudo docker stop ${{ secrets.DOCKER_HUB_PROJECT }}</span><br><span class="hljs-string">            sudo docker run -d  --rm --name ${{ secrets.DOCKER_HUB_PROJECT }} -p 2083:80 ${{ secrets.DOCKER_HUB_USERNAME }}/${{ secrets.DOCKER_HUB_PROJECT }}:latest</span><br><span class="hljs-string">          '</span><br></code></pre></td></tr></tbody></table></figure>
+
+<p>此篇範例是使用 docker/login-action@v1 進行登入</p>
+<p>接著執行 docker/build-push-action@v2</p>
+<p>將專案打包並更新至 DockerHub</p>
+<p>最後使用 ssh 連上雲端主機</p>
+<p>進行 Docker pull 及 run 等等指令</p>
+<p><img src="/blog/dockerhub-github-action/1711295086499.jpg" srcset="/blog/img/loading.gif" lazyload alt="Yml 範例"></p>
+<p>儲存 Commit 後， Action 會開始自動執行</p>
+<p>目前一定會顯示執行失敗</p>
+<p><img src="/blog/dockerhub-github-action/messageImage_1711295596311.jpg" srcset="/blog/img/loading.gif" lazyload alt="失敗範例"></p>
+<p>原因是因為我們沒有將 secrets 相關的 Key Value 設定上去</p>
+<h3 id="二、設定-Github-secrets"><a href="#二、設定-Github-secrets" class="headerlink" title="二、設定 Github secrets"></a>二、設定 Github secrets</h3><p>從 Github 專案頁面點選 Settings</p>
+<p>接著點 Secrets and variables &gt; Actions</p>
+<p><img src="/blog/dockerhub-github-action/1711294516622.jpg" srcset="/blog/img/loading.gif" lazyload alt="Settings 範例"></p>
+<p>接下來點選 New repository secret</p>
+<p>將 Action 會使用到的參數全部填入</p>
+<p><img src="/blog/dockerhub-github-action/1711294929554.jpg" srcset="/blog/img/loading.gif" lazyload alt="參數範例"></p>
+<p>本篇範例會使用到</p>
+<p><code>DOCKER_HUB_USERNAME</code>: DockerHub Username</p>
+<p><code>DOCKER_HUB_ACCESS_TOKEN</code>: DockerHub Token</p>
+<p><code>DOCKER_HUB_PROJECT</code>: DockerHub 專案名稱</p>
+<p><code>DEPLOY_SSH_IP</code>: 雲端主機的公開IP位置</p>
+<p><code>DEPLOY_SSH_KEY</code>: 雲端主機的 Private Key</p>
+<p><code>DEPLOY_SSH_USER</code>: 雲端主機的使用者名稱</p>
+<p><img src="/blog/dockerhub-github-action/1711296512499.jpg" srcset="/blog/img/loading.gif" lazyload alt="DOCKER_HUB_ACCESS_TOKEN"></p>
+<p>DOCKER_HUB_ACCESS_TOKEN 可以從 DockerHub Account &gt; Security 裡面建立 Access Tokens</p>
+<h3 id="三、重新執行-Github-Action"><a href="#三、重新執行-Github-Action" class="headerlink" title="三、重新執行 Github Action"></a>三、重新執行 Github Action</h3><p>從 Github Actino 點選 Re-run jobs 就可以重新執行剛剛的失敗的 Action</p>
+<p><img src="/blog/dockerhub-github-action/1711296738243.jpg" srcset="/blog/img/loading.gif" lazyload alt="Github Action"></p>
+<p>之後等他執行完成基本上就成功囉 ~</p>
+<p>今天的教學就到此</p>
+<h3 id="Thank-you-smile"><a href="#Thank-you-smile" class="headerlink" title="Thank you! :smile:"></a>Thank you! <span class="github-emoji"><span>😄</span><img src="https://github.githubassets.com/images/icons/emoji/unicode/1f604.png?v8" srcset="/blog/img/loading.gif" lazyload aria-hidden="true" onerror="this.parent.classList.add('github-emoji-fallback')"></span></h3>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Docker/">Docker</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/DockerHub/">DockerHub</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Github-Action/">Github Action</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Build/">Build</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/CI-CD/">CI/CD</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Images/">Images</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/dockerhub-github-action/">https://hi-alan-liu.github.io/blog/dockerhub-github-action/</a> <br>
+                  <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/blog/windows-openssh-authorized-keys/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Windows OpenSSH 使用 Authorized Keys 登入的方法</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/dotnet-database-index/">
+                        <span class="hidden-mobile">.NET - 新增資料庫索引</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://hi-alan-liu.github.io/dockerhub-github-action/';
+          this.page.identifier = '/blog/dockerhub-github-action/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'alanliublog' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            總訪問量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總訪客數 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-RMEY7HCZWR', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMEY7HCZWR"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RMEY7HCZWR');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>
