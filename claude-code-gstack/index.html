@@ -1,0 +1,841 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="gstack 是 Claude Code 的第三方技能擴充套件，提供從構想到部署的完整開發工作流程。本篇整理了 gstack 的核心技能與多角色審查機制，適合想讓 AI 模擬團隊協作的開發者。
+
+本篇為 Claude Code 常用指令教學 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。
+">
+  <meta name="author" content="Alan Liu">
+  <meta name="keywords" content="">
+  <meta name="description" content="gstack 是 Claude Code 的第三方技能擴充套件，提供從構想到部署的完整開發工作流程。本篇整理了 gstack 的核心技能與多角色審查機制，適合想讓 AI 模擬團隊協作的開發者。  本篇為 Claude Code 常用指令教學 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gstack 多角色開發工作流程">
+<meta property="og:url" content="https://hi-alan-liu.github.io/claude-code-gstack/index.html">
+<meta property="og:site_name" content="劉穎｜Alan Liu">
+<meta property="og:description" content="gstack 是 Claude Code 的第三方技能擴充套件，提供從構想到部署的完整開發工作流程。本篇整理了 gstack 的核心技能與多角色審查機制，適合想讓 AI 模擬團隊協作的開發者。  本篇為 Claude Code 常用指令教學 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-03-24T05:00:00.000Z">
+<meta property="article:modified_time" content="2026-04-08T07:53:56.418Z">
+<meta property="article:author" content="Alan Liu">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="Workflow">
+<meta property="article:tag" content="gstack">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>gstack 多角色開發工作流程 - 劉穎｜Alan Liu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hi-alan-liu.github.io","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"G-RMEY7HCZWR","gtag":"G-RMEY7HCZWR","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 8.1.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Alan Liu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.gif') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="gstack 多角色開發工作流程">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2026-03-24 13:00" pubdate>
+        2026年3月24日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3.2k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">gstack 多角色開發工作流程</h1>
+            
+            <div class="markdown-body">
+              <p>gstack 是 Claude Code 的第三方技能擴充套件，提供從構想到部署的完整開發工作流程。本篇整理了 gstack 的核心技能與多角色審查機制，適合想讓 AI 模擬團隊協作的開發者。</p>
+<blockquote>
+<p>本篇為 <a href="/claude-code-commands">Claude Code 常用指令教學</a> 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。</p>
+</blockquote>
+<span id="more"></span>
+
+<p>輸入 <code>/gstack</code> 即可查看所有可用技能。以下依開發階段分類整理。</p>
+<hr>
+<h2 id="技能總覽"><a href="#技能總覽" class="headerlink" title="技能總覽"></a>技能總覽</h2><h3 id="構想與策略"><a href="#構想與策略" class="headerlink" title="構想與策略"></a>構想與策略</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/office-hours</code></td>
+<td>YC 風格的腦力激盪，驗證想法是否值得開發</td>
+</tr>
+<tr>
+<td><code>/plan-ceo-review</code></td>
+<td>CEO 視角審視計畫的範圍與策略方向</td>
+</tr>
+</tbody></table>
+<h3 id="架構與設計"><a href="#架構與設計" class="headerlink" title="架構與設計"></a>架構與設計</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/plan-eng-review</code></td>
+<td>工程主管視角審查架構、資料流與測試覆蓋</td>
+</tr>
+<tr>
+<td><code>/plan-design-review</code></td>
+<td>設計師視角評估 UI/UX 品質</td>
+</tr>
+<tr>
+<td><code>/design-consultation</code></td>
+<td>建立完整的設計系統（字體、顏色、間距）</td>
+</tr>
+<tr>
+<td><code>/autoplan</code></td>
+<td>一鍵執行所有審查（CEO + Eng + Design）</td>
+</tr>
+</tbody></table>
+<h3 id="測試與審查"><a href="#測試與審查" class="headerlink" title="測試與審查"></a>測試與審查</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/investigate</code></td>
+<td>系統化除錯，四階段找出根本原因</td>
+</tr>
+<tr>
+<td><code>/qa</code></td>
+<td>系統化 QA 測試，找出 Bug 並自動修復</td>
+</tr>
+<tr>
+<td><code>/qa-only</code></td>
+<td>僅產出 QA 報告，不修改程式碼</td>
+</tr>
+<tr>
+<td><code>/review</code></td>
+<td>PR 上線前的程式碼審查（Claude Code 內建指令）</td>
+</tr>
+<tr>
+<td><code>/codex</code></td>
+<td>使用 OpenAI Codex 提供第二意見</td>
+</tr>
+<tr>
+<td><code>/design-review</code></td>
+<td>視覺 QA，找出設計不一致與間距問題</td>
+</tr>
+</tbody></table>
+<h3 id="部署與監控"><a href="#部署與監控" class="headerlink" title="部署與監控"></a>部署與監控</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/ship</code></td>
+<td>完整的上版流程（測試、版本號、PR）</td>
+</tr>
+<tr>
+<td><code>/land-and-deploy</code></td>
+<td>合併 PR 並驗證生產環境</td>
+</tr>
+<tr>
+<td><code>/canary</code></td>
+<td>部署後的金絲雀監控</td>
+</tr>
+<tr>
+<td><code>/benchmark</code></td>
+<td>效能基準測試與回歸偵測</td>
+</tr>
+<tr>
+<td><code>/browse</code></td>
+<td>無頭瀏覽器，用於 QA 與網站測試</td>
+</tr>
+</tbody></table>
+<h3 id="安全與防護"><a href="#安全與防護" class="headerlink" title="安全與防護"></a>安全與防護</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/cso</code></td>
+<td>安全長模式，執行 OWASP 審計與威脅建模</td>
+</tr>
+<tr>
+<td><code>/careful</code></td>
+<td>對破壞性指令加上警告防護</td>
+</tr>
+<tr>
+<td><code>/freeze</code></td>
+<td>限制只能編輯指定目錄</td>
+</tr>
+<tr>
+<td><code>/guard</code></td>
+<td>結合 careful + freeze 的完整安全模式</td>
+</tr>
+</tbody></table>
+<h3 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/document-release</code></td>
+<td>上版後自動更新所有文件</td>
+</tr>
+<tr>
+<td><code>/retro</code></td>
+<td>每週工程回顧，分析 commit 與工作模式</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="實戰：開發前的多角色計畫審查"><a href="#實戰：開發前的多角色計畫審查" class="headerlink" title="實戰：開發前的多角色計畫審查"></a>實戰：開發前的多角色計畫審查</h2><p>gstack 的核心價值是<strong>多角色審查</strong> — 讓 AI 從不同專業角度審視你的計畫，模擬真實團隊的 review 流程。以下挑選幾個核心指令深入介紹。</p>
+<p>適合在寫任何程式碼之前，確保方向正確：</p>
+<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">構想 → 策略審查 → 架構審查 → 設計審查 → 開始實作<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="office-hours-—-驗證想法"><a href="#office-hours-—-驗證想法" class="headerlink" title="/office-hours — 驗證想法"></a>/office-hours — 驗證想法</h3><p>Claude 扮演 YC Partner，問你六個關鍵問題：需求是否真實存在、現有替代方案是什麼、目標用戶有多具體等，幫你過濾掉不值得做的功能。</p>
+<h3 id="plan-ceo-review-—-策略層面"><a href="#plan-ceo-review-—-策略層面" class="headerlink" title="/plan-ceo-review — 策略層面"></a>/plan-ceo-review — 策略層面</h3><p>Claude 化身 CEO/創辦人，挑戰你的前提假設、評估範圍是否足夠大膽、確認優先級是否正確。提供四種審查模式：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>適用時機</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>SCOPE EXPANSION</td>
+<td>想放大思考，找更大的機會</td>
+</tr>
+<tr>
+<td>SELECTIVE EXPANSION</td>
+<td>維持範圍，挑選值得擴展的部分</td>
+</tr>
+<tr>
+<td>HOLD SCOPE</td>
+<td>鎖定範圍，用最嚴格標準審查</td>
+</tr>
+<tr>
+<td>SCOPE REDUCTION</td>
+<td>砍到最小可行版本</td>
+</tr>
+</tbody></table>
+<h3 id="plan-eng-review-—-執行層面"><a href="#plan-eng-review-—-執行層面" class="headerlink" title="/plan-eng-review — 執行層面"></a>/plan-eng-review — 執行層面</h3><p>Claude 化身工程主管，審查架構設計、邊界情況、測試策略、效能瓶頸，每個問題給出 0-10 評分和改善建議。</p>
+<h3 id="plan-design-review-—-體驗層面"><a href="#plan-design-review-—-體驗層面" class="headerlink" title="/plan-design-review — 體驗層面"></a>/plan-design-review — 體驗層面</h3><p>Claude 化身設計師，審查視覺層級、互動體驗、設計一致性、無障礙性，並給出「做到什麼才算 10 分」的具體建議。</p>
+<h3 id="autoplan-—-一鍵全審"><a href="#autoplan-—-一鍵全審" class="headerlink" title="/autoplan — 一鍵全審"></a>/autoplan — 一鍵全審</h3><p>不想逐一執行？<code>/autoplan</code> 自動跑完 CEO → Eng → Design 三個審查，只將需要你決定的「品味問題」集中呈現。</p>
+<h3 id="審查可以迭代"><a href="#審查可以迭代" class="headerlink" title="審查可以迭代"></a>審查可以迭代</h3><p>gstack 的審查不是一次性的，每次審查後可以直接修改計畫再跑下一輪：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">第一輪：/plan-ceo-review → 發現範圍需要調整 → 修改計畫<br>第二輪：/plan-eng-review → 發現架構問題 → 修改計畫<br>第三輪：/plan-design-review → 發現 UX 流程問題 → 修改計畫<br>第四輪：/autoplan → 全面確認 → 開始實作<br></code></pre></td></tr></tbody></table></figure>
+
+<p>計畫檔案底部會自動加上 <strong>GSTACK REVIEW REPORT</strong> 表格，追蹤每個審查的執行次數、狀態和發現。</p>
+<hr>
+<h2 id="進階：開發中的多角色輪循迭代"><a href="#進階：開發中的多角色輪循迭代" class="headerlink" title="進階：開發中的多角色輪循迭代"></a>進階：開發中的多角色輪循迭代</h2><p>上面的計畫審查適用於開發前；<strong>輪循迭代則用於開發中的持續改進</strong> — 讓四個不同角色的 AI 定期輪流審查並改進你的專案。</p>
+<h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><p>四個角色排成迴圈，每半小時自動切換，每輪只做一件事：</p>
+<figure class="highlight erlang"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang">Architect → Developer → Reviewer → QA → Architect → ...<br></code></pre></td></tr></tbody></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>角色</th>
+<th>職責</th>
+<th>關注重點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Architect</strong></td>
+<td>架構設計、模組邊界、技術選型</td>
+<td>目錄結構、元件切分、耦合程度</td>
+</tr>
+<tr>
+<td><strong>Developer</strong></td>
+<td>功能實作、程式碼品質、可讀性</td>
+<td>邏輯簡潔度、重複程式碼</td>
+</tr>
+<tr>
+<td><strong>Reviewer</strong></td>
+<td>Code Review、命名規範、邏輯正確性</td>
+<td>命名語意、邏輯漏洞、專案慣例</td>
+</tr>
+<tr>
+<td><strong>QA</strong></td>
+<td>邊界測試、錯誤處理、使用者情境</td>
+<td>異常處理、操作流程順暢度</td>
+</tr>
+</tbody></table>
+<h3 id="每輪-6-步驟"><a href="#每輪-6-步驟" class="headerlink" title="每輪 6 步驟"></a>每輪 6 步驟</h3><table>
+<thead>
+<tr>
+<th>步驟</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1. 確認上次角色</td>
+<td>從 <code>ITERATION_LOG.md</code> 讀取最後一筆記錄，首次從 Architect 開始</td>
+</tr>
+<tr>
+<td>2. 選擇本次角色</td>
+<td>依序輪換，不得重複上一輪</td>
+</tr>
+<tr>
+<td>3. 找出改進項目</td>
+<td>以本輪角色視角審視程式碼，列出改進項目並排定優先級</td>
+</tr>
+<tr>
+<td>4. 實作最高優先項</td>
+<td>選取一項執行實際改動，改動須明確可驗證</td>
+</tr>
+<tr>
+<td>5. 確認 Dev Server</td>
+<td>無 error 級別 console 輸出、無未捕捉 exception、功能正常</td>
+</tr>
+<tr>
+<td>6. 寫入迭代記錄</td>
+<td>Append 至 <code>ITERATION_LOG.md</code></td>
+</tr>
+</tbody></table>
+<h3 id="迭代記錄格式"><a href="#迭代記錄格式" class="headerlink" title="迭代記錄格式"></a>迭代記錄格式</h3><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section">## Iteration #1 — 2026-03-24 14:30</span><br><span class="hljs-bullet">-</span> 角色：Architect<br><span class="hljs-bullet">-</span> 上次角色：（首次執行）<br><span class="hljs-bullet">-</span> 改進項目：將共用元件抽離至 components/ 目錄<br><span class="hljs-bullet">-</span> 改動檔案：src/components/Header.tsx, src/pages/index.tsx<br><span class="hljs-bullet">-</span> Dev Server 狀態：✅ 無 console errors<br><span class="hljs-bullet">-</span> 下次建議：Developer 應關注新元件的 props 型別定義<br></code></pre></td></tr></tbody></table></figure>
+
+<p>若記錄過於冗長或已經過兩輪完整循環，則精簡合併歷史記錄。</p>
+<h3 id="搭配-loop-自動排程"><a href="#搭配-loop-自動排程" class="headerlink" title="搭配 /loop 自動排程"></a>搭配 /loop 自動排程</h3><figure class="highlight ada"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ada">/<span class="hljs-keyword">loop</span> <span class="hljs-number">30</span>m 執行多角色輪循迭代<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="實際四輪迭代範例"><a href="#實際四輪迭代範例" class="headerlink" title="實際四輪迭代範例"></a>實際四輪迭代範例</h3><p>以下展示四個角色如何接力改進同一個功能（config 環境變數管理）：</p>
+<table>
+<thead>
+<tr>
+<th>輪次</th>
+<th>角色</th>
+<th>改進內容</th>
+<th>下輪建議</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>#1 14:00</td>
+<td>Architect</td>
+<td>將 config 從硬編碼改為環境變數讀取</td>
+<td>Developer 補上型別驗證</td>
+</tr>
+<tr>
+<td>#2 14:30</td>
+<td>Developer</td>
+<td>為 config 加上 zod schema 驗證</td>
+<td>Reviewer 檢查錯誤訊息是否清楚</td>
+</tr>
+<tr>
+<td>#3 15:00</td>
+<td>Reviewer</td>
+<td>改善驗證錯誤訊息，加上缺少哪個環境變數的提示</td>
+<td>QA 測試缺少環境變數時的啟動行為</td>
+</tr>
+<tr>
+<td>#4 15:30</td>
+<td>QA</td>
+<td>修正缺少 DATABASE_URL 時 server 靜默失敗的問題</td>
+<td>Architect 評估是否需要 health check endpoint</td>
+</tr>
+</tbody></table>
+<h3 id="核心原則"><a href="#核心原則" class="headerlink" title="核心原則"></a>核心原則</h3><blockquote>
+<p><strong>每輪只做一件事，做完、做好、記錄清楚。</strong></p>
+</blockquote>
+<ol>
+<li><strong>角色分離</strong> — 避免同一視角的盲點，強制從不同面向思考</li>
+<li><strong>增量改進</strong> — 每次只改一件事，風險可控、容易回溯</li>
+<li><strong>可追蹤</strong> — 所有改動都有記錄，知道為什麼改、改了什麼</li>
+<li><strong>持續進化</strong> — 專案在背景中不斷被不同角色打磨</li>
+</ol>
+<hr>
+<h2 id="完整生命週期"><a href="#完整生命週期" class="headerlink" title="完整生命週期"></a>完整生命週期</h2><p>從構想到上線的完整指令順序：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 驗證想法</span><br>/office-hours<br><br><span class="hljs-comment"># 2. 進入 Plan Mode 撰寫計畫</span><br><br><span class="hljs-comment"># 3. 多角色審查迭代</span><br>/autoplan<br><br><span class="hljs-comment"># 4. 開始實作 + 輪循迭代</span><br>/loop 30m 執行多角色輪循迭代<br><br><span class="hljs-comment"># 5. 品質保證</span><br>/qa                    <span class="hljs-comment"># 功能測試</span><br>/design-review         <span class="hljs-comment"># 視覺測試</span><br>/cso                   <span class="hljs-comment"># 安全測試</span><br><br><span class="hljs-comment"># 6. 上版</span><br>/ship                  <span class="hljs-comment"># 建立 PR</span><br>/land-and-deploy       <span class="hljs-comment"># 合併並部署</span><br>/canary                <span class="hljs-comment"># 監控生產環境</span><br><br><span class="hljs-comment"># 7. 收尾</span><br>/document-release      <span class="hljs-comment"># 更新文件</span><br>/retro                 <span class="hljs-comment"># 週末回顧本週成果</span><br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p>還不熟悉 Claude Code 的基本操作？請先參考：<br>👉 <a href="/claude-code-commands">Claude Code 常用指令教學</a></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Tool/">Tool</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Claude-Code/">Claude Code</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/AI/">AI</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/gstack/">gstack</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Workflow/">Workflow</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/claude-code-gstack/">https://hi-alan-liu.github.io/blog/claude-code-gstack/</a> <br>
+                  <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/claude-code-commands/">
+                        <span class="hidden-mobile">Claude Code 常用指令教學</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://hi-alan-liu.github.io/claude-code-gstack/';
+          this.page.identifier = '/blog/claude-code-gstack/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'alanliublog' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            總訪問量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總訪客數 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-RMEY7HCZWR', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMEY7HCZWR"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RMEY7HCZWR');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>
