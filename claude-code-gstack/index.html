@@ -27,7 +27,7 @@
 <meta property="og:description" content="gstack 是 Claude Code 的第三方技能擴充套件，提供從構想到部署的完整開發工作流程。本篇整理了 gstack 的核心技能與多角色審查機制，適合想讓 AI 模擬團隊協作的開發者。  本篇為 Claude Code 常用指令教學 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-03-24T05:00:00.000Z">
-<meta property="article:modified_time" content="2026-04-08T07:53:56.418Z">
+<meta property="article:modified_time" content="2026-04-07T16:00:00.000Z">
 <meta property="article:author" content="Alan Liu">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Claude Code">
@@ -199,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      3.2k 字
+      5.5k 字
     </span>
   
 
@@ -208,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      10 分钟
+      17 分钟
     </span>
   
 
@@ -257,7 +257,7 @@
 </thead>
 <tbody><tr>
 <td><code>/office-hours</code></td>
-<td>YC 風格的腦力激盪，驗證想法是否值得開發</td>
+<td>YC 風格的腦力激盪（Startup 模式）或 design thinking 發想（Builder 模式）</td>
 </tr>
 <tr>
 <td><code>/plan-ceo-review</code></td>
@@ -280,12 +280,24 @@
 <td>設計師視角評估 UI/UX 品質</td>
 </tr>
 <tr>
+<td><code>/plan-devex-review</code></td>
+<td>開發者體驗審查，評估 DX 旅程與競品比較</td>
+</tr>
+<tr>
 <td><code>/design-consultation</code></td>
 <td>建立完整的設計系統（字體、顏色、間距）</td>
 </tr>
 <tr>
+<td><code>/design-shotgun</code></td>
+<td>產生多個 AI 設計變體，開比較看板收集回饋</td>
+</tr>
+<tr>
+<td><code>/design-html</code></td>
+<td>從核准的 mockup 產生 production-quality HTML/CSS</td>
+</tr>
+<tr>
 <td><code>/autoplan</code></td>
-<td>一鍵執行所有審查（CEO + Eng + Design）</td>
+<td>一鍵執行所有審查（CEO + Eng + Design + DX）</td>
 </tr>
 </tbody></table>
 <h3 id="測試與審查"><a href="#測試與審查" class="headerlink" title="測試與審查"></a>測試與審查</h3><table>
@@ -309,15 +321,23 @@
 </tr>
 <tr>
 <td><code>/review</code></td>
-<td>PR 上線前的程式碼審查（Claude Code 內建指令）</td>
+<td>PR 上線前的程式碼審查，含 Review Army 多專家派遣</td>
 </tr>
 <tr>
 <td><code>/codex</code></td>
-<td>使用 OpenAI Codex 提供第二意見</td>
+<td>OpenAI Codex 第二意見：Code Review、Challenge 對抗、Consult 問答三種模式</td>
 </tr>
 <tr>
 <td><code>/design-review</code></td>
 <td>視覺 QA，找出設計不一致與間距問題</td>
+</tr>
+<tr>
+<td><code>/devex-review</code></td>
+<td>實際測試開發者體驗：文件導覽、TTHW 計時、錯誤訊息截圖</td>
+</tr>
+<tr>
+<td><code>/health</code></td>
+<td>程式碼品質儀表板，整合 linter、type checker、測試，算出 0-10 加權分數</td>
 </tr>
 </tbody></table>
 <h3 id="部署與監控"><a href="#部署與監控" class="headerlink" title="部署與監控"></a>部署與監控</h3><table>
@@ -334,6 +354,10 @@
 <tr>
 <td><code>/land-and-deploy</code></td>
 <td>合併 PR 並驗證生產環境</td>
+</tr>
+<tr>
+<td><code>/setup-deploy</code></td>
+<td>設定部署平台（Fly.io、Vercel、Netlify 等）供 land-and-deploy 使用</td>
 </tr>
 <tr>
 <td><code>/canary</code></td>
@@ -357,7 +381,7 @@
 </thead>
 <tbody><tr>
 <td><code>/cso</code></td>
-<td>安全長模式，執行 OWASP 審計與威脅建模</td>
+<td>安全長模式，含 secrets 考古、供應鏈掃描、OWASP 審計與威脅建模</td>
 </tr>
 <tr>
 <td><code>/careful</code></td>
@@ -370,6 +394,30 @@
 <tr>
 <td><code>/guard</code></td>
 <td>結合 careful + freeze 的完整安全模式</td>
+</tr>
+</tbody></table>
+<h3 id="開發輔助"><a href="#開發輔助" class="headerlink" title="開發輔助"></a>開發輔助</h3><table>
+<thead>
+<tr>
+<th>指令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>/checkpoint</code></td>
+<td>儲存/恢復工作狀態，跨分支交接時不遺失進度</td>
+</tr>
+<tr>
+<td><code>/pair-agent</code></td>
+<td>與遠端 AI agent 共享瀏覽器（支援 OpenClaw、Codex 等）</td>
+</tr>
+<tr>
+<td><code>/open-gstack-browser</code></td>
+<td>啟動帶側邊欄的 AI 控制 Chromium，可即時觀看操作</td>
+</tr>
+<tr>
+<td><code>/learn</code></td>
+<td>管理跨 session 的專案學習紀錄，支援搜尋、清理、匯出</td>
 </tr>
 </tbody></table>
 <h3 id="收尾"><a href="#收尾" class="headerlink" title="收尾"></a>收尾</h3><table>
@@ -391,9 +439,13 @@
 <hr>
 <h2 id="實戰：開發前的多角色計畫審查"><a href="#實戰：開發前的多角色計畫審查" class="headerlink" title="實戰：開發前的多角色計畫審查"></a>實戰：開發前的多角色計畫審查</h2><p>gstack 的核心價值是<strong>多角色審查</strong> — 讓 AI 從不同專業角度審視你的計畫，模擬真實團隊的 review 流程。以下挑選幾個核心指令深入介紹。</p>
 <p>適合在寫任何程式碼之前，確保方向正確：</p>
-<figure class="highlight"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">構想 → 策略審查 → 架構審查 → 設計審查 → 開始實作<br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight x86asm"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">構想 → 策略審查 → 架構審查 → 設計審查 → <span class="hljs-built_in">DX</span> 審查 → 開始實作<br></code></pre></td></tr></tbody></table></figure>
 
-<h3 id="office-hours-—-驗證想法"><a href="#office-hours-—-驗證想法" class="headerlink" title="/office-hours — 驗證想法"></a>/office-hours — 驗證想法</h3><p>Claude 扮演 YC Partner，問你六個關鍵問題：需求是否真實存在、現有替代方案是什麼、目標用戶有多具體等，幫你過濾掉不值得做的功能。</p>
+<h3 id="office-hours-—-驗證想法"><a href="#office-hours-—-驗證想法" class="headerlink" title="/office-hours — 驗證想法"></a>/office-hours — 驗證想法</h3><p>提供兩種模式：</p>
+<ul>
+<li><strong>Startup 模式</strong>：Claude 扮演 YC Partner，問你六個關鍵問題 — 需求是否真實存在、現有替代方案是什麼、目標用戶有多具體等，幫你過濾掉不值得做的功能</li>
+<li><strong>Builder 模式</strong>：適合 side project 或 hackathon，用 design thinking 的方式腦力激盪，聚焦在快速驗證與原型設計</li>
+</ul>
 <h3 id="plan-ceo-review-—-策略層面"><a href="#plan-ceo-review-—-策略層面" class="headerlink" title="/plan-ceo-review — 策略層面"></a>/plan-ceo-review — 策略層面</h3><p>Claude 化身 CEO/創辦人，挑戰你的前提假設、評估範圍是否足夠大膽、確認優先級是否正確。提供四種審查模式：</p>
 <table>
 <thead>
@@ -421,13 +473,135 @@
 </tbody></table>
 <h3 id="plan-eng-review-—-執行層面"><a href="#plan-eng-review-—-執行層面" class="headerlink" title="/plan-eng-review — 執行層面"></a>/plan-eng-review — 執行層面</h3><p>Claude 化身工程主管，審查架構設計、邊界情況、測試策略、效能瓶頸，每個問題給出 0-10 評分和改善建議。</p>
 <h3 id="plan-design-review-—-體驗層面"><a href="#plan-design-review-—-體驗層面" class="headerlink" title="/plan-design-review — 體驗層面"></a>/plan-design-review — 體驗層面</h3><p>Claude 化身設計師，審查視覺層級、互動體驗、設計一致性、無障礙性，並給出「做到什麼才算 10 分」的具體建議。</p>
-<h3 id="autoplan-—-一鍵全審"><a href="#autoplan-—-一鍵全審" class="headerlink" title="/autoplan — 一鍵全審"></a>/autoplan — 一鍵全審</h3><p>不想逐一執行？<code>/autoplan</code> 自動跑完 CEO → Eng → Design 三個審查，只將需要你決定的「品味問題」集中呈現。</p>
+<h3 id="autoplan-—-一鍵全審"><a href="#autoplan-—-一鍵全審" class="headerlink" title="/autoplan — 一鍵全審"></a>/autoplan — 一鍵全審</h3><p>不想逐一執行？<code>/autoplan</code> 自動跑完 CEO → Eng → Design → DX 四個審查，根據六項決策原則自動判斷，只將需要你決定的「品味問題」集中呈現。</p>
 <h3 id="審查可以迭代"><a href="#審查可以迭代" class="headerlink" title="審查可以迭代"></a>審查可以迭代</h3><p>gstack 的審查不是一次性的，每次審查後可以直接修改計畫再跑下一輪：</p>
 <figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">第一輪：/plan-ceo-review → 發現範圍需要調整 → 修改計畫<br>第二輪：/plan-eng-review → 發現架構問題 → 修改計畫<br>第三輪：/plan-design-review → 發現 UX 流程問題 → 修改計畫<br>第四輪：/autoplan → 全面確認 → 開始實作<br></code></pre></td></tr></tbody></table></figure>
 
 <p>計畫檔案底部會自動加上 <strong>GSTACK REVIEW REPORT</strong> 表格，追蹤每個審查的執行次數、狀態和發現。</p>
 <hr>
-<h2 id="進階：開發中的多角色輪循迭代"><a href="#進階：開發中的多角色輪循迭代" class="headerlink" title="進階：開發中的多角色輪循迭代"></a>進階：開發中的多角色輪循迭代</h2><p>上面的計畫審查適用於開發前；<strong>輪循迭代則用於開發中的持續改進</strong> — 讓四個不同角色的 AI 定期輪流審查並改進你的專案。</p>
+<h2 id="重點技能深入介紹"><a href="#重點技能深入介紹" class="headerlink" title="重點技能深入介紹"></a>重點技能深入介紹</h2><h3 id="review-—-Review-Army-多專家審查"><a href="#review-—-Review-Army-多專家審查" class="headerlink" title="/review — Review Army 多專家審查"></a>/review — Review Army 多專家審查</h3><p>gstack 的 <code>/review</code> 不只是一般的 code review，它會派遣多位「專家」從不同面向審查你的 diff：</p>
+<table>
+<thead>
+<tr>
+<th>專家</th>
+<th>關注重點</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Testing</td>
+<td>測試覆蓋與品質</td>
+</tr>
+<tr>
+<td>Maintainability</td>
+<td>可維護性與可讀性</td>
+</tr>
+<tr>
+<td>Security</td>
+<td>安全漏洞</td>
+</tr>
+<tr>
+<td>Performance</td>
+<td>效能瓶頸</td>
+</tr>
+<tr>
+<td>Data Migration</td>
+<td>資料庫遷移安全</td>
+</tr>
+<tr>
+<td>API Contract</td>
+<td>API 介面變更</td>
+</tr>
+<tr>
+<td>Design</td>
+<td>設計一致性</td>
+</tr>
+<tr>
+<td>Red Team</td>
+<td>對抗性測試</td>
+</tr>
+</tbody></table>
+<p>跨次審查會自動去重 — 你在前一次 <code>/review</code> 已跳過的 finding，下一次不會再出現（除非相關程式碼有變動）。</p>
+<h3 id="cso-—-安全長雙模式"><a href="#cso-—-安全長雙模式" class="headerlink" title="/cso — 安全長雙模式"></a>/cso — 安全長雙模式</h3><p>提供兩種運作模式，適合不同頻率的安全檢查：</p>
+<ul>
+<li><strong>Daily 模式</strong>：快速掃描，信心門檻 8/10，適合日常開發中的安全把關</li>
+<li><strong>Comprehensive Monthly 模式</strong>：深度審計，信心門檻 2/10（寧可誤報也不放過），適合月度安全檢視</li>
+</ul>
+<p>審計範圍包含：secrets 考古（搜尋硬編碼密鑰）、相依套件供應鏈掃描、CI/CD pipeline 安全、LLM/AI 安全、OWASP Top 10、STRIDE 威脅建模，並支援趨勢追蹤。</p>
+<h3 id="codex-—-三種模式的第二意見"><a href="#codex-—-三種模式的第二意見" class="headerlink" title="/codex — 三種模式的第二意見"></a>/codex — 三種模式的第二意見</h3><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Code Review</td>
+<td>獨立 diff 審查，給出 pass/fail 結果</td>
+</tr>
+<tr>
+<td>Challenge</td>
+<td>對抗模式，嘗試找出你程式碼的漏洞與邊界問題</td>
+</tr>
+<tr>
+<td>Consult</td>
+<td>問答模式，有 session 延續性，適合來回討論</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="Team-Mode：團隊版本同步"><a href="#Team-Mode：團隊版本同步" class="headerlink" title="Team Mode：團隊版本同步"></a>Team Mode：團隊版本同步</h2><p>v0.15.13 起，gstack 支援 Team Mode，解決多人協作時版本不一致的問題。</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 啟用 Team Mode（一次性設定）</span><br>./setup --team<br></code></pre></td></tr></tbody></table></figure>
+
+<p>啟用後的效果：</p>
+<ul>
+<li>在 Claude Code 的 <code>SessionStart</code> hook 註冊自動更新腳本</li>
+<li>每次啟動 Claude Code 時背景同步（零延遲，不影響工作）</li>
+<li>更新頻率限制為每小時一次，網路失敗不影響正常使用</li>
+<li>不再需要將 gstack 複製到每個 repo（vendoring 已棄用）</li>
+</ul>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 為團隊 repo 產生引導設定</span><br>gstack-team-init optional   <span class="hljs-comment"># 溫和模式：建議安裝</span><br>gstack-team-init required   <span class="hljs-comment"># 強制模式：未安裝則阻擋工作</span><br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="瀏覽器資料平台"><a href="#瀏覽器資料平台" class="headerlink" title="瀏覽器資料平台"></a>瀏覽器資料平台</h2><p>v0.16.0 為 <code>/browse</code> 新增了六個資料擷取命令，將無頭瀏覽器從「點擊按鈕的工具」升級為完整的爬蟲與資料擷取平台：</p>
+<table>
+<thead>
+<tr>
+<th>命令</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>media</code></td>
+<td>探索頁面上所有圖片、影片、音訊元素，回傳 URL、尺寸、srcset 等資訊</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>擷取頁面嵌入的結構化資料（JSON-LD、Open Graph、Twitter Cards）</td>
+</tr>
+<tr>
+<td><code>download</code></td>
+<td>下載任意 URL 或 <code>@ref</code> 元素到本地，支援 blob URL 與 base64 輸出</td>
+</tr>
+<tr>
+<td><code>scrape</code></td>
+<td>批次下載頁面上所有媒體，自動去重並產生 <code>manifest.json</code></td>
+</tr>
+<tr>
+<td><code>archive</code></td>
+<td>透過 CDP 將完整頁面儲存為 MHTML</td>
+</tr>
+<tr>
+<td><code>network --capture</code></td>
+<td>攔截 API 回應內容，取得結構化 JSON 而非脆弱的 DOM 爬取</td>
+</tr>
+</tbody></table>
+<p>搭配使用範例：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 擷取電商頁面的產品結構化資料</span><br><span class="hljs-variable">$B</span> goto https://example.com/product<br><span class="hljs-variable">$B</span> data                          <span class="hljs-comment"># 取得 JSON-LD 產品價格、描述</span><br><br><span class="hljs-comment"># 批次下載頁面所有圖片</span><br><span class="hljs-variable">$B</span> goto https://example.com/gallery<br><span class="hljs-variable">$B</span> scrape --images /tmp/gallery  <span class="hljs-comment"># 自動下載所有圖片</span><br><br><span class="hljs-comment"># 攔截 API 回應</span><br><span class="hljs-variable">$B</span> network --capture --filter api<br><span class="hljs-variable">$B</span> goto https://app.example.com<br><span class="hljs-variable">$B</span> network --bodies              <span class="hljs-comment"># 查看攔截到的 JSON 回應</span><br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="我的實踐：用-loop-打造多角色輪循迭代"><a href="#我的實踐：用-loop-打造多角色輪循迭代" class="headerlink" title="我的實踐：用 /loop 打造多角色輪循迭代"></a>我的實踐：用 /loop 打造多角色輪循迭代</h2><blockquote>
+<p>以下是基於 gstack 工具組合的<strong>自訂工作流程</strong>，不是 gstack 內建功能，而是利用 <code>/loop</code> 搭配提示詞設計的迭代機制。</p>
+</blockquote>
+<p>上面的計畫審查適用於開發前；<strong>輪循迭代則用於開發中的持續改進</strong> — 讓四個不同角色的 AI 定期輪流審查並改進你的專案。</p>
 <h3 id="核心概念"><a href="#核心概念" class="headerlink" title="核心概念"></a>核心概念</h3><p>四個角色排成迴圈，每半小時自動切換，每輪只做一件事：</p>
 <figure class="highlight erlang"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs erlang">Architect → Developer → Reviewer → QA → Architect → ...<br></code></pre></td></tr></tbody></table></figure>
 
@@ -543,7 +717,7 @@
 </ol>
 <hr>
 <h2 id="完整生命週期"><a href="#完整生命週期" class="headerlink" title="完整生命週期"></a>完整生命週期</h2><p>從構想到上線的完整指令順序：</p>
-<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 驗證想法</span><br>/office-hours<br><br><span class="hljs-comment"># 2. 進入 Plan Mode 撰寫計畫</span><br><br><span class="hljs-comment"># 3. 多角色審查迭代</span><br>/autoplan<br><br><span class="hljs-comment"># 4. 開始實作 + 輪循迭代</span><br>/loop 30m 執行多角色輪循迭代<br><br><span class="hljs-comment"># 5. 品質保證</span><br>/qa                    <span class="hljs-comment"># 功能測試</span><br>/design-review         <span class="hljs-comment"># 視覺測試</span><br>/cso                   <span class="hljs-comment"># 安全測試</span><br><br><span class="hljs-comment"># 6. 上版</span><br>/ship                  <span class="hljs-comment"># 建立 PR</span><br>/land-and-deploy       <span class="hljs-comment"># 合併並部署</span><br>/canary                <span class="hljs-comment"># 監控生產環境</span><br><br><span class="hljs-comment"># 7. 收尾</span><br>/document-release      <span class="hljs-comment"># 更新文件</span><br>/retro                 <span class="hljs-comment"># 週末回顧本週成果</span><br></code></pre></td></tr></tbody></table></figure>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 驗證想法</span><br>/office-hours<br><br><span class="hljs-comment"># 2. 進入 Plan Mode 撰寫計畫</span><br><br><span class="hljs-comment"># 3. 多角色審查迭代</span><br>/autoplan<br><br><span class="hljs-comment"># 4. 開始實作 + 輪循迭代</span><br>/loop 30m 執行多角色輪循迭代<br><br><span class="hljs-comment"># 5. 品質保證</span><br>/qa                    <span class="hljs-comment"># 功能測試</span><br>/design-review         <span class="hljs-comment"># 視覺測試</span><br>/cso                   <span class="hljs-comment"># 安全測試</span><br>/health                <span class="hljs-comment"># 程式碼品質分數</span><br><br><span class="hljs-comment"># 6. 上版</span><br>/ship                  <span class="hljs-comment"># 建立 PR</span><br>/land-and-deploy       <span class="hljs-comment"># 合併並部署</span><br>/canary                <span class="hljs-comment"># 監控生產環境</span><br><br><span class="hljs-comment"># 7. 收尾</span><br>/document-release      <span class="hljs-comment"># 更新文件</span><br>/retro                 <span class="hljs-comment"># 週末回顧本週成果</span><br></code></pre></td></tr></tbody></table></figure>
 
 <hr>
 <h2 id="延伸閱讀"><a href="#延伸閱讀" class="headerlink" title="延伸閱讀"></a>延伸閱讀</h2><p>還不熟悉 Claude Code 的基本操作？請先參考：<br>👉 <a href="/claude-code-commands">Claude Code 常用指令教學</a></p>
