@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="美編同事問我：「聽說 Claude 可以幫忙做圖，那我要怎麼用？」我第一反應是 —— 它不是生圖 AI，但它會寫 Illustrator 看得懂的東西。這篇就用一個實際案例，帶你從終端機輸入第一句話開始，丟給 Claude 參考圖與設計想法，最後拿到一個分好圖層的 .ai 檔，以及一整包 1x / 2x / 3x 的透明 PNG。">
+  <meta name="author" content="Alan Liu">
+  <meta name="keywords" content="">
+  <meta name="description" content="美編同事問我：「聽說 Claude 可以幫忙做圖，那我要怎麼用？」我第一反應是 —— 它不是生圖 AI，但它會寫 Illustrator 看得懂的東西。這篇就用一個實際案例，帶你從終端機輸入第一句話開始，丟給 Claude 參考圖與設計想法，最後拿到一個分好圖層的 .ai 檔，以及一整包 1x &#x2F; 2x &#x2F; 3x 的透明 PNG。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="給美編的 Claude Code 教學：從參考圖到 Illustrator .ai 與 PNG">
+<meta property="og:url" content="https://hi-alan-liu.github.io/claude-code-for-designers/index.html">
+<meta property="og:site_name" content="劉穎｜Alan Liu">
+<meta property="og:description" content="美編同事問我：「聽說 Claude 可以幫忙做圖，那我要怎麼用？」我第一反應是 —— 它不是生圖 AI，但它會寫 Illustrator 看得懂的東西。這篇就用一個實際案例，帶你從終端機輸入第一句話開始，丟給 Claude 參考圖與設計想法，最後拿到一個分好圖層的 .ai 檔，以及一整包 1x &#x2F; 2x &#x2F; 3x 的透明 PNG。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-11-17T02:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-17T05:46:32.710Z">
+<meta property="article:author" content="Alan Liu">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="Design">
+<meta property="article:tag" content="Illustrator">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>給美編的 Claude Code 教學：從參考圖到 Illustrator .ai 與 PNG - 劉穎｜Alan Liu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hi-alan-liu.github.io","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"G-RMEY7HCZWR","gtag":"G-RMEY7HCZWR","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 8.1.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Alan Liu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.gif') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="給美編的 Claude Code 教學：從參考圖到 Illustrator .ai 與 PNG">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2026-11-17 10:00" pubdate>
+        2026年11月17日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      6.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      21 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">給美編的 Claude Code 教學：從參考圖到 Illustrator .ai 與 PNG</h1>
+            
+            <div class="markdown-body">
+              <p>美編同事問我：「聽說 Claude 可以幫忙做圖，那我要怎麼用？」我第一反應是 —— 它不是生圖 AI，但它會<strong>寫 Illustrator 看得懂的東西</strong>。這篇就用一個實際案例，帶你從終端機輸入第一句話開始，丟給 Claude 參考圖與設計想法，最後拿到一個<strong>分好圖層的 .ai 檔</strong>，以及一整包 <strong>1x / 2x / 3x 的透明 PNG</strong>。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>本篇跳過安裝，假設你已經能在終端機輸入 <code>claude</code> 啟動 Claude Code。指令細節可參考 <a href="/claude-code-commands">Claude Code 常用指令教學</a>。</p>
+<p>文中穿插工程師「阿哲」與美編「小芸」的對話，是這篇教學實際討論時的片段。</p>
+</blockquote>
+<hr>
+<h2 id="先講清楚：Claude-能做什麼、不能做什麼"><a href="#先講清楚：Claude-能做什麼、不能做什麼" class="headerlink" title="先講清楚：Claude 能做什麼、不能做什麼"></a>先講清楚：Claude 能做什麼、不能做什麼</h2><blockquote>
+<p>💬 <strong>小芸</strong>：所以我丟一張圖，它就會畫一張新的給我？<br>💬 <strong>阿哲</strong>：不是喔。Claude 「看得懂」圖片，但它不是 Midjourney 那種直接吐出點陣圖的生圖模型。它做的是<strong>把你的想法翻譯成向量指令</strong>，讓 Illustrator 去畫。</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>適合交給 Claude</th>
+<th>不適合交給 Claude</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>幾何風格的圖示、Logo 草案、資訊圖表</td>
+<td>手繪質感插畫、寫實人物</td>
+</tr>
+<tr>
+<td>一次建好多個畫板、圖層、色票</td>
+<td>需要「感覺對了」的細膩筆觸</td>
+</tr>
+<tr>
+<td>批次輸出多尺寸 PNG、重新命名</td>
+<td>取代你的美感判斷</td>
+</tr>
+<tr>
+<td>照品牌規範反覆微調</td>
+<td>處理字型授權問題</td>
+</tr>
+</tbody></table>
+<p>一句話：<strong>Claude 是一個很會寫腳本、聽得懂設計語言的助理</strong>，最後的美感把關還是你。</p>
+<hr>
+<h2 id="終端機-3-分鐘入門（給沒碰過的人）"><a href="#終端機-3-分鐘入門（給沒碰過的人）" class="headerlink" title="終端機 3 分鐘入門（給沒碰過的人）"></a>終端機 3 分鐘入門（給沒碰過的人）</h2><blockquote>
+<p>💬 <strong>小芸</strong>：我看到黑色視窗就緊張。<br>💬 <strong>阿哲</strong>：你只需要會三件事：打開、進到資料夾、輸入 <code>claude</code>。其他都用中文跟它講就好。</p>
+</blockquote>
+<ol>
+<li><strong>在資料夾直接開終端機</strong>：在檔案總管中，對專案資料夾按右鍵 →「在終端機中開啟」（Mac 是在 Finder 對資料夾按右鍵 →「服務」→「新增位於檔案夾位置的終端機視窗」）。</li>
+<li><strong>確認位置</strong>：視窗前面顯示的路徑，就是你目前所在的資料夾。</li>
+<li><strong>輸入 <code>claude</code> 按 Enter</strong>：看到對話框就可以開始打字了。</li>
+</ol>
+<p>離開時輸入 <code>/exit</code>，或按兩次 <code>Ctrl + C</code>。</p>
+<h3 id="先把資料夾整理好"><a href="#先把資料夾整理好" class="headerlink" title="先把資料夾整理好"></a>先把資料夾整理好</h3><p>Claude 只看得到你所在資料夾裡的東西，所以先準備好這樣的結構（<strong>資料夾名稱建議用英文</strong>，後面會說為什麼）：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">coffee-icons/<br>├── ref/          ← 參考圖、手稿照片、mood board<br>├── scripts/      ← Claude 寫的 Illustrator 腳本會放這<br>├── output/       ← .ai 與 PNG 輸出位置<br>└── CLAUDE.md     ← 品牌規範（下一步會寫）<br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="Step-1：用-CLAUDE-md-寫下品牌規範"><a href="#Step-1：用-CLAUDE-md-寫下品牌規範" class="headerlink" title="Step 1：用 CLAUDE.md 寫下品牌規範"></a>Step 1：用 CLAUDE.md 寫下品牌規範</h2><p>每次都重新交代主色、線條粗細很累。把規範寫在 <code>CLAUDE.md</code>，Claude Code 每次啟動都會自動讀它，等於一份<strong>常駐的設計 brief</strong>。</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 白鷺咖啡 圖示專案</span><br><br><span class="hljs-section">## 品牌規範</span><br><span class="hljs-bullet">-</span> 主色 #6B4226（咖啡棕）、輔色 #F2E6D8（奶泡白）、強調色 #D98E04（焦糖）<br><span class="hljs-bullet">-</span> 風格：線性圖示，圓角端點、圓角轉折<br><span class="hljs-bullet">-</span> 畫板 512×512 px，筆畫 24 px，四周保留 48 px 安全區<br><span class="hljs-bullet">-</span> 背景透明<br><br><span class="hljs-section">## 技術規則</span><br><span class="hljs-bullet">-</span> Illustrator 腳本使用 ExtendScript（ES3 語法）：不要用 let、const、箭頭函式<br><span class="hljs-bullet">-</span> 一個圖示 = 一個畫板 + 一個圖層，名稱格式 icon-英文小寫（例：icon-latte）<br><span class="hljs-bullet">-</span> 輸出：output/coffee-icons.ai，PNG 放 output/png/，含 1x、@2x、@3x<br></code></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>💬 <strong>阿哲</strong>：最後那段「技術規則」是我加的。Illustrator 的腳本引擎很老，不先講清楚，Claude 偶爾會寫出新版 JavaScript 語法然後執行失敗。<br>💬 <strong>小芸</strong>：所以上半段我負責、下半段你負責，分工剛好。</p>
+</blockquote>
+<p>不想自己寫也可以直接說：「幫我建立 CLAUDE.md，主色是 #6B4226……」讓 Claude 產生，你再修。</p>
+<hr>
+<h2 id="Step-2：把參考圖丟給-Claude"><a href="#Step-2：把參考圖丟給-Claude" class="headerlink" title="Step 2：把參考圖丟給 Claude"></a>Step 2：把參考圖丟給 Claude</h2><p>給圖片有三種方式，挑順手的：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>做法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>拖曳</strong></td>
+<td>把圖片檔直接拖進終端機視窗，會自動帶入檔案路徑</td>
+</tr>
+<tr>
+<td><strong>寫路徑</strong></td>
+<td>圖片放在 <code>ref/</code> 裡，對話中寫 <code>ref/sketch.jpg</code> 即可</td>
+</tr>
+<tr>
+<td><strong>貼上截圖</strong></td>
+<td>截圖後在 Claude Code 內貼上（Mac 為 <code>Ctrl + V</code>，Windows 為 <code>Alt + V</code>）</td>
+</tr>
+</tbody></table>
+<h3 id="先讓它「說出」看到什麼，再動手"><a href="#先讓它「說出」看到什麼，再動手" class="headerlink" title="先讓它「說出」看到什麼，再動手"></a>先讓它「說出」看到什麼，再動手</h3><p>這是我最推薦的習慣：<strong>不要一丟圖就叫它畫</strong>，先確認它理解得跟你一樣。</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">ref/sketch.jpg 是我手畫的四個圖示草稿，ref/mood.png 是風格參考。<br>先不要寫任何檔案，請用條列描述：<br>1. 你看到的四個圖示分別是什麼<br>2. 參考圖的風格特徵（線條、圓角、留白、配色）<br>3. 你打算怎麼在 512×512 畫板上構圖<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Claude 回覆後，像跟同事對稿一樣修正它：「第三個不是茶壺，是手沖壺，壺嘴要細長」。<strong>這一步花 2 分鐘，可以省掉後面 20 分鐘來回。</strong></p>
+<hr>
+<h2 id="Step-3：生成-ai-檔-——-兩條路線"><a href="#Step-3：生成-ai-檔-——-兩條路線" class="headerlink" title="Step 3：生成 .ai 檔 —— 兩條路線"></a>Step 3：生成 .ai 檔 —— 兩條路線</h2><blockquote>
+<p>💬 <strong>小芸</strong>：它到底怎麼把東西「放進」Illustrator？<br>💬 <strong>阿哲</strong>：兩種方法。簡單的是讓它畫 SVG，你自己打開存檔；進階的是讓它寫 Illustrator 腳本，一次把畫板、圖層、色票、輸出全部做完。</p>
+</blockquote>
+<h3 id="路線-A：SVG（最簡單，適合單一圖示）"><a href="#路線-A：SVG（最簡單，適合單一圖示）" class="headerlink" title="路線 A：SVG（最簡單，適合單一圖示）"></a>路線 A：SVG（最簡單，適合單一圖示）</h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs text">依照剛剛的描述，把「拿鐵杯」畫成 SVG，存到 output/icon-latte.svg。<br>每個部件用 &lt;g id="..."&gt; 分組並取英文名稱。<br></code></pre></td></tr></tbody></table></figure>
+
+<ol>
+<li>用瀏覽器打開 <code>.svg</code> 快速預覽。</li>
+<li>在 Illustrator：<strong>檔案 → 開啟</strong> 該 SVG。</li>
+<li><strong>檔案 → 另存新檔</strong>，格式選 <strong>Adobe Illustrator (*.AI)</strong>。</li>
+</ol>
+<p>SVG 裡的 <code>id</code> 會變成 Illustrator 中的物件名稱，圖層面板一樣看得懂。缺點是多畫板、色票、批次輸出都要你手動處理。</p>
+<h3 id="路線-B：Illustrator-腳本（推薦，適合一整組）"><a href="#路線-B：Illustrator-腳本（推薦，適合一整組）" class="headerlink" title="路線 B：Illustrator 腳本（推薦，適合一整組）"></a>路線 B：Illustrator 腳本（推薦，適合一整組）</h3><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">寫一支 Illustrator 腳本 scripts/make-icons.jsx：<br>- 建立 4 個 512×512 畫板，分別是 latte、pour-over、bean、cake<br>- 每個圖示一個圖層，把品牌三色加進色票<br>- 存成 output/coffee-icons.ai<br>- 再把每個畫板輸出成 1x、@2x、@3x 透明 PNG 到 output/png/<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Claude 寫出來的腳本大致長這樣（節錄，實際會更完整）：</p>
+<figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><code class="hljs javascript">#target illustrator<br><span class="hljs-comment">// make-icons.jsx — 由 Claude Code 產生</span><br><br><span class="hljs-keyword">var</span> <span class="hljs-variable constant_">ROOT</span> = <span class="hljs-string">"D:/design/coffee-icons/output/"</span>;<br><span class="hljs-keyword">var</span> <span class="hljs-variable constant_">NAMES</span> = [<span class="hljs-string">"icon-latte"</span>, <span class="hljs-string">"icon-pour-over"</span>, <span class="hljs-string">"icon-bean"</span>, <span class="hljs-string">"icon-cake"</span>];<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">hex</span>(<span class="hljs-params">h</span>) {<br>    <span class="hljs-keyword">var</span> c = <span class="hljs-keyword">new</span> <span class="hljs-title class_">RGBColor</span>();<br>    c.<span class="hljs-property">red</span> = <span class="hljs-built_in">parseInt</span>(h.<span class="hljs-title function_">substr</span>(<span class="hljs-number">1</span>, <span class="hljs-number">2</span>), <span class="hljs-number">16</span>);<br>    c.<span class="hljs-property">green</span> = <span class="hljs-built_in">parseInt</span>(h.<span class="hljs-title function_">substr</span>(<span class="hljs-number">3</span>, <span class="hljs-number">2</span>), <span class="hljs-number">16</span>);<br>    c.<span class="hljs-property">blue</span> = <span class="hljs-built_in">parseInt</span>(h.<span class="hljs-title function_">substr</span>(<span class="hljs-number">5</span>, <span class="hljs-number">2</span>), <span class="hljs-number">16</span>);<br>    <span class="hljs-keyword">return</span> c;<br>}<br><br><span class="hljs-comment">// 1. 建立文件：RGB、4 個 512×512 畫板橫向排列</span><br><span class="hljs-keyword">var</span> doc = app.<span class="hljs-property">documents</span>.<span class="hljs-title function_">add</span>(<span class="hljs-title class_">DocumentColorSpace</span>.<span class="hljs-property">RGB</span>, <span class="hljs-number">512</span>, <span class="hljs-number">512</span>, <span class="hljs-number">4</span>,<br>                            <span class="hljs-title class_">DocumentArtboardLayout</span>.<span class="hljs-property">Row</span>, <span class="hljs-number">40</span>);<br><br><span class="hljs-comment">// 2. 品牌色票</span><br><span class="hljs-keyword">var</span> brand = { <span class="hljs-string">"咖啡棕"</span>: <span class="hljs-string">"#6B4226"</span>, <span class="hljs-string">"奶泡白"</span>: <span class="hljs-string">"#F2E6D8"</span>, <span class="hljs-string">"焦糖"</span>: <span class="hljs-string">"#D98E04"</span> };<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> k <span class="hljs-keyword">in</span> brand) {<br>    <span class="hljs-keyword">var</span> sw = doc.<span class="hljs-property">swatches</span>.<span class="hljs-title function_">add</span>();<br>    sw.<span class="hljs-property">name</span> = k;<br>    sw.<span class="hljs-property">color</span> = <span class="hljs-title function_">hex</span>(brand[k]);<br>}<br><br><span class="hljs-comment">// 3. 每個畫板命名、建立對應圖層並繪製</span><br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-variable constant_">NAMES</span>.<span class="hljs-property">length</span>; i++) {<br>    doc.<span class="hljs-property">artboards</span>[i].<span class="hljs-property">name</span> = <span class="hljs-variable constant_">NAMES</span>[i];<br>    <span class="hljs-keyword">var</span> layer = doc.<span class="hljs-property">layers</span>.<span class="hljs-title function_">add</span>();<br>    layer.<span class="hljs-property">name</span> = <span class="hljs-variable constant_">NAMES</span>[i];<br>    <span class="hljs-comment">// drawIcon(layer, doc.artboards[i].artboardRect, NAMES[i]);  ← 各圖示的繪製函式</span><br>}<br><br><span class="hljs-comment">// 4. 存成 .ai</span><br>doc.<span class="hljs-title function_">saveAs</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(<span class="hljs-variable constant_">ROOT</span> + <span class="hljs-string">"coffee-icons.ai"</span>), <span class="hljs-keyword">new</span> <span class="hljs-title class_">IllustratorSaveOptions</span>());<br><br><span class="hljs-comment">// 5. 每個畫板輸出 1x / 2x / 3x 透明 PNG</span><br><span class="hljs-keyword">var</span> pngDir = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Folder</span>(<span class="hljs-variable constant_">ROOT</span> + <span class="hljs-string">"png"</span>);<br><span class="hljs-keyword">if</span> (!pngDir.<span class="hljs-property">exists</span>) pngDir.<span class="hljs-title function_">create</span>();<br><br><span class="hljs-keyword">var</span> scales = [<span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">3</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> a = <span class="hljs-number">0</span>; a &lt; doc.<span class="hljs-property">artboards</span>.<span class="hljs-property">length</span>; a++) {<br>    doc.<span class="hljs-property">artboards</span>.<span class="hljs-title function_">setActiveArtboardIndex</span>(a);<br>    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> s = <span class="hljs-number">0</span>; s &lt; scales.<span class="hljs-property">length</span>; s++) {<br>        <span class="hljs-keyword">var</span> opt = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ExportOptionsPNG24</span>();<br>        opt.<span class="hljs-property">artBoardClipping</span> = <span class="hljs-literal">true</span>;   <span class="hljs-comment">// 只輸出畫板範圍</span><br>        opt.<span class="hljs-property">transparency</span> = <span class="hljs-literal">true</span>;       <span class="hljs-comment">// 透明背景</span><br>        opt.<span class="hljs-property">antiAliasing</span> = <span class="hljs-literal">true</span>;<br>        opt.<span class="hljs-property">horizontalScale</span> = opt.<span class="hljs-property">verticalScale</span> = <span class="hljs-number">100</span> * scales[s];<br>        <span class="hljs-keyword">var</span> suffix = scales[s] === <span class="hljs-number">1</span> ? <span class="hljs-string">""</span> : <span class="hljs-string">"@"</span> + scales[s] + <span class="hljs-string">"x"</span>;<br>        doc.<span class="hljs-title function_">exportFile</span>(<span class="hljs-keyword">new</span> <span class="hljs-title class_">File</span>(pngDir + <span class="hljs-string">"/"</span> + <span class="hljs-variable constant_">NAMES</span>[a] + suffix + <span class="hljs-string">".png"</span>),<br>                       <span class="hljs-title class_">ExportType</span>.<span class="hljs-property">PNG24</span>, opt);<br>    }<br>}<br></code></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>💬 <strong>小芸</strong>：程式碼我看不懂耶。<br>💬 <strong>阿哲</strong>：不用看懂。你只要知道每一段註解在做什麼，要改的時候用中文跟 Claude 說「把畫板改成 1080×1080」就好。</p>
+</blockquote>
+<h3 id="執行腳本"><a href="#執行腳本" class="headerlink" title="執行腳本"></a>執行腳本</h3><p><strong>方法一：在 Illustrator 裡手動執行</strong></p>
+<p><strong>檔案 → 指令碼 → 其他指令碼</strong>（快捷鍵 <code>Ctrl + F12</code>），選擇 <code>scripts/make-icons.jsx</code>。</p>
+<p><strong>方法二：直接請 Claude 幫你執行</strong></p>
+<p>Illustrator 開著的狀態下，對 Claude 說：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">幫我用 Illustrator 執行 scripts/make-icons.jsx<br></code></pre></td></tr></tbody></table></figure>
+
+<p>在 Windows 上，它會透過 PowerShell 呼叫 Illustrator：</p>
+<figure class="highlight powershell"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$ai</span> = <span class="hljs-built_in">New-Object</span> <span class="hljs-literal">-ComObject</span> Illustrator.Application<br><span class="hljs-variable">$ai</span>.DoJavaScriptFile(<span class="hljs-string">"D:\design\coffee-icons\scripts\make-icons.jsx"</span>)<br></code></pre></td></tr></tbody></table></figure>
+
+<p>Mac 則是透過 AppleScript：</p>
+<figure class="highlight bash"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">osascript -e <span class="hljs-string">'tell application "Adobe Illustrator" to do javascript file "/Users/you/coffee-icons/scripts/make-icons.jsx"'</span><br></code></pre></td></tr></tbody></table></figure>
+
+<blockquote>
+<p>💬 <strong>阿哲</strong>：第二種最爽。你講一句話，Illustrator 自己跳出來畫完、存檔、輸出，你只要去 <code>output/</code> 收成果。</p>
+</blockquote>
+<hr>
+<h2 id="Step-4：看結果、用「設計語言」來回修"><a href="#Step-4：看結果、用「設計語言」來回修" class="headerlink" title="Step 4：看結果、用「設計語言」來回修"></a>Step 4：看結果、用「設計語言」來回修</h2><p>第一版通常有七成像。這時候<strong>用你平常對稿的講法就行</strong>，Claude 聽得懂設計術語：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">看 output/png/icon-latte@2x.png：<br>- 杯子視覺重心偏下，往上移 16px 做光學置中<br>- 拉花太複雜，簡化成一個愛心<br>- 杯耳的筆畫看起來比杯身粗，統一成 24px<br>改完重新執行腳本。<br></code></pre></td></tr></tbody></table></figure>
+
+<p>幾個好用的回饋技巧：</p>
+<ul>
+<li><strong>指名檔案</strong>：說「看 <code>icon-bean@2x.png</code>」，讓它重新讀圖比對，而不是憑記憶修。</li>
+<li><strong>一次講 2～4 點</strong>：太多點容易漏，太少則來回次數變多。</li>
+<li><strong>給數字</strong>：「往上一點」不如「往上 16px」。</li>
+<li><strong>整組比較</strong>：「把四張 PNG 並排看，哪一個的線條密度跟其他不一致？」它會自己挑出問題。</li>
+<li><strong>滿意的版本先存檔</strong>：「把目前的 make-icons.jsx 複製一份成 make-icons-v2.jsx」，改壞了隨時退回。</li>
+</ul>
+<p>最後一哩 —— 某條曲線的弧度、某個角度的手感 —— <strong>直接在 Illustrator 裡用滑鼠調</strong>，通常比用文字描述快。Claude 負責把 80% 的骨架與重複工作做完，最後 20% 交給你的手。</p>
+<hr>
+<h2 id="Step-5：只要-PNG？單獨批次輸出"><a href="#Step-5：只要-PNG？單獨批次輸出" class="headerlink" title="Step 5：只要 PNG？單獨批次輸出"></a>Step 5：只要 PNG？單獨批次輸出</h2><p>如果 <code>.ai</code> 是你自己畫的，只想讓 Claude 處理繁瑣的輸出，也可以：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">寫一支腳本 scripts/export-png.jsx：<br>對目前 Illustrator 開啟中的文件，<br>把每個畫板依畫板名稱輸出成 1x、@2x、@3x 透明 PNG 到 output/png/。<br></code></pre></td></tr></tbody></table></figure>
+
+<p>之後每次改完設計，按一次 <code>Ctrl + F12</code> 執行這支腳本就好，<strong>再也不用一個一個「轉存」</strong>。這支腳本可以留著，下個專案繼續用。</p>
+<hr>
+<h2 id="常見問題排解"><a href="#常見問題排解" class="headerlink" title="常見問題排解"></a>常見問題排解</h2><table>
+<thead>
+<tr>
+<th>狀況</th>
+<th>原因</th>
+<th>解法</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>腳本跳出 <code>SyntaxError</code></td>
+<td>用了新版 JS 語法（<code>let</code>、<code>=&gt;</code>）</td>
+<td>在 <code>CLAUDE.md</code> 註明 ES3，或直接把錯誤訊息貼給 Claude</td>
+</tr>
+<tr>
+<td>找不到檔案、存檔失敗</td>
+<td>路徑含中文或空白</td>
+<td>資料夾與檔名改用英文、不含空白</td>
+</tr>
+<tr>
+<td>PowerShell 執行沒反應</td>
+<td>Illustrator 沒開，或有對話框擋住</td>
+<td>先開好 Illustrator、關掉所有彈出視窗</td>
+</tr>
+<tr>
+<td>PNG 背景是白的</td>
+<td>未開啟透明</td>
+<td>確認 <code>transparency = true</code>，且沒有白色底圖物件</td>
+</tr>
+<tr>
+<td>輸出的 PNG 範圍不對</td>
+<td>輸出的是整份文件而非畫板</td>
+<td>確認 <code>artBoardClipping = true</code></td>
+</tr>
+<tr>
+<td>開檔後字型被替換</td>
+<td>印刷/交件環境沒有該字型</td>
+<td>交件前請 Claude 在腳本中加上「文字建立外框」</td>
+</tr>
+<tr>
+<td>顏色跟印刷稿不同</td>
+<td>文件是 RGB</td>
+<td>印刷用途在 <code>CLAUDE.md</code> 註明使用 CMYK</td>
+</tr>
+</tbody></table>
+<p>遇到任何錯誤，<strong>最快的方法就是把錯誤訊息整段貼給 Claude</strong>，說「執行出現這個錯誤，幫我修」。</p>
+<hr>
+<h2 id="速查卡"><a href="#速查卡" class="headerlink" title="速查卡"></a>速查卡</h2><table>
+<thead>
+<tr>
+<th>我想要…</th>
+<th>對 Claude 說…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>確認它看懂參考圖</td>
+<td>「先不要寫檔案，描述你在 <code>ref/xxx.jpg</code> 看到什麼」</td>
+</tr>
+<tr>
+<td>快速出一個圖示</td>
+<td>「畫成 SVG，存到 <code>output/xxx.svg</code>」</td>
+</tr>
+<tr>
+<td>一次建好一整組 .ai</td>
+<td>「寫 Illustrator 腳本，建 N 個畫板、圖層、色票，存成 .ai」</td>
+</tr>
+<tr>
+<td>直接執行</td>
+<td>「幫我用 Illustrator 執行 <code>scripts/xxx.jsx</code>」</td>
+</tr>
+<tr>
+<td>微調</td>
+<td>「看 <code>xxx@2x.png</code>，○○ 往上 16px、線條統一 24px，改完重跑」</td>
+</tr>
+<tr>
+<td>批次出圖</td>
+<td>「把每個畫板輸出 1x / @2x / @3x 透明 PNG」</td>
+</tr>
+<tr>
+<td>修錯誤</td>
+<td>直接貼上錯誤訊息</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><blockquote>
+<p>💬 <strong>小芸</strong>：做完才發現，我其實一直在做我擅長的事 —— 看稿、挑毛病、下判斷。<br>💬 <strong>阿哲</strong>：對，畫板、圖層、輸出這些「手很忙但腦不用動」的事，就丟給它。</p>
+</blockquote>
+<p>Claude Code 對美編最大的價值，不是取代你畫圖，而是把<strong>規範化、重複性、批次性</strong>的工作接過去。第一次可能要花點時間習慣終端機，但只要那支輸出腳本存下來，往後每個專案都能省下一大段時間。</p>
+<hr>
+<h2 id="附錄：這篇文章是怎麼寫出來的"><a href="#附錄：這篇文章是怎麼寫出來的" class="headerlink" title="附錄：這篇文章是怎麼寫出來的"></a>附錄：這篇文章是怎麼寫出來的</h2><p>這篇教學本身也用了多角色迭代的方式產生：由 AI 工程師與美編討論出初稿，再請兩位大學生（設計系小晴、資工系阿凱）試讀給意見，共跑三輪。</p>
+<table>
+<thead>
+<tr>
+<th>輪次</th>
+<th>學生意見</th>
+<th>調整內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>第一輪</td>
+<td>小晴：「看到終端機就卡住，<code>cd</code> 是什麼？也沒有實際能照抄的句子。」<br>阿凱：「SVG 轉 .ai 會不會丟失圖層？為什麼不直接寫 Illustrator 腳本？也該講 Claude 為什麼不能直接生圖。」</td>
+<td>新增「能做／不能做」對照與「終端機 3 分鐘入門」；每一步都附可照抄的提示詞；拆成 SVG 與腳本兩條路線</td>
+</tr>
+<tr>
+<td>第二輪</td>
+<td>小晴：「需要一個從頭到尾的完整案例；做出來不好看要怎麼改？」<br>阿凱：「能不能不用手動點選單就執行腳本？中文路徑、語法錯誤怎麼辦？」</td>
+<td>全文改以「白鷺咖啡圖示組」貫穿；新增 Step 4 回饋技巧；補上 PowerShell / AppleScript 執行方式與問題排解表</td>
+</tr>
+<tr>
+<td>第三輪</td>
+<td>小晴：「內容夠了，但想要一張最後能截圖貼在桌面的速查表。」<br>阿凱：「提醒交件時字型與色彩模式的坑。」</td>
+<td>新增速查卡；排解表補上文字外框與 CMYK 兩列</td>
+</tr>
+</tbody></table>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Tool/">Tool</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Claude-Code/">Claude Code</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/AI/">AI</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Illustrator/">Illustrator</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Design/">Design</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/claude-code-for-designers/">https://hi-alan-liu.github.io/blog/claude-code-for-designers/</a> <br>
+                  <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/claude-code-gstack/">
+                        <span class="hidden-mobile">gstack 多角色開發工作流程</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://hi-alan-liu.github.io/claude-code-for-designers/';
+          this.page.identifier = '/blog/claude-code-for-designers/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'alanliublog' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            總訪問量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總訪客數 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-RMEY7HCZWR', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMEY7HCZWR"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RMEY7HCZWR');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>
