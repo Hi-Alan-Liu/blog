@@ -14,7 +14,7 @@ updated: 2026-04-08
 
 gstack 是 Claude Code 的第三方技能擴充套件，提供從構想到部署的完整開發工作流程。本篇整理了 gstack 的核心技能與多角色審查機制，適合想讓 AI 模擬團隊協作的開發者。
 
-> 本篇為 [Claude Code 常用指令教學](/claude-code-commands) 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。
+> 本篇為 {% post_link claude-code-commands 'Claude Code 常用指令教學' %} 的進階篇，建議先熟悉 Claude Code 基本操作後再閱讀。
 
 <!-- more -->
 
@@ -354,4 +354,4 @@ Architect → Developer → Reviewer → QA → Architect → ...
 ## 延伸閱讀
 
 還不熟悉 Claude Code 的基本操作？請先參考：
-👉 [Claude Code 常用指令教學](/claude-code-commands)
+👉 {% post_link claude-code-commands 'Claude Code 常用指令教學' %}

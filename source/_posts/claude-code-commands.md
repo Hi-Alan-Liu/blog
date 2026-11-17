@@ -127,7 +127,7 @@ Skill 是 Claude Code 的專業化工作流程，以 `/` 加上技能名稱呼�
 | `/review` | 對目前的 diff 進行 code review |
 | `/help` | 查看使用說明 |
 
-除了內建 Skill，也可以安裝第三方技能套件來擴充功能，例如 [gstack 工作流程](/claude-code-gstack)。
+除了內建 Skill，也可以安裝第三方技能套件來擴充功能，例如 {% post_link claude-code-gstack 'gstack 工作流程' %}。
 
 ---
 
@@ -165,4 +165,4 @@ Claude Code 支援持久化的記憶系統，能在不同對話間保留重要�
 ## 延伸閱讀
 
 想了解如何用 gstack 技能套件打造多角色審查與開發工作流程，請參考：
-👉 [gstack 多角色開發工作流程](/claude-code-gstack)
+👉 {% post_link claude-code-gstack 'gstack 多角色開發工作流程' %}
