@@ -1,0 +1,612 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-TW" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/blog/img/favicon.png">
+  <link rel="icon" href="/blog/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="美編跟 Claude 合作最常卡在「它沒問清楚就直接做」：比例錯、格式少給、文案自己亂編。這篇提供一段可以整段複製貼給 Claude 的開場指令，貼上後 Claude 會先像接案設計師一樣問完用途、尺寸、張數、格式、風格、參考圖與文案，整理成 brief 讓你確認，才開始產出。">
+  <meta name="author" content="Alan Liu">
+  <meta name="keywords" content="">
+  <meta name="description" content="美編跟 Claude 合作最常卡在「它沒問清楚就直接做」：比例錯、格式少給、文案自己亂編。這篇提供一段可以整段複製貼給 Claude 的開場指令，貼上後 Claude 會先像接案設計師一樣問完用途、尺寸、張數、格式、風格、參考圖與文案，整理成 brief 讓你確認，才開始產出。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="美編專用 Claude 開場指令：先問清楚需求再出圖">
+<meta property="og:url" content="https://hi-alan-liu.github.io/claude-designer-brief-prompt/index.html">
+<meta property="og:site_name" content="劉穎｜Alan Liu">
+<meta property="og:description" content="美編跟 Claude 合作最常卡在「它沒問清楚就直接做」：比例錯、格式少給、文案自己亂編。這篇提供一段可以整段複製貼給 Claude 的開場指令，貼上後 Claude 會先像接案設計師一樣問完用途、尺寸、張數、格式、風格、參考圖與文案，整理成 brief 讓你確認，才開始產出。">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2026-11-17T08:00:00.000Z">
+<meta property="article:modified_time" content="2026-11-17T09:58:27.045Z">
+<meta property="article:author" content="Alan Liu">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Claude Code">
+<meta property="article:tag" content="Design">
+<meta property="article:tag" content="Illustrator">
+<meta property="article:tag" content="Prompt">
+<meta name="twitter:card" content="summary_large_image">
+  
+  <title>美編專用 Claude 開場指令：先問清楚需求再出圖 - 劉穎｜Alan Liu</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/blog/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/blog/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"hi-alan-liu.github.io","root":"/blog/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":null,"google":"G-RMEY7HCZWR","gtag":"G-RMEY7HCZWR","tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/blog/local-search.xml"};
+  </script>
+  <script  src="/blog/js/utils.js" ></script>
+  <script  src="/blog/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 8.1.2">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/blog/">
+      <strong>Alan Liu</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/">
+                <i class="iconfont icon-home-fill"></i>
+                首頁
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                封存
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分類
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                標籤
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/blog/about/">
+                <i class="iconfont icon-user-fill"></i>
+                關於
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/blog/img/default.gif') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="美編專用 Claude 開場指令：先問清楚需求再出圖">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2026-11-17 16:00" pubdate>
+        2026年11月17日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      2.3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      7 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">美編專用 Claude 開場指令：先問清楚需求再出圖</h1>
+            
+            <div class="markdown-body">
+              <p>美編跟 Claude 合作最常卡在「它沒問清楚就直接做」：比例錯、格式少給、文案自己亂編。這篇提供一段<strong>可以整段複製貼給 Claude 的開場指令</strong>，貼上後 Claude 會先像接案設計師一樣問完用途、尺寸、張數、格式、風格、參考圖與文案，整理成 brief 讓你確認，才開始產出。</p>
+<span id="more"></span>
+
+<blockquote>
+<p>還沒用過 Claude Code 做圖，建議先看 <a href="/blog/claude-code-for-designers/" title="給美編的 Claude Code 教學：從參考圖到 Illustrator .ai 與 PNG">給美編的 Claude Code 教學</a>，了解 Claude 怎麼產出 .ai 與 PNG。</p>
+</blockquote>
+<hr>
+<h2 id="使用方式"><a href="#使用方式" class="headerlink" title="使用方式"></a>使用方式</h2><ol>
+<li>在專案資料夾開終端機，輸入 <code>claude</code> 啟動</li>
+<li>把下方「開場指令」整段複製、貼上、按 Enter</li>
+<li>回答 Claude 的問題（不確定的可以回「你建議」）</li>
+<li>確認它整理的 brief 後，回覆「確認，開始做」</li>
+</ol>
+<blockquote>
+<p>💡 想每次都自動套用，可以把指令內容貼進專案的 <code>CLAUDE.md</code>，Claude Code 啟動時會自動讀取。</p>
+</blockquote>
+<hr>
+<h2 id="開場指令（整段複製）"><a href="#開場指令（整段複製）" class="headerlink" title="開場指令（整段複製）"></a>開場指令（整段複製）</h2><figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 角色</span><br>你是我的設計助理。我是美編，接下來會請你協助產出圖片素材。<br>請遵守以下流程，<span class="hljs-strong">**在我確認需求前，不要開始畫圖或寫腳本**</span>。<br><br><span class="hljs-section"># 流程</span><br><span class="hljs-bullet">1.</span> 依「需求清單」分 3 輪詢問，每輪最多 5 題，等我回答再問下一輪<br><span class="hljs-bullet">2.</span> 每題附上常見選項讓我直接選，我回答「你建議」時，請給建議並說明原因<br><span class="hljs-bullet">3.</span> 我已經回答過或從參考圖看得出來的，不要重複問<br><span class="hljs-bullet">4.</span> 問完後整理成「設計 Brief」表格，請我確認或修改<br><span class="hljs-bullet">5.</span> 我回覆「確認」後才開始產出；產出完成後列出所有檔案路徑與規格<br><br><span class="hljs-section"># 需求清單</span><br><br><span class="hljs-section">## 第 1 輪：用途與規格</span><br><span class="hljs-bullet">-</span> 用途：社群貼文 / 限時動態 / Banner / 網站圖示 / App icon / 印刷品（DM、海報、名片）/ 簡報 / 其他<br><span class="hljs-bullet">-</span> 輸出位置：要存到哪個資料夾？（預設 <span class="hljs-code">`output/`</span>）檔名規則？<br><span class="hljs-bullet">-</span> 尺寸或比例：1:1、4:5、9:16、16:9、A4、自訂（px 或 mm）<br><span class="hljs-bullet">-</span> 張數：幾張？是同一張的多個尺寸，還是不同內容的系列圖？<br><span class="hljs-bullet">-</span> 交期與優先順序：哪幾張最急？<br><br><span class="hljs-section">## 第 2 輪：檔案格式</span><br><span class="hljs-bullet">-</span> 需要哪些格式（可複選）：<br><span class="hljs-bullet">  -</span> <span class="hljs-code">`.ai`</span>：可編輯原始檔，是否需要分圖層、建色票、文字保留可編輯<br><span class="hljs-bullet">  -</span> <span class="hljs-code">`.png`</span>：是否透明背景？需要 1x / @2x / @3x 嗎？<br><span class="hljs-bullet">  -</span> <span class="hljs-code">`.jpg`</span>：畫質（例如 80%）<br><span class="hljs-bullet">  -</span> <span class="hljs-code">`.svg`</span>：給網頁或工程師使用<br><span class="hljs-bullet">  -</span> <span class="hljs-code">`.pdf`</span>：印刷用，是否需要出血（通常 3mm）<br><span class="hljs-bullet">-</span> 色彩模式：螢幕用 RGB，印刷用 CMYK<br><span class="hljs-bullet">-</span> 解析度：螢幕 72 dpi，印刷 300 dpi<br><br><span class="hljs-section">## 第 3 輪：風格、參考圖與文案</span><br><span class="hljs-bullet">-</span> 風格：扁平、線條、手繪感、幾何、漸層、極簡、可愛、科技感、復古⋯⋯<br><span class="hljs-bullet">-</span> 品牌規範：主色、輔色（色碼）、字型、Logo 檔位置<br><span class="hljs-bullet">-</span> 參考圖：有沒有？放在哪個資料夾？要參考的是「配色 / 構圖 / 線條 / 整體氛圍」哪一部分？哪些地方<span class="hljs-strong">**不要**</span>學？<br><span class="hljs-bullet">-</span> 文案：<br><span class="hljs-bullet">  -</span> 是否有標題、副標、內文、按鈕文字？請我提供原文<br><span class="hljs-bullet">  -</span> 文案可以由你潤飾，還是必須一字不改？<br><span class="hljs-bullet">  -</span> 沒有文案時，是否先放「示意文字」佔位？<br><span class="hljs-bullet">-</span> 禁止事項：不要出現的元素、顏色或風格<br><br><span class="hljs-section"># 設計 Brief 格式</span><br>問完後用下表整理：<br><br>| 項目 | 內容 |<br>| --- | --- |<br>| 用途 | |<br>| 尺寸 / 比例 | |<br>| 張數 | |<br>| 輸出格式 | |<br>| 輸出位置與檔名 | |<br>| 色彩模式 / 解析度 | |<br>| 風格 | |<br>| 品牌色 / 字型 | |<br>| 參考圖與參考重點 | |<br>| 文案 | |<br>| 禁止事項 | |<br><br><span class="hljs-section"># 產出規則</span><br><span class="hljs-bullet">-</span> 文案<span class="hljs-strong">**一律使用我提供的原文**</span>，未經同意不得改字；沒有文案就用「示意文字」標註<br><span class="hljs-bullet">-</span> 若需求互相衝突（例如 9:16 卻要放很長的文案），先提出並給建議，不要自行決定<br><span class="hljs-bullet">-</span> <span class="hljs-code">`.ai`</span> 透過 Illustrator 腳本（ExtendScript，ES3 語法：不用 let、const、箭頭函式）產生，腳本存在輸出資料夾，方便之後修改重跑<br><span class="hljs-bullet">-</span> 圖層與畫板用英文命名，例如 <span class="hljs-code">`bg`</span>、<span class="hljs-code">`title`</span>、<span class="hljs-code">`logo`</span><br><span class="hljs-bullet">-</span> 同一需求有多種格式時，從同一份原始檔輸出，確保內容一致<br><span class="hljs-bullet">-</span> 你無法做到的（例如寫實照片、手繪筆觸），直接告訴我，並建議替代做法<br><span class="hljs-bullet">-</span> 每次修改後，簡短說明改了什麼<br></code></pre></td></tr></tbody></table></figure>
+
+<hr>
+<h2 id="實際對話範例"><a href="#實際對話範例" class="headerlink" title="實際對話範例"></a>實際對話範例</h2><p>貼上指令後，Claude 會這樣開始：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs text">Claude：好的，我們先確認用途與規格（第 1 輪）：<br>1. 這次的用途是？（社群貼文 / 限時動態 / Banner / 印刷品 / 其他）<br>2. 檔案要存在哪裡？預設是 output/，檔名有規則嗎？<br>3. 尺寸或比例？（1:1、4:5、9:16、16:9、A4、自訂）<br>4. 需要幾張？是同一張多尺寸，還是系列圖？<br>5. 哪幾張最急？<br><br>美編：IG 貼文，4:5，三張系列圖，存 output/ig/，檔名 ig-01 到 ig-03，第一張最急<br></code></pre></td></tr></tbody></table></figure>
+
+<p>三輪問完後，Claude 會整理出 brief：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>內容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>用途</td>
+<td>IG 貼文系列圖</td>
+</tr>
+<tr>
+<td>尺寸 / 比例</td>
+<td>4:5，1080 × 1350 px</td>
+</tr>
+<tr>
+<td>張數</td>
+<td>3 張</td>
+</tr>
+<tr>
+<td>輸出格式</td>
+<td>.ai（分圖層）、.png</td>
+</tr>
+<tr>
+<td>輸出位置與檔名</td>
+<td><code>output/ig/ig-01</code> ~ <code>ig-03</code></td>
+</tr>
+<tr>
+<td>色彩模式 / 解析度</td>
+<td>RGB / 72 dpi</td>
+</tr>
+<tr>
+<td>風格</td>
+<td>扁平、溫暖</td>
+</tr>
+<tr>
+<td>參考圖與參考重點</td>
+<td><code>ref/mood.png</code>，只參考配色</td>
+</tr>
+<tr>
+<td>文案</td>
+<td>美編提供，一字不改</td>
+</tr>
+</tbody></table>
+<p>確認無誤回覆「確認，開始做」即可。</p>
+<hr>
+<h2 id="小技巧"><a href="#小技巧" class="headerlink" title="小技巧"></a>小技巧</h2><ul>
+<li><strong>參考圖先放進資料夾</strong>：例如 <code>ref/</code>，回答時直接說「參考 <code>ref/mood.png</code> 的配色」，比口頭描述準確</li>
+<li><strong>文案用檔案給</strong>：文案長的話放在 <code>copy.txt</code>，告訴 Claude「文案在 copy.txt」，避免貼上時斷行跑掉</li>
+<li><strong>不確定就說「你建議」</strong>：Claude 會依用途給常見規格，例如 IG 貼文 1080 × 1350</li>
+<li><strong>修改時講具體</strong>：「標題放大 20%」比「標題大一點」好；改完可以說「重新輸出全部格式」</li>
+</ul>
+<hr>
+<h2 id="結語"><a href="#結語" class="headerlink" title="結語"></a>結語</h2><p>美編不需要記住要跟 AI 交代哪些細節，把這段指令貼上，讓 Claude 主動問、你負責回答與把關。需求一次講清楚，來回修改的次數自然就少了。</p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/categories/Tool/">Tool</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Claude-Code/">Claude Code</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/AI/">AI</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Illustrator/">Illustrator</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Design/">Design</a>
+                    
+                      <a class="hover-with-bg" href="/blog/tags/Prompt/">Prompt</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  <strong>本文作者: </strong><a href="/blog/">我的名字叫劉穎，也可以叫我 Alan</a> <br>
+                  <strong>本文連結: </strong><a href="https://hi-alan-liu.github.io/blog/claude-designer-brief-prompt/">https://hi-alan-liu.github.io/blog/claude-designer-brief-prompt/</a> <br>
+                  <strong>版權聲明: </strong>本站所有文章除特別聲明外，均採用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener">CC BY-SA 4.0 協議</a> 。轉載請註明出處！
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/blog/claude-skills-and-docs/">
+                        <span class="hidden-mobile">Claude Skill 與 Claude Docs 觀念整理：一個管「怎麼做」，一個管「做出來的東西」</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div class="disqus" style="width:100%">
+    <div id="disqus_thread"></div>
+    
+      <script type="text/javascript">
+        var disqus_config = function() {
+          this.page.url = 'https://hi-alan-liu.github.io/claude-designer-brief-prompt/';
+          this.page.identifier = '/blog/claude-designer-brief-prompt/';
+        };
+        Fluid.utils.loadComments('#disqus_thread', function() {
+          var d = document, s = d.createElement('script');
+          s.src = '//' + 'alanliublog' + '.disqus.com/embed.js';
+          s.setAttribute('data-timestamp', new Date());
+          (d.head || d.body).appendChild(s);
+        });
+      </script>
+    
+    <noscript>Please enable JavaScript to view the comments</noscript>
+  </div>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目錄</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜尋</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">關鍵字</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+  <div class="statistics">
+    
+    
+
+    
+      
+        <!-- 不蒜子统计PV -->
+        <span id="busuanzi_container_site_pv" style="display: none">
+            總訪問量 
+            <span id="busuanzi_value_site_pv"></span>
+             次
+          </span>
+      
+      
+        <!-- 不蒜子统计UV -->
+        <span id="busuanzi_container_site_uv" style="display: none">
+            總訪客數 
+            <span id="busuanzi_value_site_uv"></span>
+             人
+          </span>
+      
+    
+  </div>
+
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/blog/js/events.js" ></script>
+<script  src="/blog/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/blog/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/blog/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    <!-- Google Analytics -->
+    <script defer>
+      window.ga = window.ga || function () { (ga.q = ga.q || []).push(arguments) };
+      ga.l = +new Date;
+      ga('create', 'G-RMEY7HCZWR', 'auto');
+      ga('send', 'pageview');
+    </script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+  
+
+  
+    <!-- Google gtag.js -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-RMEY7HCZWR"></script>
+    <script defer>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-RMEY7HCZWR');
+    </script>
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/blog/js/boot.js" ></script>
+
+
+</body>
+</html>
