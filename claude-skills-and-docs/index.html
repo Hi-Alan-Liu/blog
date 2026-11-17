@@ -13,18 +13,18 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="description" content="用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Claude 剛好各有一個功能對應這兩件事 —— Skill 解決前者，Claude Docs 解決後者。這篇整理兩者的觀念、差別，附上可以直接照抄的範例，以及去哪裡找別人寫好的 Skill。">
+  <meta name="description" content="用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Skill 解決前者，Claude Docs 解決後者。這篇整理兩者的觀念、附上實際範例，以及去哪裡找別人寫好的 Skill。">
   <meta name="author" content="Alan Liu">
   <meta name="keywords" content="">
-  <meta name="description" content="用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Claude 剛好各有一個功能對應這兩件事 —— Skill 解決前者，Claude Docs 解決後者。這篇整理兩者的觀念、差別，附上可以直接照抄的範例，以及去哪裡找別人寫好的 Skill。">
+  <meta name="description" content="用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Skill 解決前者，Claude Docs 解決後者。這篇整理兩者的觀念、附上實際範例，以及去哪裡找別人寫好的 Skill。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Claude Skill 與 Claude Docs 觀念整理：一個管「怎麼做」，一個管「做出來的東西」">
 <meta property="og:url" content="https://hi-alan-liu.github.io/claude-skills-and-docs/index.html">
 <meta property="og:site_name" content="劉穎｜Alan Liu">
-<meta property="og:description" content="用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Claude 剛好各有一個功能對應這兩件事 —— Skill 解決前者，Claude Docs 解決後者。這篇整理兩者的觀念、差別，附上可以直接照抄的範例，以及去哪裡找別人寫好的 Skill。">
+<meta property="og:description" content="用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Skill 解決前者，Claude Docs 解決後者。這篇整理兩者的觀念、附上實際範例，以及去哪裡找別人寫好的 Skill。">
 <meta property="og:locale" content="zh_TW">
 <meta property="article:published_time" content="2026-11-17T08:00:00.000Z">
-<meta property="article:modified_time" content="2026-11-17T06:53:31.687Z">
+<meta property="article:modified_time" content="2026-11-17T06:57:50.284Z">
 <meta property="article:author" content="Alan Liu">
 <meta property="article:tag" content="AI">
 <meta property="article:tag" content="Claude Code">
@@ -196,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      5.8k 字
+      3.4k 字
     </span>
   
 
@@ -205,7 +205,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      18 分钟
+      11 分钟
     </span>
   
 
@@ -237,7 +237,7 @@
             <h1 style="display: none">Claude Skill 與 Claude Docs 觀念整理：一個管「怎麼做」，一個管「做出來的東西」</h1>
             
             <div class="markdown-body">
-              <p>用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。Claude 剛好各有一個功能對應這兩件事 —— <strong>Skill</strong> 解決前者，<strong>Claude Docs</strong> 解決後者。這篇整理兩者的觀念、差別，附上可以直接照抄的範例，以及去哪裡找別人寫好的 Skill。</p>
+              <p>用 Claude 一陣子後，常會遇到兩種煩惱：「同樣的事每次都要重新交代一遍」，以及「做出來的文件散落在對話裡，很難跟同事一起改」。<strong>Skill</strong> 解決前者，<strong>Claude Docs</strong> 解決後者。這篇整理兩者的觀念、附上實際範例，以及去哪裡找別人寫好的 Skill。</p>
 <span id="more"></span>
 
 <blockquote>
@@ -258,19 +258,14 @@
 <td>一份<strong>可以一起編輯的線上文件</strong></td>
 </tr>
 <tr>
-<td>解決什麼</td>
-<td>「每次都要重新交代做法」</td>
-<td>「成品散落在對話裡，不好分享與修改」</td>
-</tr>
-<tr>
 <td>本體</td>
 <td>一個資料夾，裡面有 <code>SKILL.md</code></td>
 <td>claude.ai 上的一個連結</td>
 </tr>
 <tr>
 <td>給誰看</td>
-<td>給 Claude 看（讓它照著做）</td>
-<td>給人看（你、同事、主管）</td>
+<td>給 Claude 看，讓它照著做</td>
+<td>給人看：你、同事、主管</td>
 </tr>
 <tr>
 <td>比喻</td>
@@ -278,168 +273,81 @@
 <td>團隊共用的 Google 文件</td>
 </tr>
 </tbody></table>
-<p><strong>Skill 管「怎麼做」，Docs 管「做出來的東西放哪裡」。</strong> 兩者可以搭配使用：用 Skill 規定週報的格式與步驟，讓 Claude 把週報寫進一份 Doc，再讓同事在 Doc 上留言修改。</p>
-<hr>
-<h2 id="Part-1：Skill-是什麼"><a href="#Part-1：Skill-是什麼" class="headerlink" title="Part 1：Skill 是什麼"></a>Part 1：Skill 是什麼</h2><h3 id="本質：一個資料夾-一份-SKILL-md"><a href="#本質：一個資料夾-一份-SKILL-md" class="headerlink" title="本質：一個資料夾 + 一份 SKILL.md"></a>本質：一個資料夾 + 一份 SKILL.md</h3><p>Skill 就是一個資料夾，最少只需要一個 <code>SKILL.md</code>：</p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">weekly-report/<br>├── SKILL.md          ← 必要：說明書本體<br>├── template.md       ← 選用：參考文件，需要時才讀<br>└── scripts/<br>    └── collect.py    ← 選用：可執行的腳本<br></code></pre></td></tr></tbody></table></figure>
-
-<p><code>SKILL.md</code> 分成兩段：上面是 YAML 格式的<strong>基本資料（frontmatter）</strong>，下面是用 Markdown 寫的<strong>操作步驟</strong>。</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>name: weekly-report<br><span class="hljs-section">description: 撰寫團隊週報。當使用者提到「週報」「本週進度」「weekly report」時使用。</span><br><span class="hljs-section">---</span><br><br><span class="hljs-section"># 週報撰寫流程</span><br><br><span class="hljs-bullet">1.</span> 讀取本週的 git log 與已關閉的 issue<br><span class="hljs-bullet">2.</span> 依照 template.md 的格式整理成三段：本週完成、進行中、下週計畫<br><span class="hljs-bullet">3.</span> 每段最多 5 點，每點一句話<br></code></pre></td></tr></tbody></table></figure>
-
-<h3 id="關鍵觀念：漸進式載入（Progressive-Disclosure）"><a href="#關鍵觀念：漸進式載入（Progressive-Disclosure）" class="headerlink" title="關鍵觀念：漸進式載入（Progressive Disclosure）"></a>關鍵觀念：漸進式載入（Progressive Disclosure）</h3><p>這是 Skill 最重要、也最容易被忽略的設計：</p>
+<p>再加上大家熟悉的 <code>CLAUDE.md</code>，判斷放哪裡很簡單：</p>
 <table>
 <thead>
 <tr>
-<th>層級</th>
-<th>什麼時候載入</th>
-<th>佔用多少</th>
+<th>內容</th>
+<th>放哪裡</th>
 </tr>
 </thead>
 <tbody><tr>
-<td><code>name</code> + <code>description</code></td>
-<td><strong>一直都在</strong>，Claude 隨時知道有哪些 Skill 可用</td>
-<td>很少，一兩行</td>
+<td>每次對話都要遵守的規則</td>
+<td><code>CLAUDE.md</code>（每次一定讀）</td>
 </tr>
 <tr>
-<td><code>SKILL.md</code> 本文</td>
-<td><strong>需要時才載入</strong>：你呼叫它，或 Claude 判斷用得上</td>
-<td>中等，建議 500 行內</td>
+<td>做某件事時才需要的流程</td>
+<td><strong>Skill</strong>（需要時才讀）</td>
 </tr>
 <tr>
-<td><code>template.md</code>、<code>scripts/</code></td>
-<td><strong>本文裡提到、真的需要時</strong>才讀取或執行</td>
-<td>不用就不佔</td>
+<td>要給人看、要一起改的成品</td>
+<td><strong>Docs</strong></td>
 </tr>
 </tbody></table>
-<p>所以你可以裝幾十個 Skill，平常幾乎不佔 Claude 的注意力。也因為這樣，<strong><code>description</code> 是整個 Skill 最重要的一行</strong> —— Claude 就是靠它判斷「現在該不該用這個 Skill」。寫得太模糊，它永遠不會被觸發。</p>
-<h3 id="兩種觸發方式"><a href="#兩種觸發方式" class="headerlink" title="兩種觸發方式"></a>兩種觸發方式</h3><table>
-<thead>
-<tr>
-<th>方式</th>
-<th>說明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><strong>你主動呼叫</strong></td>
-<td>在 Claude Code 輸入 <code>/weekly-report</code></td>
-</tr>
-<tr>
-<td><strong>Claude 自動判斷</strong></td>
-<td>你說「幫我寫這週的週報」，Claude 比對 <code>description</code> 後自己載入</td>
-</tr>
-</tbody></table>
-<p>可以用 frontmatter 控制誰能觸發：</p>
+<hr>
+<h2 id="Skill：給-Claude-的-SOP"><a href="#Skill：給-Claude-的-SOP" class="headerlink" title="Skill：給 Claude 的 SOP"></a>Skill：給 Claude 的 SOP</h2><h3 id="結構"><a href="#結構" class="headerlink" title="結構"></a>結構</h3><p>Skill 就是一個資料夾，最少只需要一個 <code>SKILL.md</code>；說明太長時，可以把細節拆到其他檔案：</p>
+<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">weekly-report/<br>├── SKILL.md          ← 必要：流程本體<br>├── template.md       ← 選用：參考文件，需要時才讀<br>└── scripts/<br>    └── collect.py    ← 選用：可執行的腳本<br></code></pre></td></tr></tbody></table></figure>
+
+<p><code>SKILL.md</code> 上面是基本資料（frontmatter），下面是操作步驟：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>name: weekly-report<br><span class="hljs-section">description: 撰寫團隊週報。當使用者提到「週報」「本週進度」時使用。</span><br><span class="hljs-section">---</span><br><br><span class="hljs-bullet">1.</span> 讀取本週的 git log<br><span class="hljs-bullet">2.</span> 依照 template.md 的格式整理成：本週完成、進行中、下週計畫<br><span class="hljs-bullet">3.</span> 每段最多 5 點，每點一句話<br></code></pre></td></tr></tbody></table></figure>
+
+<h3 id="關鍵觀念：需要時才載入"><a href="#關鍵觀念：需要時才載入" class="headerlink" title="關鍵觀念：需要時才載入"></a>關鍵觀念：需要時才載入</h3><p>Claude 平常<strong>只看每個 Skill 的 <code>name</code> 和 <code>description</code></strong>，判斷用得上時才讀取 <code>SKILL.md</code> 全文，本文提到的參考檔也是真的需要才讀。所以裝幾十個 Skill 也幾乎不佔空間。</p>
+<p>也因此，<strong><code>description</code> 是整個 Skill 最重要的一行</strong>：寫清楚「做什麼、什麼時候用」，否則 Claude 永遠不會想到要用它。</p>
+<h3 id="觸發方式與存放位置"><a href="#觸發方式與存放位置" class="headerlink" title="觸發方式與存放位置"></a>觸發方式與存放位置</h3><p>觸發方式有兩種：輸入 <code>/weekly-report</code> 主動呼叫，或直接說「幫我寫這週的週報」讓 Claude 自動判斷。可以用 frontmatter 限制：</p>
 <table>
 <thead>
 <tr>
 <th>設定</th>
-<th>你能呼叫</th>
-<th>Claude 能自動用</th>
+<th>效果</th>
 <th>適合</th>
 </tr>
 </thead>
 <tbody><tr>
 <td>（預設）</td>
-<td>✅</td>
-<td>✅</td>
+<td>你和 Claude 都能觸發</td>
 <td>大部分情況</td>
 </tr>
 <tr>
 <td><code>disable-model-invocation: true</code></td>
-<td>✅</td>
-<td>❌</td>
-<td>部署、發布等<strong>有副作用</strong>的動作，只想自己按</td>
+<td>只有你能呼叫</td>
+<td>部署、發布等<strong>有副作用</strong>的動作</td>
 </tr>
 <tr>
 <td><code>user-invocable: false</code></td>
-<td>❌</td>
-<td>✅</td>
-<td>純背景知識，例如公司的命名規範</td>
+<td>只有 Claude 會用</td>
+<td>純背景知識，例如命名規範</td>
 </tr>
 </tbody></table>
-<h3 id="Skill-放在哪裡（Claude-Code）"><a href="#Skill-放在哪裡（Claude-Code）" class="headerlink" title="Skill 放在哪裡（Claude Code）"></a>Skill 放在哪裡（Claude Code）</h3><table>
-<thead>
-<tr>
-<th>範圍</th>
-<th>路徑</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>個人</td>
-<td><code>~/.claude/skills/&lt;名稱&gt;/SKILL.md</code></td>
-<td>所有專案都能用</td>
-</tr>
-<tr>
-<td>專案</td>
-<td><code>.claude/skills/&lt;名稱&gt;/SKILL.md</code></td>
-<td>跟著 repo commit，團隊共用</td>
-</tr>
-<tr>
-<td>Plugin</td>
-<td>透過 <code>/plugin</code> 安裝</td>
-<td>呼叫時是 <code>/plugin名稱:skill名稱</code></td>
-</tr>
-</tbody></table>
+<p>存放位置：個人用放 <code>~/.claude/skills/&lt;名稱&gt;/</code>，專案共用放 <code>.claude/skills/&lt;名稱&gt;/</code> 並 commit 進 repo。claude.ai 網頁版則在 <strong>Customize → Skills</strong> 管理，或把資料夾壓成 ZIP 上傳。</p>
 <blockquote>
-<p>以前的「自訂 slash command」（<code>.claude/commands/xxx.md</code>）已經併入 Skill，舊檔案仍可使用。新寫的建議直接用 Skill，因為它可以附帶參考文件和腳本。</p>
-</blockquote>
-<p>在 <strong>claude.ai</strong> 網頁版上也能用 Skill：到 <strong>Customize → Skills</strong> 開關內建的 Skill，或把 Skill 資料夾壓成 ZIP 上傳（需先在 <strong>Settings → Capabilities</strong> 開啟「Create and edit files」）。</p>
-<h3 id="Skill-跟-CLAUDE-md-差在哪？"><a href="#Skill-跟-CLAUDE-md-差在哪？" class="headerlink" title="Skill 跟 CLAUDE.md 差在哪？"></a>Skill 跟 CLAUDE.md 差在哪？</h3><p>兩者都是「寫給 Claude 看的說明」，差別在<strong>什麼時候讀</strong>：</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>CLAUDE.md</th>
-<th>Skill</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>載入時機</td>
-<td>每次對話開始<strong>一定讀</strong></td>
-<td><strong>需要時</strong>才讀</td>
-</tr>
-<tr>
-<td>適合放</td>
-<td>每次都要遵守的規則（程式風格、禁止事項）</td>
-<td>特定任務的完整流程（寫週報、發文、部署）</td>
-</tr>
-<tr>
-<td>太長的後果</td>
-<td>每次對話都佔空間</td>
-<td>幾乎沒影響</td>
-</tr>
-</tbody></table>
-<p>判斷方式很簡單：<strong>「每次都要記得」放 CLAUDE.md；「做某件事時才需要」做成 Skill。</strong></p>
-<hr>
-<h2 id="範例一：幫這個部落格寫一個「新增文章」Skill"><a href="#範例一：幫這個部落格寫一個「新增文章」Skill" class="headerlink" title="範例一：幫這個部落格寫一個「新增文章」Skill"></a>範例一：幫這個部落格寫一個「新增文章」Skill</h2><p>這是我自己部落格實際會用到的例子。之前寫文章時遇到站內連結 404 的問題（網站放在 <code>/blog/</code> 底下，手寫 <code>/xxx</code> 連結會少了路徑），這種「每次發文都要注意」的規則，正適合寫成 Skill。</p>
-<p>建立 <code>.claude/skills/new-post/SKILL.md</code>：</p>
-<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>name: new-post<br>description: 在此 Hexo 部落格新增一篇文章。當使用者說「寫一篇文章」「新增文章」「發一篇教學」時使用。<br><span class="hljs-section">argument-hint: [文章主題]</span><br><span class="hljs-section">---</span><br><br><span class="hljs-section"># 新增部落格文章</span><br><br>主題：$ARGUMENTS<br><br><span class="hljs-section">## 步驟</span><br><span class="hljs-bullet">1.</span> 檔名用英文小寫加連字號，放在 <span class="hljs-code">`source/_posts/&lt;slug&gt;.md`</span><br><span class="hljs-bullet">2.</span> 圖片放在同名資料夾 <span class="hljs-code">`source/_posts/&lt;slug&gt;/`</span>，文章內直接寫檔名引用<br><span class="hljs-bullet">3.</span> front-matter 依照下方格式，date 用今天<br><span class="hljs-bullet">4.</span> 開頭一段導言後加 <span class="hljs-code">`&lt;!-- more --&gt;`</span><br><span class="hljs-bullet">5.</span> 寫完執行 <span class="hljs-code">`npx hexo generate`</span> 確認沒有錯誤<br><br><span class="hljs-section">## front-matter 格式</span><br><span class="hljs-code">```yaml</span><br><span class="hljs-code">title: 文章標題</span><br><span class="hljs-code">author: Alan Liu</span><br><span class="hljs-code">tags:</span><br><span class="hljs-code">  - 標籤</span><br><span class="hljs-code">categories:</span><br><span class="hljs-code">  - Tool</span><br><span class="hljs-code">date: YYYY-MM-DD HH:mm:ss</span><br><span class="hljs-code">```</span><br><br><span class="hljs-section">## 規則</span><br><span class="hljs-bullet">-</span> 站內連結一律用 <span class="hljs-code">`{% post_link &lt;slug&gt; '顯示文字' %}`</span>，<br>  不可寫 <span class="hljs-code">`[文字](/slug)`</span>，網站 root 是 /blog/，會 404<br><span class="hljs-bullet">-</span> 截圖若含個人資訊（姓名、email），必須先遮蔽<br><span class="hljs-bullet">-</span> 不要自動 commit，等使用者確認<br></code></pre></td></tr></tbody></table></figure>
-
-<p>之後只要輸入：</p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">/new-post Windows 印表機共用設定教學<br></code></pre></td></tr></tbody></table></figure>
-
-<p>Claude 就會照這份規則產出文章，不會再犯同樣的連結錯誤。</p>
-<hr>
-<h2 id="範例二：附參考文件的-Skill（週報）"><a href="#範例二：附參考文件的-Skill（週報）" class="headerlink" title="範例二：附參考文件的 Skill（週報）"></a>範例二：附參考文件的 Skill（週報）</h2><p>當說明很長時，把細節拆到其他檔案，<code>SKILL.md</code> 只放流程與「目錄」：</p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs text">.claude/skills/weekly-report/<br>├── SKILL.md<br>├── template.md       ← 週報格式範本<br>└── examples.md       ← 過去寫得好的週報<br></code></pre></td></tr></tbody></table></figure>
-
-<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>name: weekly-report<br><span class="hljs-section">description: 撰寫團隊週報。當使用者提到「週報」「本週進度」「weekly report」時使用。</span><br><span class="hljs-section">---</span><br><br><span class="hljs-section"># 週報撰寫流程</span><br><br><span class="hljs-bullet">1.</span> 執行 <span class="hljs-code">`git log --since="1 week ago" --oneline`</span> 取得本週提交<br><span class="hljs-bullet">2.</span> 依照 [<span class="hljs-string">template.md</span>](<span class="hljs-link">template.md</span>) 的格式整理<br><span class="hljs-bullet">3.</span> 語氣與長度參考 [<span class="hljs-string">examples.md</span>](<span class="hljs-link">examples.md</span>)<br><span class="hljs-bullet">4.</span> 寫成一份 Claude Doc，標題為「第 N 週週報」，完成後給我連結<br></code></pre></td></tr></tbody></table></figure>
-
-<p>注意第 4 步 —— 這就是 <strong>Skill 與 Docs 的搭配</strong>：Skill 決定怎麼寫，成品直接放進 Doc 讓團隊看。</p>
-<blockquote>
-<p>💡 <strong>不想從零開始寫？</strong> Anthropic 官方有一個 <code>skill-creator</code> Skill，對它說「幫我把剛剛的流程做成一個 Skill」，它會問你幾個問題，再產生完整的資料夾。</p>
+<p>以前的自訂 slash command（<code>.claude/commands/xxx.md</code>）已併入 Skill，舊檔仍可用。</p>
 </blockquote>
 <hr>
-<h2 id="Part-2：Claude-Docs-是什麼"><a href="#Part-2：Claude-Docs-是什麼" class="headerlink" title="Part 2：Claude Docs 是什麼"></a>Part 2：Claude Docs 是什麼</h2><h3 id="本質：活的文件，不是對話裡的一段文字"><a href="#本質：活的文件，不是對話裡的一段文字" class="headerlink" title="本質：活的文件，不是對話裡的一段文字"></a>本質：活的文件，不是對話裡的一段文字</h3><p>Claude Docs 是 2026 年 9 月推出的功能，官方的說法是「<strong>和 Claude 以及你的團隊一起撰寫活文件</strong>」。</p>
-<p>過去請 Claude 寫文件，成品是對話中的一大段文字，或是一個下載下來的 Word 檔 —— 要修改就得重新產生整份、再自己比對差異。Claude Docs 則是：</p>
+<h2 id="範例：這個部落格的「新增文章」Skill"><a href="#範例：這個部落格的「新增文章」Skill" class="headerlink" title="範例：這個部落格的「新增文章」Skill"></a>範例：這個部落格的「新增文章」Skill</h2><p>我寫文章時遇過站內連結 404 的問題（網站在 <code>/blog/</code> 底下，手寫 <code>/xxx</code> 連結會少了路徑）。這種「每次發文都要注意」的規則，正適合寫成 Skill。以下是本部落格 repo 中實際使用的 <code>.claude/skills/new-post/SKILL.md</code>：</p>
+<figure class="highlight markdown"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><code class="hljs markdown">---<br>name: new-post<br>description: 在此 Hexo 部落格新增一篇文章。當使用者說「寫一篇文章」「新增文章」「發一篇教學」時使用。<br><span class="hljs-section">argument-hint: [文章主題]</span><br><span class="hljs-section">---</span><br><br><span class="hljs-section"># 新增部落格文章</span><br><br>主題：$ARGUMENTS<br><br><span class="hljs-section">## 步驟</span><br><span class="hljs-bullet">1.</span> 檔名用英文小寫加連字號，放在 <span class="hljs-code">`source/_posts/&lt;slug&gt;.md`</span><br><span class="hljs-bullet">2.</span> 圖片放在同名資料夾 <span class="hljs-code">`source/_posts/&lt;slug&gt;/`</span>，文章內直接寫檔名引用<br><span class="hljs-bullet">3.</span> front-matter 依照下方格式，date 用今天<br><span class="hljs-bullet">4.</span> 開頭一段導言後加 <span class="hljs-code">`&lt;!-- more --&gt;`</span><br><span class="hljs-bullet">5.</span> 寫完執行 <span class="hljs-code">`npx hexo generate`</span> 確認沒有錯誤；若 build 讓 <span class="hljs-code">`package.json`</span> 的 hexo 版本號被改動，用 <span class="hljs-code">`git checkout -- package.json`</span> 還原<br><br><span class="hljs-section">## front-matter 格式</span><br><span class="hljs-code">```yaml</span><br><span class="hljs-code">title: 文章標題</span><br><span class="hljs-code">author: Alan Liu</span><br><span class="hljs-code">tags:</span><br><span class="hljs-code">  - 標籤</span><br><span class="hljs-code">categories:</span><br><span class="hljs-code">  - Tool</span><br><span class="hljs-code">date: YYYY-MM-DD HH:mm:ss</span><br><span class="hljs-code">```</span><br><br><span class="hljs-section">## 規則</span><br><span class="hljs-bullet">-</span> 站內連結一律用 <span class="hljs-code">`{% post_link &lt;slug&gt; '顯示文字' %}`</span>，<br>  不可寫 <span class="hljs-code">`[文字](/slug)`</span>，網站 root 是 /blog/，會 404<br><span class="hljs-bullet">-</span> 截圖若含個人資訊（姓名、email），必須先遮蔽<br><span class="hljs-bullet">-</span> 篇幅精簡，全文控制在約 200 行內：只寫讀者需要的步驟，不重複說明、不放讀者用不到的細節<br><span class="hljs-bullet">-</span> 不要自動 commit，等使用者確認<br></code></pre></td></tr></tbody></table></figure>
+
+<p>之後輸入 <code>/new-post Windows 印表機共用設定教學</code>，Claude 就會照這份規則產出文章。</p>
+<blockquote>
+<p>💡 不想從零寫？Anthropic 官方的 <code>skill-creator</code> Skill 可以把你描述的流程直接做成 Skill。</p>
+</blockquote>
+<hr>
+<h2 id="Claude-Docs：給人看的活文件"><a href="#Claude-Docs：給人看的活文件" class="headerlink" title="Claude Docs：給人看的活文件"></a>Claude Docs：給人看的活文件</h2><p>Claude Docs 是 2026 年 9 月推出的功能。過去請 Claude 寫文件，成品是對話中的一大段文字，要修改就得重新產生整份。Docs 則是：</p>
 <ul>
-<li>文件<strong>存在 claude.ai 上的一個連結</strong>，像 Google 文件一樣</li>
-<li>Claude 修改時是<strong>在原文上直接編輯</strong>，不是重寫整份</li>
-<li>你可以自己在文件裡打字修改，Claude 也看得到你改了什麼</li>
-<li>同事可以<strong>留言</strong>，也可以在留言中請 Claude 修改</li>
+<li>文件存在 claude.ai 上的<strong>一個連結</strong>，像 Google 文件一樣</li>
+<li>Claude 修改時<strong>直接編輯原文</strong>，不是重寫整份</li>
+<li>同事可以<strong>留言</strong>，也能在留言中請 Claude 修改</li>
 </ul>
-<h3 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h3><table>
+<table>
 <thead>
 <tr>
 <th>想做的事</th>
@@ -447,67 +355,32 @@
 </tr>
 </thead>
 <tbody><tr>
-<td>建立文件</td>
-<td>在對話中說「幫我寫一份○○<strong>文件</strong>」，Claude 會建立一份 Doc 並給你連結</td>
+<td>建立</td>
+<td>在對話中說「幫我寫一份部落格改版提案<strong>文件</strong>」</td>
 </tr>
 <tr>
-<td>請 Claude 修改</td>
-<td>回到對話說要改什麼，或在文件上<strong>留言並送給 Claude</strong></td>
+<td>修改</td>
+<td>在對話中說要改什麼，或在文件上選取文字 → 留言 → 送給 Claude</td>
 </tr>
 <tr>
 <td>分享</td>
-<td>文件上方的 <strong>Share</strong> → 選擇組織內的人，給予檢視、留言或編輯權限</td>
+<td>文件上方 <strong>Share</strong> → 選擇組織內的人，給予檢視、留言或編輯權限</td>
 </tr>
 <tr>
 <td>匯出</td>
 <td>點文件名稱 → <strong>Export</strong> → Word、PDF、Markdown，或複製到 Google Docs、Notion</td>
 </tr>
 <tr>
-<td>找回舊版本</td>
-<td>文件名稱選單中的<strong>版本紀錄</strong></td>
-</tr>
-<tr>
-<td>之後再找到它</td>
-<td>在 claude.ai 的 <strong>Artifacts</strong> 列表中依標題找</td>
+<td>找回</td>
+<td>claude.ai 的 <strong>Artifacts</strong> 列表依標題找；舊版本在文件名稱選單的版本紀錄</td>
 </tr>
 </tbody></table>
-<p>在 Claude Code 中也能使用 —— 對它說「把這次的調查結果寫成一份文件」，它會建立 Doc 並回傳連結，不會在你的專案資料夾裡多出檔案。</p>
-<h3 id="什麼時候用-Docs？"><a href="#什麼時候用-Docs？" class="headerlink" title="什麼時候用 Docs？"></a>什麼時候用 Docs？</h3><table>
-<thead>
-<tr>
-<th>適合用 Docs</th>
-<th>不需要用 Docs</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>要給別人看、要一起改的：提案、會議紀錄、規格書、週報</td>
-<td>一次性的問答、快速比較</td>
-</tr>
-<tr>
-<td>會反覆修改很多輪的長文件</td>
-<td>屬於程式碼的一部分（README、技術文件 → 放 repo）</td>
-</tr>
-<tr>
-<td>需要收集意見、留言討論</td>
-<td>只有自己看一次就丟的筆記</td>
-</tr>
-</tbody></table>
+<p>在 Claude Code 中也能用：說「把這次的調查結果寫成一份文件」，它會建立 Doc 並回傳連結，不會在專案裡多出檔案。一次性的問答，或屬於程式碼一部分的文件（例如 README），就不需要用 Docs。</p>
 <hr>
-<h2 id="範例三：Docs-的實際對話"><a href="#範例三：Docs-的實際對話" class="headerlink" title="範例三：Docs 的實際對話"></a>範例三：Docs 的實際對話</h2><p><strong>建立：</strong></p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">幫我寫一份「部落格改版提案」文件，包含：<br>目前的問題、改版目標、預計時程（表格）、需要的資源。<br>寫成 Doc 讓我分享給同事。<br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>修改（在對話中）：</strong></p>
-<figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text">時程表的第二階段延後一週，並在「需要的資源」加上設計人力。<br></code></pre></td></tr></tbody></table></figure>
-
-<p><strong>修改（在文件上）：</strong> 選取「預計三個月完成」這段文字 → 留言「這個時程太樂觀，請改成四個月並說明原因」→ 送給 Claude。Claude 會修改那段文字，並在留言串中回覆它改了什麼。</p>
-<p><strong>交付：</strong> 同事看完沒問題後，點文件名稱 → Export → PDF，寄給主管。</p>
-<hr>
-<h2 id="Skill-Docs-搭配起來"><a href="#Skill-Docs-搭配起來" class="headerlink" title="Skill + Docs 搭配起來"></a>Skill + Docs 搭配起來</h2><p>把兩者串起來，就是一個可以每週重複的流程：</p>
-<ol>
-<li><strong>Skill（weekly-report）</strong> 規定資料從哪裡來、格式長怎樣</li>
-<li>每週五對 Claude 說「寫這週的週報」，它自動套用 Skill</li>
-<li>成品寫進一份 <strong>Doc</strong>，分享給團隊</li>
-<li>同事在 Doc 上留言補充，Claude 依留言修正</li>
+<h2 id="兩者搭配"><a href="#兩者搭配" class="headerlink" title="兩者搭配"></a>兩者搭配</h2><ol>
+<li>用 <strong>Skill</strong> 規定週報的資料來源與格式，並在最後一步寫「寫成一份 Claude Doc」</li>
+<li>每週說一句「寫這週的週報」，Claude 自動套用 Skill</li>
+<li>成品進到 <strong>Doc</strong> 分享給團隊，同事留言、Claude 依留言修正</li>
 <li>定稿後匯出 PDF 存檔</li>
 </ol>
 <p><strong>Skill 讓品質穩定，Docs 讓協作順暢。</strong></p>
@@ -516,63 +389,37 @@
 <thead>
 <tr>
 <th>來源</th>
-<th>內容</th>
-<th>適合</th>
+<th>說明</th>
 </tr>
 </thead>
 <tbody><tr>
 <td><a target="_blank" rel="noopener" href="https://github.com/anthropics/skills">anthropics/skills</a></td>
-<td><strong>Anthropic 官方</strong> repo，含 Word、Excel、PowerPoint、PDF 文件處理、設計、開發測試等範例，以及 <code>template/</code> 範本</td>
-<td>第一個要看的地方，學寫法最好的範本</td>
+<td><strong>官方</strong> repo，含 Word、Excel、PDF 等文件 Skill 與 <code>template/</code> 範本，學寫法最好的參考</td>
 </tr>
 <tr>
 <td>Claude Code 的 <code>/plugin</code></td>
-<td>在 Claude Code 中輸入 <code>/plugin marketplace add anthropics/skills</code>，再用 <code>/plugin</code> 瀏覽、安裝</td>
-<td>想直接裝來用</td>
-</tr>
-<tr>
-<td>claude.ai 的 <strong>Customize → Skills</strong></td>
-<td>內建 Skill 開關；Team / Enterprise 方案有 Skill 目錄可一鍵安裝</td>
-<td>不用終端機的同事</td>
+<td>輸入 <code>/plugin marketplace add anthropics/skills</code> 後，用 <code>/plugin</code> 瀏覽安裝</td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://github.com/ComposioHQ/awesome-claude-skills">ComposioHQ/awesome-claude-skills</a></td>
-<td>社群整理的大型 Skill 清單，涵蓋 claude.ai、Claude Code、API</td>
-<td>找特定用途的 Skill</td>
+<td>社群整理的大型清單</td>
 </tr>
 <tr>
 <td><a target="_blank" rel="noopener" href="https://github.com/travisvn/awesome-claude-skills">travisvn/awesome-claude-skills</a></td>
-<td>偏向 Claude Code 的社群清單，附安全性說明</td>
-<td>Claude Code 使用者</td>
-</tr>
-<tr>
-<td><a target="_blank" rel="noopener" href="https://agentskills.io/">agentskills.io</a></td>
-<td>Agent Skills 開放標準的規格</td>
-<td>想深入了解格式規範</td>
+<td>偏 Claude Code 的社群清單，附安全性說明</td>
 </tr>
 <tr>
 <td><a href="/blog/claude-code-gstack/" title="gstack 多角色開發工作流程">gstack 多角色開發工作流程</a></td>
-<td>我之前介紹過的第三方 Skill 套件，一次提供數十個開發流程 Skill</td>
-<td>想看大型 Skill 套件怎麼設計</td>
+<td>我之前介紹過的大型 Skill 套件</td>
 </tr>
 </tbody></table>
-<h3 id="⚠️-安裝第三方-Skill-前"><a href="#⚠️-安裝第三方-Skill-前" class="headerlink" title="⚠️ 安裝第三方 Skill 前"></a>⚠️ 安裝第三方 Skill 前</h3><p>Skill 可以附帶<strong>會被執行的腳本</strong>，也可以設定 <code>allowed-tools</code> 讓某些指令免確認執行。安裝別人寫的 Skill 前：</p>
-<ul>
-<li><strong>先打開 <code>SKILL.md</code> 和 <code>scripts/</code> 讀過一遍</strong>，確認它會做什麼</li>
-<li>特別留意 <code>allowed-tools</code>、刪除檔案、對外連網、讀取金鑰的指令</li>
-<li>優先使用官方或星數高、近期有維護的來源</li>
-<li>公司環境請遵守 IT 規範（Enterprise 方案可對上傳的 Skill 做安全掃描）</li>
-</ul>
-<hr>
-<h2 id="速查卡"><a href="#速查卡" class="headerlink" title="速查卡"></a>速查卡</h2><figure class="highlight text"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs text">【Skill】怎麼做 —— 給 Claude 看的 SOP<br>  位置：~/.claude/skills/&lt;名稱&gt;/SKILL.md（個人）<br>        .claude/skills/&lt;名稱&gt;/SKILL.md（專案）<br>  必填：name、description（description 決定何時觸發，要寫清楚）<br>  呼叫：/名稱，或讓 Claude 自動判斷<br>  有副作用的動作：加 disable-model-invocation: true<br>  說明太長：拆到 reference 檔，SKILL.md 保持 500 行內<br><br>【Docs】做出來的東西 —— 給人看的活文件<br>  建立：「幫我寫一份○○文件」<br>  修改：對話中說，或在文件上留言送給 Claude<br>  分享：Share；匯出：文件名稱 → Export（Word / PDF / Markdown）<br><br>【判斷】<br>  每次都要記得的規則 → CLAUDE.md<br>  做某件事時才需要的流程 → Skill<br>  要給人看、一起改的成品 → Docs<br></code></pre></td></tr></tbody></table></figure>
-
+<p>⚠️ Skill 可以附帶<strong>會被執行的腳本</strong>。安裝別人寫的 Skill 前，先讀過 <code>SKILL.md</code> 與 <code>scripts/</code>，特別留意 <code>allowed-tools</code>、刪除檔案、對外連網的指令，並優先選擇官方或有持續維護的來源。</p>
 <hr>
 <h2 id="參考資料"><a href="#參考資料" class="headerlink" title="參考資料"></a>參考資料</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://code.claude.com/docs/en/skills">Extend Claude with skills - Claude Code Docs</a></li>
 <li><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12512180-using-skills-in-claude">Using skills in Claude - Claude Help Center</a></li>
-<li><a target="_blank" rel="noopener" href="https://github.com/anthropics/skills">anthropics/skills - GitHub</a></li>
 <li><a target="_blank" rel="noopener" href="https://support.claude.com/en/articles/12138966-release-notes">Release notes - Claude Help Center</a></li>
-<li><a target="_blank" rel="noopener" href="https://venturebeat.com/technology/anthropic-is-killing-off-cowork-and-folding-it-into-claude-launching-claude-docs-and-claude-slides">Anthropic is killing off Claude Cowork and folding it into Claude chat, launching Claude Docs and Claude Slides - VentureBeat</a></li>
+<li><a target="_blank" rel="noopener" href="https://venturebeat.com/technology/anthropic-is-killing-off-cowork-and-folding-it-into-claude-launching-claude-docs-and-claude-slides">Anthropic launches Claude Docs and Claude Slides - VentureBeat</a></li>
 </ul>
 
             </div>
